@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CommodityView | Precision Document Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2f3445",
+                        "tertiary-container": "#ffadad",
+                        "surface-container": "#1a1f2f",
+                        "on-tertiary-fixed": "#410008",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-secondary-fixed-variant": "#00513b",
+                        "surface": "#0e1322",
+                        "secondary": "#43e5b1",
+                        "tertiary": "#ffd4d3",
+                        "primary-fixed": "#b4ebff",
+                        "on-primary-container": "#00586b",
+                        "on-primary-fixed": "#001f27",
+                        "tertiary-fixed-dim": "#ffb3b2",
+                        "secondary-fixed": "#60fcc6",
+                        "on-tertiary-fixed-variant": "#920020",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#090e1c",
+                        "error-container": "#93000a",
+                        "primary": "#a8e8ff",
+                        "surface-dim": "#0e1322",
+                        "primary-container": "#00d4ff",
+                        "secondary-container": "#01c896",
+                        "primary-fixed-dim": "#3cd7ff",
+                        "surface-container-high": "#25293a",
+                        "on-surface": "#dee1f7",
+                        "surface-container-low": "#161b2b",
+                        "inverse-primary": "#00677e",
+                        "outline-variant": "#3c494e",
+                        "surface-container-highest": "#2f3445",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#004d38",
+                        "outline": "#859398",
+                        "inverse-surface": "#dee1f7",
+                        "on-secondary-fixed": "#002116",
+                        "on-primary-fixed-variant": "#004e5f",
+                        "on-background": "#dee1f7",
+                        "background": "#0e1322",
+                        "on-secondary": "#003828",
+                        "surface-tint": "#3cd7ff",
+                        "on-tertiary": "#680013",
+                        "on-surface-variant": "#bbc9cf",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#a30024",
+                        "on-primary": "#003642",
+                        "secondary-fixed-dim": "#3adfab",
+                        "surface-bright": "#343949",
+                        "inverse-on-surface": "#2b3040"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e1322; color: #dee1f7; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .ticker-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-50 flex justify-between items-center w-full px-6 h-16 bg-[#0e1322] border-b-0">
+<div class="text-xl font-black tracking-tighter text-[#00d4ff] uppercase">CommodityView</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Inter'] font-semibold text-sm tracking-tight uppercase text-[#00d4ff] border-b-2 border-[#00d4ff] pb-1" href="#">Product</a>
+<a class="font-['Inter'] font-semibold text-sm tracking-tight uppercase text-slate-400 hover:bg-[#25293a] hover:text-[#a8e8ff] transition-colors duration-150" href="#">Pricing</a>
+<a class="font-['Inter'] font-semibold text-sm tracking-tight uppercase text-slate-400 hover:bg-[#25293a] hover:text-[#a8e8ff] transition-colors duration-150" href="#">Docs</a>
+<a class="font-['Inter'] font-semibold text-sm tracking-tight uppercase text-slate-400 hover:bg-[#25293a] hover:text-[#a8e8ff] transition-colors duration-150" href="#">API</a>
+</div>
+<button class="bg-[#00d4ff] text-[#003642] px-6 py-2 font-bold text-sm uppercase transition-transform active:scale-95">Get Started</button>
+</nav>
+<!-- Section 1: Hero -->
+<header class="relative pt-32 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#0e1322] to-[#161b2b]">
+<div class="max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<div class="inline-block bg-surface-container-high px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-primary uppercase mb-6 border-l-2 border-primary">
+                    L/C COMPLIANCE ENGINE v4.2
+                </div>
+<h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+                    Before you release payment, <span class="text-primary-container">CommodityView</span> tells you if everything lines up.
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+                    The document intelligence layer between shipment and payment. Compliance verdict in under 30 seconds.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold px-8 py-4 uppercase tracking-widest text-sm hover:brightness-110">Get Started Free</button>
+<button class="border border-outline px-8 py-4 text-sm font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors">Watch Demo</button>
+</div>
+</div>
+<!-- Mock UI: Hero Result -->
+<div class="relative bg-surface-container-lowest p-1 border border-outline-variant/30">
+<div class="bg-surface-container-high p-4 flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-bold text-xs tracking-widest">BATCH_ANALYSIS_A77</span>
+</div>
+<div class="bg-error-container text-on-error-container px-3 py-1 text-[10px] font-black tracking-tighter uppercase">NON_COMPLIANT</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest pb-2 border-b border-outline-variant/20">
+<span>Parameter</span>
+<span>Contract</span>
+<span>Measured</span>
+<span>Status</span>
+</div>
+<div class="grid grid-cols-4 items-center py-2 bg-surface-container-low px-2">
+<span class="text-xs font-bold">PROTEIN (DM)</span>
+<span class="ticker-text text-sm">12.5%</span>
+<span class="ticker-text text-sm text-error font-bold">11.8%</span>
+<span class="text-[10px] font-black text-error">FAIL</span>
+</div>
+<div class="grid grid-cols-4 items-center py-2 px-2">
+<span class="text-xs font-bold">MOISTURE</span>
+<span class="ticker-text text-sm">13.5%</span>
+<span class="ticker-text text-sm text-secondary font-bold">13.2%</span>
+<span class="text-[10px] font-black text-secondary">PASS</span>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-primary-container text-on-primary-container p-4 font-black text-sm uppercase hidden md:block">
+                    $52,400 RISK DETECTED
+                </div>
+</div>
+</div>
+</header>
+<!-- Section 2: Problem -->
+<section class="py-24 px-6 bg-surface">
+<div class="max-w-[1440px] mx-auto">
+<h2 class="text-3xl font-black uppercase tracking-tighter mb-16 border-l-4 border-error pl-6">The $500K Problem Nobody Talks About</h2>
+<div class="grid md:grid-cols-3 gap-1">
+<div class="bg-surface-container-low p-10 hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">layers</span>
+</div>
+<h3 class="text-xl font-bold mb-4 uppercase tracking-tight">5-15 documents per shipment</h3>
+<p class="text-on-surface-variant text-sm leading-loose">BLs, COAs, Weight Certs, and Invoices. A tangled web of unstructured data that hides critical errors until it's too late.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">timer</span>
+</div>
+<h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Hours of manual cross-checking</h3>
+<p class="text-on-surface-variant text-sm leading-loose">Back-office teams spending 40% of their time manually typing values into spreadsheets instead of managing market risk.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container transition-colors group">
+<div class="w-12 h-12 bg-error-container/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-error group-hover:scale-110 transition-transform" data-weight="fill">warning</span>
+</div>
+<h3 class="text-xl font-bold mb-4 uppercase tracking-tight">One mismatch = $50K-$500K loss</h3>
+<p class="text-on-surface-variant text-sm leading-loose">Demurrage, quality penalties, and letter of credit rejections are the hidden tax on every physical trade.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: How It Works -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-4xl font-black uppercase tracking-tighter">Terminal Logic</h2>
+<p class="text-on-surface-variant mt-2">Deterministic verification for high-stakes flows.</p>
+</div>
+<div class="h-[1px] flex-grow bg-outline-variant/30 mx-8 hidden md:block"></div>
+<div class="text-[10px] font-bold text-primary-container tracking-widest">SYSTEM_STATUS: OPERATIONAL</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="relative">
+<div class="text-6xl font-black text-surface-container-high mb-6 select-none">01</div>
+<div class="bg-surface-container p-8 border-t-2 border-primary">
+<h4 class="font-bold uppercase tracking-widest text-primary mb-4">Upload Documents</h4>
+<p class="text-sm text-on-surface-variant">Drop PDFs, scans, or photos. Our engine supports multi-page BLs and complex laboratory certificates.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-6xl font-black text-surface-container-high mb-6 select-none">02</div>
+<div class="bg-surface-container p-8 border-t-2 border-primary">
+<h4 class="font-bold uppercase tracking-widest text-primary mb-4">AI Extracts Every Value</h4>
+<p class="text-sm text-on-surface-variant">Proprietary OCR converts unstructured text into trade-ready data points with 99.8% precision.</p>
+</div>
+</div>
+<div class="relative">
+<div class="text-6xl font-black text-surface-container-high mb-6 select-none">03</div>
+<div class="bg-surface-container p-8 border-t-2 border-primary">
+<h4 class="font-bold uppercase tracking-widest text-primary mb-4">Deterministic Verdict</h4>
+<p class="text-sm text-on-surface-variant">Values are instantly cross-referenced against your contract limits. Failures are flagged in red.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Live Demo -->
+<section class="py-24 px-6 bg-surface">
+<div class="max-w-[1440px] mx-auto border border-outline-variant/20">
+<div class="bg-surface-container-high p-6 border-b border-outline-variant/20 flex flex-wrap justify-between items-center gap-4">
+<div class="flex items-center gap-6">
+<h2 class="text-2xl font-black tracking-tighter uppercase">WHEAT-2024-089</h2>
+<span class="ticker-text text-[10px] text-slate-400 bg-surface px-2 py-1 uppercase tracking-widest">Timestamp: 2024-08-22 14:02:11</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-error-container text-on-error-container px-4 py-2 text-xs font-black tracking-widest uppercase">NON_COMPLIANT</div>
+<button class="bg-primary text-on-primary px-4 py-2 text-xs font-bold uppercase">Export Report</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+<th class="p-6 border-b border-outline-variant/10">Specification Parameter</th>
+<th class="p-6 border-b border-outline-variant/10">Contractual Limit</th>
+<th class="p-6 border-b border-outline-variant/10">Measured Value</th>
+<th class="p-6 border-b border-outline-variant/10">Unit</th>
+<th class="p-6 border-b border-outline-variant/10">Source Doc</th>
+<th class="p-6 border-b border-outline-variant/10">Status</th>
+</tr>
+</thead>
+<tbody class="ticker-text text-sm">
+<tr class="bg-surface hover:bg-surface-container-low transition-colors group">
+<td class="p-6 font-bold text-on-surface">PROTEIN</td>
+<td class="p-6">12.50 MIN</td>
+<td class="p-6 text-error font-bold">11.45</td>
+<td class="p-6">% DM</td>
+<td class="p-6 text-xs text-primary">SGS_CERT_788.pdf</td>
+<td class="p-6"><span class="text-[10px] font-black text-error bg-error-container/10 px-2 py-1">FAIL</span></td>
+</tr>
+<tr class="bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors group">
+<td class="p-6 font-bold text-on-surface">MOISTURE</td>
+<td class="p-6">13.50 MAX</td>
+<td class="p-6 text-secondary font-bold">13.10</td>
+<td class="p-6">%</td>
+<td class="p-6 text-xs text-primary">SGS_CERT_788.pdf</td>
+<td class="p-6"><span class="text-[10px] font-black text-secondary bg-secondary-container/10 px-2 py-1">PASS</span></td>
+</tr>
+<tr class="bg-surface hover:bg-surface-container-low transition-colors group">
+<td class="p-6 font-bold text-on-surface">FOREIGN MATTER</td>
+<td class="p-6">1.50 MAX</td>
+<td class="p-6 text-secondary font-bold">0.85</td>
+<td class="p-6">%</td>
+<td class="p-6 text-xs text-primary">SGS_CERT_788.pdf</td>
+<td class="p-6"><span class="text-[10px] font-black text-secondary bg-secondary-container/10 px-2 py-1">PASS</span></td>
+</tr>
+<tr class="bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors group">
+<td class="p-6 font-bold text-on-surface">TEST WEIGHT</td>
+<td class="p-6">77.00 MIN</td>
+<td class="p-6 text-secondary font-bold">78.20</td>
+<td class="p-6">KG/HL</td>
+<td class="p-6 text-xs text-primary">SGS_CERT_788.pdf</td>
+<td class="p-6"><span class="text-[10px] font-black text-secondary bg-secondary-container/10 px-2 py-1">PASS</span></td>
+</tr>
+<tr class="bg-surface hover:bg-surface-container-low transition-colors group">
+<td class="p-6 font-bold text-on-surface">FALLING NUMBER</td>
+<td class="p-6">250 MIN</td>
+<td class="p-6 text-secondary font-bold">295</td>
+<td class="p-6">SEC</td>
+<td class="p-6 text-xs text-primary">SGS_CERT_788.pdf</td>
+<td class="p-6"><span class="text-[10px] font-black text-secondary bg-secondary-container/10 px-2 py-1">PASS</span></td>
+</tr>
+<tr class="bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors group">
+<td class="p-6 font-bold text-on-surface">FFA</td>
+<td class="p-6">2.00 MAX</td>
+<td class="p-6 text-error font-bold">2.45</td>
+<td class="p-6">%</td>
+<td class="p-6 text-xs text-primary">SGS_CERT_788.pdf</td>
+<td class="p-6"><span class="text-[10px] font-black text-error bg-error-container/10 px-2 py-1">FAIL</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section 5: Social Proof -->
+<section class="py-20 px-6 bg-surface-container">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="flex-1">
+<div class="grid grid-cols-2 gap-8 opacity-40">
+<div class="text-2xl font-black uppercase tracking-[0.2em]">GENEVA</div>
+<div class="text-2xl font-black uppercase tracking-[0.2em]">LONDON</div>
+<div class="text-2xl font-black uppercase tracking-[0.2em]">DUBAI</div>
+<div class="text-2xl font-black uppercase tracking-[0.2em]">SINGAPORE</div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-high p-12 border-l-4 border-primary">
+<p class="text-2xl font-medium leading-relaxed mb-6 italic">"We caught a $340K protein discrepancy in a wheat cargo destination Yemen. CommodityView paid for itself in one deal."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-container"></div>
+<div>
+<p class="font-bold uppercase tracking-widest text-xs">Ops Manager</p>
+<p class="text-xs text-primary">Geneva Trading Desk</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Pricing Preview -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto">
+<h2 class="text-3xl font-black uppercase tracking-tighter mb-16 text-center">Flexible Terminal Access</h2>
+<div class="grid md:grid-cols-4 gap-1">
+<div class="bg-surface-container p-8 border border-outline-variant/10">
+<h4 class="text-xs font-black tracking-widest uppercase mb-2 text-slate-500">FREE</h4>
+<div class="text-3xl font-bold mb-6">$0 <span class="text-sm font-normal text-slate-500">/mo</span></div>
+<ul class="space-y-4 mb-10 text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> 5 Documents / mo</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Manual Upload</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Basic Exports</li>
+</ul>
+<button class="w-full border border-outline py-3 text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors">Start Free</button>
+</div>
+<div class="bg-surface-container p-8 border border-outline-variant/10">
+<h4 class="text-xs font-black tracking-widest uppercase mb-2 text-primary">STARTER</h4>
+<div class="text-3xl font-bold mb-6">$499 <span class="text-sm font-normal text-slate-500">/mo</span></div>
+<ul class="space-y-4 mb-10 text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> 50 Documents / mo</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> OCR Data Extraction</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Email Ingest</li>
+</ul>
+<button class="w-full bg-primary-container text-on-primary-container py-3 text-[10px] font-black uppercase tracking-widest">Get Started</button>
+</div>
+<div class="bg-surface-container-high p-8 border border-primary relative">
+<div class="absolute top-0 right-0 bg-primary text-on-primary text-[8px] font-black px-2 py-1 uppercase">Recommended</div>
+<h4 class="text-xs font-black tracking-widest uppercase mb-2 text-primary">GROWTH</h4>
+<div class="text-3xl font-bold mb-6">$1,250 <span class="text-sm font-normal text-slate-500">/mo</span></div>
+<ul class="space-y-4 mb-10 text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> 200 Documents / mo</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Multi-user Access</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Basic API access</li>
+</ul>
+<button class="w-full bg-primary text-on-primary py-3 text-[10px] font-black uppercase tracking-widest">Get Started</button>
+</div>
+<div class="bg-surface-container p-8 border border-outline-variant/10">
+<h4 class="text-xs font-black tracking-widest uppercase mb-2 text-slate-500">PRO</h4>
+<div class="text-3xl font-bold mb-6">CUSTOM</div>
+<ul class="space-y-4 mb-10 text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Unlimited Docs</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> Custom ERP Integration</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">check</span> 24/7 Priority Support</li>
+</ul>
+<button class="w-full border border-outline py-3 text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0e1322] border-t border-[#3c494e]/15">
+<div class="grid grid-cols-2 md:grid-cols-6 gap-8 w-full px-8 py-12 max-w-full">
+<div class="col-span-2">
+<div class="text-lg font-bold text-slate-100 uppercase tracking-tighter mb-4">CommodityView</div>
+<p class="text-slate-500 text-[0.6875rem] uppercase tracking-widest leading-relaxed">The industrial standard for document compliance in physical commodity trading.</p>
+</div>
+<div>
+<h5 class="text-[#00d4ff] text-[0.6875rem] font-bold uppercase tracking-widest mb-6">Product</h5>
+<ul class="space-y-3">
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Features</a></li>
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Security</a></li>
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#00d4ff] text-[0.6875rem] font-bold uppercase tracking-widest mb-6">Company</h5>
+<ul class="space-y-3">
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Blog</a></li>
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Contact</a></li>
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#00d4ff] text-[0.6875rem] font-bold uppercase tracking-widest mb-6">Legal</h5>
+<ul class="space-y-3">
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Privacy</a></li>
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Terms</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[#00d4ff] text-[0.6875rem] font-bold uppercase tracking-widest mb-6">Support</h5>
+<ul class="space-y-3">
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">Docs</a></li>
+<li><a class="text-slate-500 hover:text-[#00d4ff] text-[0.6875rem] uppercase tracking-widest" href="#">API Reference</a></li>
+</ul>
+</div>
+</div>
+<div class="px-8 py-6 border-t border-[#3c494e]/10 flex justify-between items-center">
+<p class="text-slate-500 text-[0.6875rem] uppercase tracking-widest">© 2024 CommodityView. Precision Brutalism.</p>
+<div class="flex gap-4">
+<span class="w-2 h-2 bg-secondary-container"></span>
+<span class="w-2 h-2 bg-primary-container"></span>
+<span class="w-2 h-2 bg-error-container"></span>
+</div>
+</div>
+</footer>
+</body></html>

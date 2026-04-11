@@ -1,0 +1,7 @@
+[     408ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[     525ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[     660ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[     898ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    1515ms] [LOG] [Fast Refresh] done in 961ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   63039ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   63049ms] [LOG] [Fast Refresh] done in 110ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431

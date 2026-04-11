@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('\\\\n'.join\\(sorted\\(d.get\\('dependencies',{}\\).keys\\(\\)\\)\\)\\)\")",
+      "mcp__stitch__list_projects",
+      "mcp__stitch__generate_screen_from_text",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_evaluate",
+      "mcp__stitch__list_screens",
+      "mcp__stitch__get_screen",
+      "Bash(curl -sL \"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY0ZWQ1OTYxMDU4NmIwOTY4OTJiNDg4MzM1YTlhEgsSBxCy_NSl8gkYAZIBIwoKcHJvamVjdF9pZBIVQhM5MjgxNjg3NjA3NTM5MTYzMTU2&filename=&opi=89354086\" -o /Users/polad/commodityview/.stitch/designs/home-3d.html)",
+      "Bash(curl -sL \"https://lh3.googleusercontent.com/aida/ADBb0ui4yF-fOOZI-9LfzA0LF9AIkEa3raG0VUqayiJCuatsIGBqU5wndQQv9p3HmKIkhjHxkXQSH7wkHo2FTJD5UyxlhyAyiX1affN-36_-dJKww4yThoo1zDVRuMzFkshvxPGJa7oCMgv9cMT2mxRAcc-jRCekmXRLuZSYGome_3gmQ3owEFfVIJlyAzlzLicj2om-KCg1nTVdZ9rUQKypHeYrGZSsCumDS3MSuARz4jfc73hBM_TwL4vXf-s=w2560\" -o /Users/polad/commodityview/.stitch/designs/home-3d.png)",
+      "mcp__magic__21st_magic_component_inspiration",
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_resize",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(k,v\\) for k,v in {**d.get\\('dependencies',{}\\), **d.get\\('devDependencies',{}\\)}.items\\(\\)]\")",
+      "Bash(npm install:*)",
+      "WebFetch(domain:contribution.usercontent.google.com)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['version']\\); print\\(d.get\\('exports','no exports'\\)\\)\")",
+      "Bash(node:*)"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "skills": {
+    "convex-create-component": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "c97d71b524ea9f784d344af20a766de5d48f14b7b824bf791fa517d1da753aca"
+    },
+    "convex-migration-helper": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "bfb51e5b743ac31b313e5e1d206faee7d46bbbc9195360ce9636eead6f13fd3a"
+    },
+    "convex-performance-audit": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "3e411d8250678ca8ec739a40c2874f21e4b5ab17c4dd65e72e3d9d9df6851c31"
+    },
+    "convex-quickstart": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "7879afbb2b954be36ef29d294f3b6c2851cad54e9f5e5ac90461f0f97d4d1fff"
+    },
+    "convex-setup-auth": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "92a5c170cf238f45f08439d9d5d7947af490b880ee8f15306183240483cbed02"
+    },
+    "design-md": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "d3a4c7d2f2715a33662c8b06ffc16035d01965a8b4ed81c2958fb22ae94760f8"
+    },
+    "enhance-prompt": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "71cc23e9ec5fc6361e12453495fa8c683f6cf26f3efaf9b230b0f43e0a32cc96"
+    },
+    "react:components": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "01a94f035a1c3a1a405f611c0df212433d8973f18bf16e94540875ec58ee7b9b"
+    },
+    "remotion": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "73a794b428f2bb568859f0db83b66219c842a0a088db9818a45ac72c37b6aa66"
+    },
+    "shadcn-ui": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "dadbca54d35a33fe73e40018611af2179689305bf6da812ab2643987fefd9da3"
+    },
+    "stitch-design": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "6df709345652460b4d4fdf214476a20c75d76a2ae011a958a51de2c88e6d86d1"
+    },
+    "stitch-loop": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "e04912a9719b855afa733cc928d30dde0b8a5b91707ca27b98f0efcb8d9310a9"
+    },
+    "taste-design": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "computedHash": "1891625787d6f0f3bc45d4a9437c187277af66c219e3ec799b1b4e67822b6146"
+    }
+  }
+}

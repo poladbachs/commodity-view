@@ -1,0 +1,433 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CommodityView | Institutional Intelligence for Physical Trading</title>
+<meta content="The intelligence platform for physical commodity traders. Automate document checks and reduce shipment losses." name="description">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0b1326',
+              deep: '#070b14',
+              accent: '#3B82F6',
+              cyan: '#06b6d4',
+              slate: '#1e293b',
+              nav: '#131b2e',
+              hover: '#171f33'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'brand': '4px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-animate {
+      display: flex;
+      width: max-content;
+      animation: scroll 30s linear infinite;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, rgba(11, 19, 38, 0) 70%);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .globe-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      perspective: 1000px;
+    }
+    .globe-sphere {
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #1e293b 0%, #070b14 100%);
+      box-shadow: inset -20px -20px 50px rgba(0,0,0,0.8), 0 0 60px rgba(59, 130, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .trade-route {
+      position: absolute;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 50%;
+      animation: rotate-route 12s linear infinite;
+    }
+    @keyframes rotate-route {
+      from { transform: rotate(0deg) scale(1); opacity: 0.6; }
+      to { transform: rotate(360deg) scale(1.1); opacity: 0; }
+    }
+    .feature-graph-bg {
+      background: linear-gradient(180deg, #0b1326 0%, #070b14 100%);
+      background-image: radial-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+    @keyframes float-3d {
+      0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+      50% { transform: translateY(-15px) rotateX(5deg) rotateY(5deg); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.4)); }
+      50% { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes grid-move {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 40; }
+    }
+  </style>
+</head>
+<body class="bg-brand-navy text-slate-100 font-sans selection:bg-brand-accent/30 overflow-x-hidden">
+<!-- BEGIN: MainHeader -->
+<header class="w-full h-16 top-0 sticky z-50 bg-[#0b1326] border-b border-[#131b2e]">
+<nav class="flex items-center justify-between px-6 w-full max-w-full h-full">
+<div class="flex items-center gap-10">
+<!-- Logo -->
+<div class="flex items-center gap-2 cursor-pointer" data-purpose="logo">
+<span class="text-xl font-bold tracking-tighter text-blue-500 uppercase" style="">CommodityView</span>
+</div>
+<!-- Search Bar Simulation -->
+<div class="hidden lg:flex items-center bg-[#131b2e] px-3 py-1.5 rounded-md border border-white/5 w-64">
+<span class="material-symbols-outlined text-slate-500 text-sm mr-2" style="">search</span>
+<span class="text-slate-500 text-xs font-medium" style="">Search Market...</span>
+</div>
+<!-- Main Nav Links -->
+<ul class="hidden xl:flex items-center gap-8 font-medium text-sm tracking-tight">
+<li class="" style="">Products</li>
+<li class="" style="">Pricing</li>
+<li class="" style="">Markets</li>
+<li class="" style="">More</li>
+</ul>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-400">
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" style="">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" style="">settings</span>
+</div>
+<div class="h-8 w-8 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center overflow-hidden cursor-pointer">
+<span class="material-symbols-outlined text-blue-400 text-lg" style="">person</span>
+</div>
+<button class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-brand text-sm font-bold transition-all shadow-lg shadow-blue-500/20" style="">
+        Get started
+      </button>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-24 pb-20 min-h-[75vh] flex items-center overflow-hidden">
+<!-- Background Decor -->
+<div class="absolute inset-0 hero-gradient -z-10"></div>
+<div class="max-w-[1440px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+<!-- Left Content -->
+<div class="text-center lg:text-left" data-purpose="hero-text-content">
+<h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight text-white" style=""><p data-start="248" data-end="302" class="" style=""><strong data-start="248" data-end="302">All-in-One Platform for Physical Commodity Traders</strong></p>
+<p data-start="304" data-end="323" class="" style=""></p></h1>
+<p class="text-xl text-slate-400 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0" style="">Automate workflows, manage deals, track shipments, and make decisions with market intelligence in one place.</p>
+<div class="flex flex-col items-center lg:items-start gap-4">
+<button class="px-10 py-4 bg-white text-brand-navy font-bold rounded-full hover:bg-slate-200 transition-all text-lg shadow-2xl" style="">
+          Get Started Free
+        </button>
+<p class="text-sm text-slate-500" style="">
+          $0 forever, no credit card needed to start.
+        </p>
+</div>
+</div>
+<!-- Right Visual: 3D Globe -->
+<div class="hidden lg:flex justify-center items-center" data-purpose="hero-visual">
+<div class="globe-container">
+<div class="globe-sphere mx-auto flex items-center justify-center">
+<!-- Simulated Trade Routes -->
+<div class="trade-route w-[320px] h-[160px] -rotate-45"></div>
+<div class="trade-route w-[220px] h-[320px] rotate-12"></div>
+<div class="trade-route w-[380px] h-[220px] -rotate-12"></div>
+<!-- Inner detail -->
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+</div>
+<!-- Label Overlays -->
+<div class="absolute top-1/4 right-0 glass-card p-4 rounded-brand border border-white/10 shadow-2xl">
+<div class="text-xs text-brand-accent font-bold mb-1 uppercase tracking-wider" style="">Live Cargo Tracking</div>
+<div class="text-sm font-medium" style="">MV Oceanic Trader</div>
+<div class="text-[10px] text-slate-400 uppercase tracking-tighter" style="">ETA Rotterdam: Jan 24</div>
+</div>
+<div class="absolute bottom-1/4 left-0 glass-card p-4 rounded-brand border border-white/10 shadow-2xl">
+<div class="text-xs text-emerald-400 font-bold mb-1 uppercase tracking-wider" style="">Compliance Verified</div>
+<div class="text-sm font-medium" style="">FOSFA 54 / Wheat SRW</div>
+<div class="text-[10px] text-slate-400 uppercase tracking-tighter" style="">COA vs Contract Passed</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: PlatformIntelligence -->
+<section class="py-24 feature-graph-bg border-y border-white/5 overflow-hidden" id="features">
+<div class="max-w-[1440px] mx-auto px-6">
+<div class="flex flex-col items-center text-center mb-20">
+<h2 class="text-4xl lg:text-5xl font-black mb-6 tracking-tight" style="">Where deals move forward&nbsp;</h2>
+<p class="text-slate-400 max-w-2xl text-lg mb-10" style="">Bring clarity and control to every trade decision</p>
+<a class="px-8 py-3 bg-brand-accent text-white font-bold rounded-full hover:bg-blue-600 transition-all flex items-center gap-2 group shadow-xl shadow-brand-accent/20" href="#features" style="">
+        Explore Features
+        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" style="">arrow_forward</span>
+</a>
+</div>
+<!-- Updated High Fidelity 3D Graphics Grid -->
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- Feature 1: Document Intelligence -->
+<div class="flex flex-col group h-full">
+<div class="glass-card rounded-xl border-white/10 overflow-hidden mb-8 h-80 relative flex items-center justify-center bg-brand-deep/50 transition-all group-hover:border-brand-accent/40 group-hover:bg-brand-deep/80 perspective-1000">
+<!-- 3D Document Illustration -->
+<div class="relative w-full h-full flex items-center justify-center animate-[float-3d_6s_ease-in-out_infinite]">
+<svg class="w-48 h-48 drop-shadow-2xl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="grad-3d-1" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#3B82F6"></stop>
+<stop offset="100%" stop-color="#1D4ED8"></stop>
+</linearGradient>
+</defs>
+<!-- 3D Stacked Papers Effect -->
+<rect fill="#1e293b" height="120" opacity="0.3" rx="4" transform="rotate(-6 100 100)" width="90" x="55" y="40"></rect>
+<rect fill="#1e293b" height="120" opacity="0.5" rx="4" transform="rotate(-3 100 100)" width="90" x="55" y="40"></rect>
+<rect fill="url(#grad-3d-1)" height="120" rx="4" stroke="#60A5FA" stroke-width="0.5" width="90" x="55" y="40"></rect>
+<!-- Scanning Beam -->
+<rect class="animate-[scan_3s_linear_infinite]" fill="rgba(255,255,255,0.2)" height="2" width="90" x="55" y="40"></rect>
+<!-- Text Lines -->
+<rect fill="white" height="2" opacity="0.2" width="60" x="65" y="60"></rect>
+<rect fill="white" height="2" opacity="0.2" width="70" x="65" y="70"></rect>
+<rect fill="white" height="2" opacity="0.2" width="40" x="65" y="80"></rect>
+<!-- 3D Floating Tags -->
+<g class="animate-bounce" style="animation-duration: 4s;">
+<rect fill="#06b6d4" height="20" rx="4" width="60" x="110" y="100"></rect>
+<text fill="white" font-family="sans-serif" font-size="8" font-weight="bold" x="118" y="113">VERIFIED</text>
+</g>
+</svg>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent"></div>
+</div>
+<div class="px-2">
+<h3 class="text-2xl font-bold mb-4 text-white" style="">Document Intelligence</h3>
+<p class="text-slate-400 text-base leading-relaxed" style="">
+        AI-powered extraction and compliance automation for COAs, Bills of Lading, Letter of Credit and Contracts. Instantly flag discrepancies before they impact your P&amp;L.
+      </p>
+</div>
+</div>
+<!-- Feature 2: Operations Hub -->
+<div class="flex flex-col group h-full">
+<div class="glass-card rounded-xl border-white/10 overflow-hidden mb-8 h-80 relative flex items-center justify-center bg-brand-deep/50 transition-all group-hover:border-brand-accent/40 group-hover:bg-brand-deep/80">
+<!-- 3D Operations Node Illustration -->
+<div class="relative w-full h-full flex items-center justify-center">
+<svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Rotating Outer Rings -->
+<circle class="animate-[spin-slow_20s_linear_infinite]" cx="100" cy="100" fill="none" r="70" stroke="#1e293b" stroke-dasharray="10 20" stroke-width="1"></circle>
+<circle class="animate-[spin-slow_15s_linear_infinite_reverse]" cx="100" cy="100" fill="none" r="55" stroke="#3B82F6" stroke-dasharray="5 15" stroke-opacity="0.3" stroke-width="2"></circle>
+<!-- Central 3D Core -->
+<g class="animate-[float-3d_5s_ease-in-out_infinite]">
+<circle cx="100" cy="100" fill="#0b1326" r="30" stroke="#3B82F6" stroke-width="1"></circle>
+<path d="M100 70 L130 100 L100 130 L70 100 Z" fill="#3B82F6" fill-opacity="0.2" stroke="#60A5FA" stroke-width="2"></path>
+<circle class="animate-pulse" cx="100" cy="100" fill="#60A5FA" r="4"></circle>
+<!-- Pulsing Data Streams -->
+<line class="opacity-40" stroke="#60A5FA" stroke-width="1" x1="100" x2="100" y1="30" y2="70"></line>
+<line class="opacity-40" stroke="#60A5FA" stroke-width="1" x1="100" x2="100" y1="130" y2="170"></line>
+<line class="opacity-40" stroke="#60A5FA" stroke-width="1" x1="30" x2="70" y1="100" y2="100"></line>
+<line class="opacity-40" stroke="#60A5FA" stroke-width="1" x1="130" x2="170" y1="100" y2="100"></line>
+</g>
+</svg>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent"></div>
+</div>
+<div class="px-2">
+<h3 class="text-2xl font-bold mb-4 text-white" style="">Operations Hub</h3>
+<p class="text-slate-400 text-base leading-relaxed" style="">
+        Live deal coordination across email, API, and shipments with audit logs and full visibility. Team workspace with role-based access for operations. Keep deals visible and progressing from capture to completion in one window.
+      </p>
+</div>
+</div>
+<!-- Feature 3: The Terminal -->
+<div class="flex flex-col group h-full">
+<div class="glass-card rounded-xl border-white/10 overflow-hidden mb-8 h-80 relative flex items-center justify-center bg-brand-deep/50 transition-all group-hover:border-brand-accent/40 group-hover:bg-brand-deep/80">
+<!-- 3D Data Terminal Illustration -->
+<div class="relative w-full h-full flex items-center justify-center">
+<svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Isometric Grid Base -->
+<g opacity="0.1" transform="skewY(-15)">
+<path d="M20 20 H180 M20 40 H180 M20 60 H180 M20 80 H180 M20 100 H180" stroke="white" stroke-width="1"></path>
+<path d="M20 20 V100 M40 20 V100 M60 20 V100 M80 20 V100 M100 20 V100" stroke="white" stroke-width="1"></path>
+</g>
+<!-- Floating 3D Pillars -->
+<g class="animate-[float-3d_7s_ease-in-out_infinite]">
+<rect fill="#3B82F6" height="40" opacity="0.8" width="12" x="60" y="80"></rect>
+<rect fill="#60A5FA" height="60" opacity="0.9" width="12" x="80" y="60"></rect>
+<rect fill="#06b6d4" height="30" width="12" x="100" y="90"></rect>
+<rect fill="#3B82F6" height="50" width="12" x="120" y="70"></rect>
+<!-- Glow behind indicators -->
+<circle cx="140" cy="50" fill="#ef4444" filter="blur(8px)" opacity="0.3" r="10"></circle>
+<circle class="animate-pulse" cx="140" cy="50" fill="#ef4444" r="4"></circle>
+<!-- Floating Glass Panels -->
+<rect fill="rgba(255,255,255,0.05)" height="40" rx="2" stroke="rgba(255,255,255,0.1)" width="80" x="50" y="40"></rect>
+<line stroke="#3B82F6" stroke-width="1" x1="55" x2="125" y1="50" y2="50"></line>
+<line stroke="#3B82F6" stroke-width="1" x1="55" x2="105" y1="60" y2="60"></line>
+</g>
+</svg>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent"></div>
+</div>
+<div class="px-2">
+<h3 class="text-2xl font-bold mb-4 text-white" style="">The Terminal</h3>
+<p class="text-slate-400 text-base leading-relaxed" style="">
+        A contextual intelligence layer combining live market data, freight signals, counterparty intelligence, sanctions screening to support institutional trading decisions.
+      </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PlatformIntelligence -->
+<!-- BEGIN: TickerStrip -->
+<div class="w-full border-y border-white/5 bg-brand-deep overflow-hidden py-2.5" data-purpose="live-ticker">
+<div class="ticker-animate flex items-center gap-12 text-xs uppercase tracking-wider">
+<!-- Item -->
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">WHEAT</span>
+<span class="font-mono text-white" style="">584.25</span>
+<span class="text-emerald-400 font-mono" style="">+1.24%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">CORN</span>
+<span class="font-mono text-white" style="">445.50</span>
+<span class="text-rose-400 font-mono" style="">-0.12%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">SOYBEANS</span>
+<span class="font-mono text-white" style="">1,212.75</span>
+<span class="text-emerald-400 font-mono" style="">+0.45%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">BRENT CRUDE</span>
+<span class="font-mono text-white" style="">78.42</span>
+<span class="text-emerald-400 font-mono" style="">+1.15%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">C-PANAMAX FREIGHT</span>
+<span class="font-mono text-white" style="">12,450</span>
+<span class="text-rose-400 font-mono" style="">-2.40%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">LME COPPER</span>
+<span class="font-mono text-white" style="">8,345.00</span>
+<span class="text-emerald-400 font-mono" style="">+0.82%</span>
+</div>
+<!-- Duplicate for seamless loop -->
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">WHEAT</span>
+<span class="font-mono text-white" style="">584.25</span>
+<span class="text-emerald-400 font-mono" style="">+1.24%</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-500 font-bold" style="">CORN</span>
+<span class="font-mono text-white" style="">445.50</span>
+<span class="text-rose-400 font-mono" style="">-0.12%</span>
+</div>
+</div>
+</div>
+<!-- END: TickerStrip -->
+<!-- BEGIN: Footer -->
+<footer class="bg-brand-navy border-t border-white/5 pt-20 pb-10">
+<div class="max-w-[1440px] mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
+<!-- Brand -->
+<div class="col-span-2">
+<div class="flex items-center gap-2 mb-6" data-purpose="logo-footer">
+<div class="w-8 h-8 bg-brand-accent rounded-brand flex items-center justify-center font-bold text-white italic" style="">CV</div>
+<span class="text-xl font-extrabold tracking-tight" style="">CommodityView</span>
+</div>
+<p class="text-slate-500 text-sm max-w-xs mb-6 leading-relaxed" style="">
+          Institutional intelligence for the physical commodity trading world. Reducing operational risk through document automation and market context.
+        </p>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-white transition-colors" href="#" style=""><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.599 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#" style=""><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+</div>
+</div>
+<!-- Links Columns -->
+<div>
+<h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest" style="">ProductS</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="" style="">Document Intelligence</li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Operations Hub</a></li>
+<li class="" style="">The Terminal</li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest" style="">Markets</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Grains &amp; Oilseeds</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Energy &amp; Oil</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Metals</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Freight Rates</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest" style="">Support</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Help Center</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">API Documentation</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Status</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest" style="">Company</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">About Us</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Careers</a></li>
+<li class="" style=""><a class="hover:text-brand-accent transition-colors" href="#" style="">Contact</a></li>
+</ul>
+</div>
+</div>
+<!-- Legal Disclaimer -->
+<div class="border-t border-white/5 pt-10 text-xs text-slate-600 leading-relaxed">
+<p class="mb-4" style="">
+        Disclaimer: CommodityView provides information and automation services for the physical trading industry. All market data provided is for informational purposes only and does not constitute financial or investment advice. While we strive for 100% accuracy in document extraction, users should always perform a final human review for high-value transactions.
+      </p>
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="" style="">© 2026 CommodityView Inc. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="hover:text-slate-400" href="#" style="">Terms of Service</a>
+<a class="hover:text-slate-400" href="#" style="">Privacy Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

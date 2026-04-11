@@ -1,0 +1,284 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CommodityView" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - text: CommodityView
+      - generic [ref=e9]:
+        - link "Product" [ref=e10] [cursor=pointer]:
+          - /url: /#how-it-works
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /#pricing
+      - generic [ref=e12]:
+        - button "Sign In" [ref=e13] [cursor=pointer]
+        - link "Get Started Free" [ref=e14] [cursor=pointer]:
+          - /url: /deals/new
+  - generic [ref=e16]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: Institutional Intelligence Platform
+        - heading "The Intelligence Platform for Physical Commodity Traders" [level=1] [ref=e23]:
+          - generic [ref=e24]: The
+          - generic [ref=e25]: Intelligence
+          - generic [ref=e26]: Platform
+          - generic [ref=e27]: for
+          - generic [ref=e28]: Physical
+          - generic [ref=e29]: Commodity
+          - generic [ref=e30]: Traders
+        - paragraph [ref=e31]: Automate workflows, manage deals, track shipments, and make decisions with market intelligence — all in one place.
+        - generic [ref=e32]:
+          - link "Get Started Free" [ref=e33] [cursor=pointer]:
+            - /url: /deals/new
+            - text: Get Started Free
+            - img [ref=e35]
+          - link "Explore Features" [ref=e37] [cursor=pointer]:
+            - /url: "#features"
+            - text: Explore Features
+            - img [ref=e38]
+        - paragraph [ref=e42]: $0 forever — no credit card needed to start.
+      - generic [ref=e43]:
+        - paragraph [ref=e45]: — Spline 3D Globe —
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - img [ref=e49]
+            - generic [ref=e52]: Live Cargo Tracking
+          - paragraph [ref=e53]: MV Oceanic Trader
+          - paragraph [ref=e54]: "ETA Rotterdam: Jan 24"
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - img [ref=e58]
+            - generic [ref=e61]: Compliance Verified
+          - paragraph [ref=e62]: FOSFA 54 / Wheat SRW
+          - paragraph [ref=e63]: COA vs Contract — PASSED
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - generic [ref=e67]: WHEAT
+        - generic [ref=e68]: "584.25"
+        - generic [ref=e69]:
+          - img [ref=e70]
+          - text: +1.24%
+        - generic [ref=e73]: ·
+      - generic [ref=e74]:
+        - generic [ref=e75]: CORN
+        - generic [ref=e76]: "445.50"
+        - generic [ref=e77]:
+          - img [ref=e78]
+          - text: −0.12%
+        - generic [ref=e81]: ·
+      - generic [ref=e82]:
+        - generic [ref=e83]: SOYBEANS
+        - generic [ref=e84]: 1,212.75
+        - generic [ref=e85]:
+          - img [ref=e86]
+          - text: +0.45%
+        - generic [ref=e89]: ·
+      - generic [ref=e90]:
+        - generic [ref=e91]: BRENT CRUDE
+        - generic [ref=e92]: "78.42"
+        - generic [ref=e93]:
+          - img [ref=e94]
+          - text: +1.15%
+        - generic [ref=e97]: ·
+      - generic [ref=e98]:
+        - generic [ref=e99]: C-PANAMAX FRT
+        - generic [ref=e100]: 12,450
+        - generic [ref=e101]:
+          - img [ref=e102]
+          - text: −2.40%
+        - generic [ref=e105]: ·
+      - generic [ref=e106]:
+        - generic [ref=e107]: LME COPPER
+        - generic [ref=e108]: 8,345
+        - generic [ref=e109]:
+          - img [ref=e110]
+          - text: +0.82%
+        - generic [ref=e113]: ·
+      - generic [ref=e114]:
+        - generic [ref=e115]: PALM OIL
+        - generic [ref=e116]: 4,120
+        - generic [ref=e117]:
+          - img [ref=e118]
+          - text: +0.33%
+        - generic [ref=e121]: ·
+      - generic [ref=e122]:
+        - generic [ref=e123]: "SUGAR #11"
+        - generic [ref=e124]: "21.84"
+        - generic [ref=e125]:
+          - img [ref=e126]
+          - text: −0.09%
+        - generic [ref=e129]: ·
+      - generic [ref=e130]:
+        - generic [ref=e131]: WHEAT
+        - generic [ref=e132]: "584.25"
+        - generic [ref=e133]:
+          - img [ref=e134]
+          - text: +1.24%
+        - generic [ref=e137]: ·
+      - generic [ref=e138]:
+        - generic [ref=e139]: CORN
+        - generic [ref=e140]: "445.50"
+        - generic [ref=e141]:
+          - img [ref=e142]
+          - text: −0.12%
+        - generic [ref=e145]: ·
+      - generic [ref=e146]:
+        - generic [ref=e147]: SOYBEANS
+        - generic [ref=e148]: 1,212.75
+        - generic [ref=e149]:
+          - img [ref=e150]
+          - text: +0.45%
+        - generic [ref=e153]: ·
+      - generic [ref=e154]:
+        - generic [ref=e155]: BRENT CRUDE
+        - generic [ref=e156]: "78.42"
+        - generic [ref=e157]:
+          - img [ref=e158]
+          - text: +1.15%
+        - generic [ref=e161]: ·
+      - generic [ref=e162]:
+        - generic [ref=e163]: C-PANAMAX FRT
+        - generic [ref=e164]: 12,450
+        - generic [ref=e165]:
+          - img [ref=e166]
+          - text: −2.40%
+        - generic [ref=e169]: ·
+      - generic [ref=e170]:
+        - generic [ref=e171]: LME COPPER
+        - generic [ref=e172]: 8,345
+        - generic [ref=e173]:
+          - img [ref=e174]
+          - text: +0.82%
+        - generic [ref=e177]: ·
+      - generic [ref=e178]:
+        - generic [ref=e179]: PALM OIL
+        - generic [ref=e180]: 4,120
+        - generic [ref=e181]:
+          - img [ref=e182]
+          - text: +0.33%
+        - generic [ref=e185]: ·
+      - generic [ref=e186]:
+        - generic [ref=e187]: "SUGAR #11"
+        - generic [ref=e188]: "21.84"
+        - generic [ref=e189]:
+          - img [ref=e190]
+          - text: −0.09%
+        - generic [ref=e193]: ·
+    - generic [ref=e195]:
+      - generic [ref=e196]:
+        - paragraph [ref=e197]: Platform Intelligence
+        - heading "Where deals move forward" [level=2] [ref=e198]
+        - paragraph [ref=e199]: Bring clarity and control to every trade decision — from document extraction to counterparty intelligence, in one platform.
+        - link "Explore Features" [ref=e201] [cursor=pointer]:
+          - /url: "#features"
+          - text: Explore Features
+          - img [ref=e202]
+      - generic [ref=e204]:
+        - generic [ref=e207]:
+          - generic [ref=e223]:
+            - img [ref=e224]
+            - text: VERIFIED
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - generic [ref=e229]: "01"
+              - img [ref=e230]
+            - heading "Document Intelligence" [level=3] [ref=e233]
+            - paragraph [ref=e234]: AI-powered extraction and compliance automation for COAs, Bills of Lading, Letters of Credit and Contracts. Instantly flag discrepancies before they impact your P&L.
+        - generic [ref=e237]:
+          - img [ref=e244]:
+            - generic [ref=e250]: CORE
+            - generic [ref=e252]: COA
+            - generic [ref=e254]: LC
+            - generic [ref=e256]: BL
+            - generic [ref=e258]: CTRM
+          - generic [ref=e259]:
+            - generic [ref=e260]:
+              - generic [ref=e261]: "02"
+              - img [ref=e262]
+            - heading "Operations Hub" [level=3] [ref=e267]
+            - paragraph [ref=e268]: Live deal coordination across email, API, and shipments with audit logs and full visibility. Team workspace with role-based access from capture to completion.
+        - generic [ref=e286]:
+          - generic [ref=e287]:
+            - generic [ref=e288]: "03"
+            - img [ref=e289]
+          - heading "The Terminal" [level=3] [ref=e291]
+          - paragraph [ref=e292]: A contextual intelligence layer combining live market data, freight signals, counterparty intelligence, and sanctions screening for institutional trading decisions.
+    - contentinfo [ref=e293]:
+      - generic [ref=e294]:
+        - generic [ref=e295]:
+          - generic [ref=e296]:
+            - generic [ref=e297]:
+              - generic [ref=e298]: CV
+              - generic [ref=e299]: CommodityView
+            - paragraph [ref=e300]: Institutional intelligence for the physical commodity trading world. Reducing operational risk through document automation and market context.
+            - generic [ref=e301]:
+              - link "𝕏" [ref=e302] [cursor=pointer]:
+                - /url: "#"
+              - link "in" [ref=e303] [cursor=pointer]:
+                - /url: "#"
+          - generic [ref=e304]:
+            - paragraph [ref=e305]: Products
+            - list [ref=e306]:
+              - listitem [ref=e307]:
+                - link "Document Intelligence" [ref=e308] [cursor=pointer]:
+                  - /url: /deals/new
+              - listitem [ref=e309]:
+                - link "Operations Hub" [ref=e310] [cursor=pointer]:
+                  - /url: "#features"
+              - listitem [ref=e311]:
+                - link "The Terminal" [ref=e312] [cursor=pointer]:
+                  - /url: "#features"
+              - listitem [ref=e313]:
+                - link "Pricing" [ref=e314] [cursor=pointer]:
+                  - /url: "#pricing"
+          - generic [ref=e315]:
+            - paragraph [ref=e316]: Markets
+            - list [ref=e317]:
+              - listitem [ref=e318]:
+                - link "Grains & Oilseeds" [ref=e319] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e320]:
+                - link "Energy & Oil" [ref=e321] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e322]:
+                - link "Metals" [ref=e323] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e324]:
+                - link "Freight Rates" [ref=e325] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e326]:
+            - paragraph [ref=e327]: Support
+            - list [ref=e328]:
+              - listitem [ref=e329]:
+                - link "Help Center" [ref=e330] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e331]:
+                - link "API Documentation" [ref=e332] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e333]:
+                - link "Status" [ref=e334] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e335]:
+            - paragraph [ref=e336]: Company
+            - list [ref=e337]:
+              - listitem [ref=e338]:
+                - link "About Us" [ref=e339] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e340]:
+                - link "Careers" [ref=e341] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e342]:
+                - link "Contact" [ref=e343] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e344]:
+          - paragraph [ref=e345]: "Disclaimer: CommodityView provides information and automation services for the physical trading industry. All market data provided is for informational purposes only and does not constitute financial or investment advice. Users should always perform a final human review for high-value transactions."
+          - generic [ref=e346]:
+            - generic [ref=e347]: © 2026 CommodityView Inc. All rights reserved.
+            - generic [ref=e348]:
+              - link "Terms of Service" [ref=e349] [cursor=pointer]:
+                - /url: "#"
+              - link "Privacy Policy" [ref=e350] [cursor=pointer]:
+                - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e356] [cursor=pointer]:
+    - img [ref=e357]
+  - alert [ref=e360]

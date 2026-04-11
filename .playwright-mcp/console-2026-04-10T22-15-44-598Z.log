@@ -1,0 +1,167 @@
+[    3038ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    3185ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    3366ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    3472ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <SegmentViewNode type="page" pagePath="page.tsx">
+      <SegmentTrieNode>
+      <ClientPageRoot Component={function HomePage} serverProvidedParams={{...}}>
+        <HomePage params={Promise} searchParams={Promise}>
+          <div className="relative o..." style={{...}}>
+            <div>
+            <div>
+            <section className="relative m...">
+              <div className="relative m...">
+                <div className="grid grid-...">
+                  <div>
+                  <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="show" custom={2} ...>
+                    <div className="hidden lg:..." style={{opacity:0}} ref={function useMotionRef.useCallback}>
+                      <TradeGlobe>
+                        <div className="tc-float r...">
+                          <svg viewBox="0 0 500 380" className="w-full max..." aria-hidden={true}>
+                            <defs>
+                            <circle>
+                            <circle>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <ellipse>
+                            <circle>
+                            <g>
+                            <g>
+                            <g>
+                            <g>
+                            <g>
+                            <g>
+                            <g>
+                            <g>
+                              <circle
+                                cx={190}
+                                cy={148}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "1.969408551134728s"
+-                                 animation-delay: "1.63375s"
+                                }}
+                              >
+                              ...
+                            <g>
+                              <circle
+                                cx={310}
+                                cy={170}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "0.4340397731730745s"
+-                                 animation-delay: "0.51258s"
+                                }}
+                              >
+                              ...
+                            <g>
+                              <circle
+                                cx={270}
+                                cy={152}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "1.8953429105439006s"
+-                                 animation-delay: "1.60493s"
+                                }}
+                              >
+                              ...
+                            <g>
+                              <circle
+                                cx={140}
+                                cy={162}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "1.0798770926018668s"
+-                                 animation-delay: "1.62823s"
+                                }}
+                              >
+                              ...
+                            <g>
+                              <circle
+                                cx={330}
+                                cy={155}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "0.19076287625544475s"
+-                                 animation-delay: "1.08813s"
+                                }}
+                              >
+                              ...
+                            <g>
+                              <circle
+                                cx={175}
+                                cy={210}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "1.3177085132074668s"
+-                                 animation-delay: "0.301395s"
+                                }}
+                              >
+                              ...
+                            <g>
+                              <circle
+                                cx={258}
+                                cy={140}
+                                r="5"
+                                fill="none"
+                                stroke="#00D4FF"
+                                strokeWidth="1"
+                                className="tc-port-ping"
+                                style={{
++                                 animationDelay: "1.511568620550341s"
+-                                 animation-delay: "1.83183s"
+                                }}
+                              >
+                              ...
+                          ...
+            ...
+ @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:3272
+[    3738ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    3950ms] [LOG] [Fast Refresh] done in 720ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   20103ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   20136ms] [LOG] [Fast Refresh] done in 134ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   39483ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   39502ms] [LOG] [Fast Refresh] done in 120ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
