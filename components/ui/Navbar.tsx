@@ -32,20 +32,20 @@ export default function Navbar() {
 
         {/* Public nav */}
         <div className="flex items-center gap-0.5">
-          <a
-            href="/#features"
+          <Link
+            href="/products"
             className="px-2.5 py-1.5 text-xs font-medium transition-colors hover:text-[#F8FAFC]"
             style={{ color: "#64748B" }}
           >
-            Product
-          </a>
-          <a
-            href="/#pricing"
+            Products
+          </Link>
+          <Link
+            href="/pricing"
             className="px-2.5 py-1.5 text-xs font-medium transition-colors hover:text-[#F8FAFC]"
             style={{ color: "#64748B" }}
           >
             Pricing
-          </a>
+          </Link>
           <a
             href="/#markets"
             className="px-2.5 py-1.5 text-xs font-medium transition-colors hover:text-[#F8FAFC]"

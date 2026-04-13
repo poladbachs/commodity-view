@@ -1,0 +1,307 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CommodityView" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - text: CommodityView
+      - generic [ref=e9]:
+        - link "Product" [ref=e10] [cursor=pointer]:
+          - /url: /#features
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /#pricing
+        - link "Markets" [ref=e12] [cursor=pointer]:
+          - /url: /#markets
+  - generic [ref=e14]:
+    - generic [ref=e16]:
+      - link "Back to home" [ref=e18] [cursor=pointer]:
+        - /url: /
+        - img [ref=e19]
+        - text: Back to home
+      - generic [ref=e21]: Platform overview
+      - heading "Three phases. One compounding platform." [level=1] [ref=e22]
+      - paragraph [ref=e23]: CommodityView starts as a document checker and ends as the operating system of your trading firm. Each phase builds on the last and makes the next one harder to leave.
+      - generic [ref=e24]:
+        - link "Document Intelligence" [ref=e25] [cursor=pointer]:
+          - /url: "#phase-1"
+          - img [ref=e26]
+          - text: Document Intelligence
+        - link "Operations Hub" [ref=e30] [cursor=pointer]:
+          - /url: "#phase-2"
+          - img [ref=e31]
+          - text: Operations Hub
+        - link "The Terminal" [ref=e36] [cursor=pointer]:
+          - /url: "#phase-3"
+          - img [ref=e37]
+          - text: The Terminal
+    - generic [ref=e40]:
+      - generic [ref=e43]:
+        - generic [ref=e44]: Phase 1
+        - text: Wedge. Proves pain. Gets first users in the door.
+      - generic [ref=e47]:
+        - generic [ref=e48]: Phase 2
+        - text: Moat starts. Deal history. Team workspace. Switching costs begin.
+      - generic [ref=e51]:
+        - generic [ref=e52]: Phase 3
+        - text: Lock-in. Email, API, analytics. CommodityView becomes infrastructure.
+    - generic [ref=e53]:
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - img [ref=e62]
+              - generic [ref=e66]: Phase 1 · $0 → $3k MRR
+            - heading "Document Intelligence" [level=2] [ref=e67]
+            - paragraph [ref=e68]: One ops manager. One upload. Pass or fail in 30 seconds.
+          - generic [ref=e69]:
+            - paragraph [ref=e70]: Strategic moat
+            - paragraph [ref=e71]: Proves pain. Gets first users in the door.
+        - paragraph [ref=e72]: The wedge. Proves the pain exists. Gets the first users through the door without a sales call or 5-week implementation. COA vs contract check catches quality mismatches before you accept a shipment. AI extraction reads any PDF — no templates, no manual data entry.
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "Capabilities" [level=3] [ref=e75]
+            - generic [ref=e76]:
+              - generic [ref=e78]:
+                - img [ref=e79]
+                - generic [ref=e82]:
+                  - paragraph [ref=e83]: COA vs Contract check
+                  - paragraph [ref=e84]: Every quality parameter compared side-by-side in one screen
+              - generic [ref=e86]:
+                - img [ref=e87]
+                - generic [ref=e90]:
+                  - paragraph [ref=e91]: AI extraction
+                  - paragraph [ref=e92]: Upload any PDF. Claude reads it. No templates, no manual entry.
+              - generic [ref=e94]:
+                - img [ref=e95]
+                - generic [ref=e98]:
+                  - paragraph [ref=e99]: Violations panel
+                  - paragraph [ref=e100]: See exactly what failed and why. No interpretation needed.
+              - generic [ref=e102]:
+                - img [ref=e103]
+                - generic [ref=e106]:
+                  - paragraph [ref=e107]: Comparison table
+                  - paragraph [ref=e108]: Parameter | COA Value | Spec | Result — full traceability
+              - generic [ref=e110]:
+                - img [ref=e111]
+                - generic [ref=e114]:
+                  - paragraph [ref=e115]: PDF export
+                  - paragraph [ref=e116]: Audit-ready report. Attach to email or file instantly.
+              - generic [ref=e118]:
+                - img [ref=e119]
+                - generic [ref=e122]:
+                  - paragraph [ref=e123]: Letter of Credit checks
+                  - paragraph [ref=e124]: LC discrepancy detection before bank submission
+              - generic [ref=e126]:
+                - img [ref=e127]
+                - generic [ref=e130]:
+                  - paragraph [ref=e131]: Bill of Lading checks
+                  - paragraph [ref=e132]: Port, date, quantity vs contract — caught in seconds
+          - generic [ref=e133]:
+            - generic [ref=e134]:
+              - heading "Pricing" [level=3] [ref=e135]
+              - generic [ref=e136]:
+                - generic [ref=e137]:
+                  - generic [ref=e138]:
+                    - generic [ref=e139]: Free
+                    - generic [ref=e140]: $0
+                  - paragraph [ref=e141]: 3 analyses total · 1 user
+                - generic [ref=e142]:
+                  - generic [ref=e143]:
+                    - generic [ref=e144]: Starter
+                    - generic [ref=e145]: $49/mo
+                  - paragraph [ref=e146]: 30 analyses/month · 1 user
+            - generic [ref=e147]:
+              - heading "Who wins" [level=3] [ref=e148]
+              - generic [ref=e150]:
+                - paragraph [ref=e151]: Ops Manager
+                - paragraph [ref=e152]: COA vs Contract PASS/FAIL in 30 seconds. Saves 2 hrs/shipment.
+      - generic [ref=e156]:
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img [ref=e161]
+              - generic [ref=e166]: Phase 2 · $3k → $10k MRR
+            - heading "Operations Hub" [level=2] [ref=e167]
+            - paragraph [ref=e168]: The moat starts. Team workspace creates switching costs. Deal history means leaving = losing institutional memory.
+          - generic [ref=e169]:
+            - paragraph [ref=e170]: Strategic moat
+            - paragraph [ref=e171]: Proprietary data compounds with every deal. Team workspace creates switching costs.
+        - paragraph [ref=e172]: Ops found a violation, trader needs to see it — no more email chains. The team workspace turns CommodityView from a tool into a shared system. Cross-document validation catches what single-document checks miss. Every deal processed is institutional memory that compounds.
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - heading "Capabilities" [level=3] [ref=e175]
+            - generic [ref=e176]:
+              - generic [ref=e178]:
+                - img [ref=e179]
+                - generic [ref=e182]:
+                  - paragraph [ref=e183]: Team workspace
+                  - paragraph [ref=e184]: Clerk Organizations — ops found it, trader sees it, no email chains
+              - generic [ref=e186]:
+                - img [ref=e187]
+                - generic [ref=e190]:
+                  - paragraph [ref=e191]: Cross-document validation
+                  - paragraph [ref=e192]: All 4 docs checked against each other, not just COA vs contract
+              - generic [ref=e194]:
+                - img [ref=e195]
+                - generic [ref=e198]:
+                  - paragraph [ref=e199]: Full shipment view
+                  - paragraph [ref=e200]: Green = release payment. Red = stop. One screen.
+              - generic [ref=e202]:
+                - img [ref=e203]
+                - generic [ref=e206]:
+                  - paragraph [ref=e207]: Audit log per deal
+                  - paragraph [ref=e208]: Who approved what and when. One-click answer for CFO.
+              - generic [ref=e210]:
+                - img [ref=e211]
+                - generic [ref=e214]:
+                  - paragraph [ref=e215]: Role-based access
+                  - paragraph [ref=e216]: Admin / Member roles. Control what each person sees.
+              - generic [ref=e218]:
+                - img [ref=e219]
+                - generic [ref=e222]:
+                  - paragraph [ref=e223]: Deal history
+                  - paragraph [ref=e224]: Every analysis, every override stored permanently in your workspace
+          - generic [ref=e225]:
+            - generic [ref=e226]:
+              - heading "Pricing" [level=3] [ref=e227]
+              - generic [ref=e228]:
+                - generic [ref=e229]:
+                  - generic [ref=e230]:
+                    - generic [ref=e231]: Growth
+                    - generic [ref=e232]: $199/mo
+                  - paragraph [ref=e233]: 100 analyses/month · 3 users
+                - generic [ref=e234]:
+                  - generic [ref=e235]:
+                    - generic [ref=e236]: Professional
+                    - generic [ref=e237]: $499/mo
+                  - paragraph [ref=e238]: 300 analyses/month · 10 users
+            - generic [ref=e239]:
+              - heading "Who wins" [level=3] [ref=e240]
+              - generic [ref=e241]:
+                - generic [ref=e242]:
+                  - paragraph [ref=e243]: Ops Manager
+                  - paragraph [ref=e244]: Manages team in workspace. Cross-validates 4 docs. Controls audit log.
+                - generic [ref=e245]:
+                  - paragraph [ref=e246]: Trader
+                  - paragraph [ref=e247]: Workspace visibility, not email threads. Deal status in real-time.
+                - generic [ref=e248]:
+                  - paragraph [ref=e249]: CFO/Risk
+                  - paragraph [ref=e250]: Compliance reports + audit log for board/regulators.
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - generic [ref=e256]:
+            - generic [ref=e257]:
+              - img [ref=e259]
+              - generic [ref=e260]: Phase 3 · $10k+ MRR
+            - heading "The Terminal" [level=2] [ref=e261]
+            - paragraph [ref=e262]: Lock-in. Email ingestion, API integration, analytics mean CommodityView becomes infrastructure. Switching away means losing everything.
+          - generic [ref=e263]:
+            - paragraph [ref=e264]: Strategic moat
+            - paragraph [ref=e265]: Email ingestion, API integration, analytics mean switching away means losing everything.
+        - paragraph [ref=e266]: Documents arrive by email and are processed automatically. The API integrates with your CTRM so deals push in without manual work. After a few months of data, the analytics tell you which supplier fails specs most often, which origin has the most BL port mismatches. This is what avoids the AI wrapper graveyard.
+        - generic [ref=e267]:
+          - generic [ref=e268]:
+            - heading "Capabilities" [level=3] [ref=e269]
+            - generic [ref=e270]:
+              - generic [ref=e272]:
+                - img [ref=e273]
+                - generic [ref=e276]:
+                  - paragraph [ref=e277]: Email ingestion
+                  - paragraph [ref=e278]: n8n webhook — documents arrive automatically, ops wakes up to action list
+              - generic [ref=e280]:
+                - img [ref=e281]
+                - generic [ref=e284]:
+                  - paragraph [ref=e285]: Historical analytics
+                  - paragraph [ref=e286]: Failure patterns by supplier, commodity, origin. Know who fails specs most.
+              - generic [ref=e288]:
+                - img [ref=e289]
+                - generic [ref=e292]:
+                  - paragraph [ref=e293]: Vessel tracking
+                  - paragraph [ref=e294]: MarineTraffic embed per deal. Live ETA updates.
+              - generic [ref=e296]:
+                - img [ref=e297]
+                - generic [ref=e300]:
+                  - paragraph [ref=e301]: Market data layer
+                  - paragraph [ref=e302]: Freight rates + commodity prices in context of active deals
+              - generic [ref=e304]:
+                - img [ref=e305]
+                - generic [ref=e308]:
+                  - paragraph [ref=e309]: API access
+                  - paragraph [ref=e310]: Enterprise only. CTRM pushes deals in automatically.
+              - generic [ref=e312]:
+                - img [ref=e313]
+                - generic [ref=e316]:
+                  - paragraph [ref=e317]: Sanctions screening
+                  - paragraph [ref=e318]: Enterprise only. OFAC/UN/EU blacklist checks. Legal compliance proof.
+              - generic [ref=e320]:
+                - img [ref=e321]
+                - generic [ref=e324]:
+                  - paragraph [ref=e325]: Counterparty intelligence
+                  - paragraph [ref=e326]: Enterprise only. News, risk signals, financial health on trading partners.
+          - generic [ref=e327]:
+            - generic [ref=e328]:
+              - heading "Pricing" [level=3] [ref=e329]
+              - generic [ref=e330]:
+                - generic [ref=e331]:
+                  - generic [ref=e332]:
+                    - generic [ref=e333]: Professional
+                    - generic [ref=e334]: $499/mo
+                  - paragraph [ref=e335]: Phase 2 + Terminal · 10 users
+                - generic [ref=e336]:
+                  - generic [ref=e337]:
+                    - generic [ref=e338]: Enterprise
+                    - generic [ref=e339]: $1,500+/mo
+                  - paragraph [ref=e340]: Custom · 20+ users
+            - generic [ref=e341]:
+              - heading "Who wins" [level=3] [ref=e342]
+              - generic [ref=e343]:
+                - generic [ref=e344]:
+                  - paragraph [ref=e345]: Ops Manager
+                  - paragraph [ref=e346]: Real-time shipment monitoring. Historical analytics on failure patterns.
+                - generic [ref=e347]:
+                  - paragraph [ref=e348]: Trader
+                  - paragraph [ref=e349]: Live vessel tracking. Trading decisions informed by shipment ETA + market data.
+                - generic [ref=e350]:
+                  - paragraph [ref=e351]: CFO/Risk
+                  - paragraph [ref=e352]: Risk trends by commodity/supplier. Board-ready reporting.
+    - generic [ref=e355]:
+      - generic [ref=e356]:
+        - generic [ref=e357]: Exit target
+        - heading "$15\\u201320k MRR. Then $1M+ acquisition." [level=2] [ref=e358]
+        - paragraph [ref=e359]: "$180\\u2013240k ARR at 5x ARR on Acquire.com. The path is clear: Phase 1 proves pain, Phase 2 builds the moat, Phase 3 creates the infrastructure lock-in that justifies the multiple."
+        - generic [ref=e360]:
+          - link "Start Free" [ref=e361] [cursor=pointer]:
+            - /url: /deals/new
+            - button "Start Free" [ref=e362]:
+              - text: Start Free
+              - img [ref=e364]
+          - link "View Pricing" [ref=e366] [cursor=pointer]:
+            - /url: /pricing
+            - button "View Pricing" [ref=e367]
+      - generic [ref=e368]:
+        - generic [ref=e369]:
+          - paragraph [ref=e370]: Entry
+          - paragraph [ref=e371]: Single ops manager
+          - paragraph [ref=e372]: Self-serve, no sales call
+        - generic [ref=e373]:
+          - paragraph [ref=e374]: Phase 2
+          - paragraph [ref=e375]: Brings the team
+          - paragraph [ref=e376]: Workspace, audit trail
+        - generic [ref=e377]:
+          - paragraph [ref=e378]: Phase 3
+          - paragraph [ref=e379]: Becomes infrastructure
+          - paragraph [ref=e380]: Email, API, analytics
+        - generic [ref=e381]:
+          - paragraph [ref=e382]: Exit
+          - paragraph [ref=e383]: $1M–$1.2M
+          - paragraph [ref=e384]: 5x ARR on Acquire.com
+    - contentinfo [ref=e385]:
+      - generic [ref=e386]:
+        - generic [ref=e387]: © 2026 CommodityView
+        - generic [ref=e388]:
+          - link "Home" [ref=e389] [cursor=pointer]:
+            - /url: /
+          - link "Pricing" [ref=e390] [cursor=pointer]:
+            - /url: /pricing
+  - button "Open Next.js Dev Tools" [ref=e396] [cursor=pointer]:
+    - img [ref=e397]

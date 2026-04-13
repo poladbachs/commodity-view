@@ -7,7 +7,7 @@
 
 **Name:** CommodityView
 
-**What:** CommodityView is the intelligence platform for physical 
+**What:** CommodityView is the platform for physical 
 commodity traders.
 
 **Why:** One document mismatch in a commodity shipment = $50k–$500k
@@ -16,9 +16,9 @@ contract, LC, Bill of Lading — checked automatically before payment
 is released. Beyond compliance: vessel tracking, market data, and
 counterparty screening — one platform for the entire trading firm.
 
-**Positioning (internal only):** ClearDox serves large global 
+**Positioning (internal only):** Competitors like ClearDox serves large global 
 enterprises with 5-week implementations and $50k+/year contracts. 
-CommodityAI serves large US enterprises only. No self-serve, 
+Another competitor CommodityAI (YC-backed) serves large US enterprises only. No self-serve, 
 affordable tool exists for the thousands of mid-size physical 
 commodity traders worldwide.
 
@@ -53,6 +53,15 @@ commodity traders worldwide.
 
 **Exit target:** $15–20k MRR ($180–240k ARR) → $1M–$1.2M acquisition at 5x ARR on Acquire.com
 
+**Strategic moat by phase:**
+- Phase 1 — wedge. Proves pain exists. Gets first users in the door.
+- Phase 2 — moat starts. Proprietary data compounds with every deal. 
+  Team workspace creates switching costs. Deal history means leaving 
+  = losing institutional memory.
+- Phase 3 — lock-in. Email ingestion, API integration, analytics mean 
+  CommodityView becomes infrastructure. Switching away means losing 
+  everything. This is what avoids the AI wrapper graveyard.
+
 ---
 
 ## Target Users
@@ -63,8 +72,9 @@ commodity traders worldwide.
 | **Trader** | Waiting for ops approval → instant PASS/FAIL status. Deal moves. | Workspace visibility, not email threads. Deal status in real-time. | Live vessel tracking. Trading decisions informed by shipment ETA + market data. |
 | **CFO/Risk** | N/A | Compliance reports + audit log for board/regulators. | Risk trends by commodity/supplier. Board-ready reporting. |
 
-**Segment:** Physical commodity trading firms, 10–200 employees.
-Entry point. Larger firms also possible later.
+**Segment:** Physical commodity trading firms, 10–200 employees as 
+self-serve entry point. Larger firms including Big 5 counterparties 
+via direct relationships and enterprise contracts post Phase 2.
 
 **Entry:** Single ops manager tests it, proves value, brings team in Phase 2.
 
@@ -83,8 +93,14 @@ Entry point. Larger firms also possible later.
 ### Phase 1 Pages
 
 **/home**
-Content: Full product vision, not just phase 1, headline, one-line subheadline, "Get Started Free" CTA, pricing table below fold, social proof line referencing GAFTA/FOSFA standards.
-Layout: split hero — left side text + CTA, right side Spline 3D globe with animated trade routes. Pricing table below fold. Footer TradingView-style. The rest - improvise.
+Content: Full product vision — CommodityView as the intelligence 
+platform for physical commodity trading firms. Headline speaks to 
+the entire vision not just Phase 1. Subheadline. "Get Started Free" 
+CTA. Features section showing all three phases — document compliance, 
+ops hub, terminal intelligence. Footer TradingView-style.
+Layout: split hero — left side text + CTA, right side Spline 3D 
+globe with animated shipping trade routes between major commodity 
+ports (Rotterdam, Singapore, Dubai, Houston, Santos, Shanghai). The rest - improvise.
 
 **/deals**
 Content: table (Deal Name | Commodity | Buyer | Status | Last Updated | Actions). Search bar. Filter by status. Empty state: "No deals yet. Create your first deal →" button. Pagination if over 20 deals.

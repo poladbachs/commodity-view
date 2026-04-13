@@ -1,0 +1,409 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CommodityView" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - text: CommodityView
+      - generic [ref=e9]:
+        - link "Product" [ref=e10] [cursor=pointer]:
+          - /url: /#features
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /#pricing
+        - link "Markets" [ref=e12] [cursor=pointer]:
+          - /url: /#markets
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e20]: Intelligence Platform · Physical Commodity Trading
+          - heading "One mismatch. Half a million dollars." [level=1] [ref=e22]:
+            - generic "One mismatch." [ref=e23]:
+              - generic [ref=e24]: One
+              - generic [ref=e25]: mismatch.
+            - generic "Half a million dollars." [ref=e26]:
+              - generic [ref=e27]: Half
+              - generic [ref=e28]: a
+              - generic [ref=e29]: million
+              - generic [ref=e30]: dollars.
+          - paragraph [ref=e31]: COA, Letter of Credit, Bill of Lading, Contract — the four documents that cause 90% of trade disputes, checked automatically before payment is released.
+          - generic [ref=e32]:
+            - link "Start Free" [ref=e33] [cursor=pointer]:
+              - /url: /deals/new
+              - button "Start Free" [ref=e34]:
+                - generic [ref=e35]: Start Free
+                - img [ref=e37]
+            - link "Explore Platform" [ref=e39] [cursor=pointer]:
+              - /url: /products
+              - button "Explore Platform" [ref=e40]:
+                - text: Explore Platform
+                - img [ref=e41]
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: OP
+              - generic [ref=e46]: TR
+              - generic [ref=e47]: CF
+            - paragraph [ref=e48]: Ops managers · Traders · CFOs
+        - generic [ref=e50]:
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic: COA vs Contract
+              - paragraph: COMPLIANT
+              - paragraph: All 14 parameters passed
+          - generic:
+            - generic:
+              - generic:
+                - generic: Live Route
+              - paragraph: Rotterdam \u2192 Houston
+              - paragraph: ETA 18 days · Crude oil
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic: LC Discrepancy
+              - paragraph: BL Port Mismatch
+              - paragraph: Caught before submission
+      - generic [ref=e54]: scroll
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]: BRENT
+        - generic [ref=e60]: "78.42"
+        - generic [ref=e61]: +1.15%
+      - generic [ref=e62]:
+        - generic [ref=e63]: C-PANAMAX
+        - generic [ref=e64]: 12,450
+        - generic [ref=e65]: "-2.40%"
+      - generic [ref=e66]:
+        - generic [ref=e67]: CORN
+        - generic [ref=e68]: "445.50"
+        - generic [ref=e69]: "-0.12%"
+      - generic [ref=e70]:
+        - generic [ref=e71]: WHEAT
+        - generic [ref=e72]: "584.25"
+        - generic [ref=e73]: +1.24%
+      - generic [ref=e74]:
+        - generic [ref=e75]: SOYBEANS
+        - generic [ref=e76]: 1,212.75
+        - generic [ref=e77]: +0.45%
+      - generic [ref=e78]:
+        - generic [ref=e79]: LME COPPER
+        - generic [ref=e80]: 8,345
+        - generic [ref=e81]: +0.82%
+      - generic [ref=e82]:
+        - generic [ref=e83]: GASOIL
+        - generic [ref=e84]: "692.50"
+        - generic [ref=e85]: +0.65%
+      - generic [ref=e86]:
+        - generic [ref=e87]: "SUGAR #11"
+        - generic [ref=e88]: "24.15"
+        - generic [ref=e89]: "-0.31%"
+      - generic [ref=e90]:
+        - generic [ref=e91]: BRENT
+        - generic [ref=e92]: "78.42"
+        - generic [ref=e93]: +1.15%
+      - generic [ref=e94]:
+        - generic [ref=e95]: C-PANAMAX
+        - generic [ref=e96]: 12,450
+        - generic [ref=e97]: "-2.40%"
+      - generic [ref=e98]:
+        - generic [ref=e99]: CORN
+        - generic [ref=e100]: "445.50"
+        - generic [ref=e101]: "-0.12%"
+      - generic [ref=e102]:
+        - generic [ref=e103]: WHEAT
+        - generic [ref=e104]: "584.25"
+        - generic [ref=e105]: +1.24%
+      - generic [ref=e106]:
+        - generic [ref=e107]: SOYBEANS
+        - generic [ref=e108]: 1,212.75
+        - generic [ref=e109]: +0.45%
+      - generic [ref=e110]:
+        - generic [ref=e111]: LME COPPER
+        - generic [ref=e112]: 8,345
+        - generic [ref=e113]: +0.82%
+      - generic [ref=e114]:
+        - generic [ref=e115]: GASOIL
+        - generic [ref=e116]: "692.50"
+        - generic [ref=e117]: +0.65%
+      - generic [ref=e118]:
+        - generic [ref=e119]: "SUGAR #11"
+        - generic [ref=e120]: "24.15"
+        - generic [ref=e121]: "-0.31%"
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e125]: Strategic moat
+        - heading "Starts as a tool. Becomes infrastructure." [level=2] [ref=e126]
+        - paragraph [ref=e127]: Most AI tools get replaced when a competitor ships the same prompt. CommodityView compounds with every deal. Leaving means losing institutional memory you built.
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]: "01"
+            - generic [ref=e132]: Day One
+          - img [ref=e134]
+          - heading "Upload. Verify. Done." [level=3] [ref=e138]
+          - paragraph [ref=e139]: One ops manager. No implementation, no contract. Upload a COA and contract PDF, get PASS or FAIL in 30 seconds. No more missed mismatches before payment.
+          - generic [ref=e140]:
+            - generic [ref=e141]: COA vs Contract
+            - generic [ref=e142]: LC compliance
+            - generic [ref=e143]: Bill of Lading
+            - generic [ref=e144]: Violations panel
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]: "02"
+            - generic [ref=e148]: Month Three
+          - img [ref=e150]
+          - heading "Team memory that compounds." [level=3] [ref=e155]
+          - paragraph [ref=e156]: The first violation you catch brings a colleague in. Cross-document validation. Audit logs the CFO can read. Every deal processed adds to your institutional memory.
+          - generic [ref=e157]:
+            - generic [ref=e158]: Team workspace
+            - generic [ref=e159]: Cross-doc validation
+            - generic [ref=e160]: Audit trail
+            - generic [ref=e161]: Deal history
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - generic [ref=e164]: "03"
+            - generic [ref=e165]: Year One
+          - img [ref=e167]
+          - heading "Infrastructure. Not software." [level=3] [ref=e169]
+          - paragraph [ref=e170]: Documents arrive by email and are read automatically. The API connects to your CTRM. Analytics show which suppliers fail specs most often. Switching away means losing everything.
+          - generic [ref=e171]:
+            - generic [ref=e172]: Email ingestion
+            - generic [ref=e173]: CTRM/API
+            - generic [ref=e174]: Failure analytics
+            - generic [ref=e175]: Sanctions screening
+    - generic [ref=e177]:
+      - generic [ref=e178]:
+        - generic [ref=e179]:
+          - generic [ref=e180]: Platform
+          - heading "Every layer of the trade lifecycle" [level=2] [ref=e181]
+        - link "Full Platform Overview" [ref=e183] [cursor=pointer]:
+          - /url: /products
+          - button "Full Platform Overview" [ref=e184]:
+            - text: Full Platform Overview
+            - img [ref=e185]
+      - generic [ref=e187]:
+        - generic [ref=e188]:
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - img [ref=e193]
+              - generic [ref=e197]: Document Intelligence
+            - heading "Catch it before you pay." [level=3] [ref=e198]
+            - paragraph [ref=e199]: AI-powered extraction and compliance automation for COAs, Bills of Lading, Letters of Credit and Contracts. Instantly flag discrepancies before they impact your P&L.
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e203]: Analysis Result
+              - generic [ref=e204]: 1 VIOLATION
+            - generic [ref=e205]:
+              - generic [ref=e206]:
+                - generic [ref=e207]: Parameter
+                - generic [ref=e208]: COA Value
+                - generic [ref=e209]: Spec
+              - generic [ref=e211]:
+                - generic [ref=e212]: Sulphur content
+                - generic [ref=e213]: 0.45%
+                - generic [ref=e214]: ≤0.50%
+                - generic [ref=e215]:
+                  - img [ref=e216]
+                  - generic [ref=e219]: PASS
+              - generic [ref=e220]:
+                - generic [ref=e221]: Flash point
+                - generic [ref=e222]: 62°C
+                - generic [ref=e223]: ≥60°C
+                - generic [ref=e224]:
+                  - img [ref=e225]
+                  - generic [ref=e228]: PASS
+              - generic [ref=e229]:
+                - generic [ref=e230]: Port of loading
+                - generic [ref=e231]: Novorossiysk
+                - generic [ref=e232]: Odessa
+                - generic [ref=e233]:
+                  - img [ref=e234]
+                  - generic [ref=e236]: FAIL
+              - generic [ref=e237]:
+                - generic [ref=e238]: Quantity MT
+                - generic [ref=e239]: 25,000
+                - generic [ref=e240]: 25,000
+                - generic [ref=e241]:
+                  - img [ref=e242]
+                  - generic [ref=e245]: PASS
+        - generic [ref=e246]:
+          - generic [ref=e248]:
+            - generic [ref=e249]:
+              - img [ref=e251]
+              - generic [ref=e256]: Operations Hub
+            - heading "One window for every deal." [level=3] [ref=e257]
+            - paragraph [ref=e258]: Live deal coordination across documents, email, and team. Role-based workspace. Audit logs the CFO can read. Green = release payment. Red = stop.
+          - generic [ref=e260]:
+            - generic [ref=e261]:
+              - generic [ref=e262]: Deal Workspace
+              - generic [ref=e263]: 4 active
+            - generic [ref=e264]:
+              - generic [ref=e265]:
+                - generic [ref=e266]: Crude Oil — VLCC Atlas
+                - generic [ref=e267]: COMPLIANT
+              - generic [ref=e268]:
+                - generic [ref=e269]: Wheat SRW — Bulk Pacific
+                - generic [ref=e270]: 1 VIOLATION
+              - generic [ref=e271]:
+                - generic [ref=e272]: LNG — Horizon Star
+                - generic [ref=e273]: PENDING
+              - generic [ref=e274]:
+                - generic [ref=e275]: Soybeans — Ocean Prince
+                - generic [ref=e276]: COMPLIANT
+        - generic [ref=e277]:
+          - generic [ref=e279]:
+            - generic [ref=e280]:
+              - img [ref=e282]
+              - generic [ref=e283]: The Terminal
+            - heading "Intelligence in context." [level=3] [ref=e284]
+            - paragraph [ref=e285]: Live market data, freight signals, counterparty intelligence, sanctions screening — layered into every active deal to support institutional trading decisions.
+          - generic [ref=e287]:
+            - generic [ref=e288]:
+              - img [ref=e289]
+              - generic [ref=e292]: Intelligence Layer
+            - generic [ref=e293]:
+              - generic [ref=e294]:
+                - generic [ref=e295]: BRENT
+                - generic [ref=e296]: $78.42
+                - generic [ref=e297]: +1.2%
+              - generic [ref=e298]:
+                - generic [ref=e299]: FREIGHT
+                - generic [ref=e300]: $12,450
+                - generic [ref=e301]: "-2.4%"
+              - generic [ref=e302]:
+                - generic [ref=e303]: Counterparty
+                - generic [ref=e304]: Clean
+                - generic [ref=e305]: OFAC/UN
+              - generic [ref=e306]:
+                - generic [ref=e307]: Analytics
+                - generic [ref=e308]: 3 fails
+                - generic [ref=e309]: Supplier A
+    - generic [ref=e312]:
+      - generic [ref=e313]:
+        - generic [ref=e314]: Anti-commoditization
+        - heading "This isn't the AI wrapper graveyard." [level=2] [ref=e315]
+        - paragraph [ref=e316]: Most AI tools get commoditized the moment a competitor ships the same prompt. CommodityView's moat compounds with every shipment \u2014 deal history, team workflows, and system integrations create switching costs that can't be cloned.
+        - link "Read the full vision" [ref=e318] [cursor=pointer]:
+          - /url: /products
+          - button "Read the full vision" [ref=e319]:
+            - text: Read the full vision
+            - img [ref=e320]
+      - generic [ref=e322]:
+        - generic [ref=e323]:
+          - img [ref=e325]
+          - heading "Deterministic compliance" [level=4] [ref=e327]
+          - paragraph [ref=e328]: Rule engine — not AI — makes the PASS/FAIL verdict. 100% deterministic, auditable. Claude extracts values only.
+        - generic [ref=e329]:
+          - img [ref=e331]
+          - heading "Institutional memory lock-in" [level=4] [ref=e334]
+          - paragraph [ref=e335]: Deal history, team decisions, audit trail — stored in your workspace. Switching away means losing everything you built.
+        - generic [ref=e336]:
+          - img [ref=e338]
+          - heading "Becomes part of operations" [level=4] [ref=e341]
+          - paragraph [ref=e342]: Email ingestion, CTRM/API, analytics — wired into daily workflows until replacing it is not worth the disruption.
+        - generic [ref=e343]:
+          - img [ref=e345]
+          - heading "Zero manual entry at scale" [level=4] [ref=e348]
+          - paragraph [ref=e349]: Documents arrive by email and are processed automatically. Ops wakes up to an action list, not an inbox of PDFs.
+    - generic [ref=e351]:
+      - paragraph [ref=e352]: No credit card required
+      - heading "Stop losing $500k to document errors." [level=2] [ref=e353]
+      - paragraph [ref=e354]: Start with 3 free analyses. No setup, no templates. Upload a PDF and get an answer in 30 seconds.
+      - generic [ref=e355]:
+        - link "Start Free \\u2014 3 analyses" [ref=e356] [cursor=pointer]:
+          - /url: /deals/new
+          - button "Start Free \\u2014 3 analyses" [ref=e357]:
+            - generic [ref=e358]: Start Free \u2014 3 analyses
+            - img [ref=e360]
+        - link "View Pricing" [ref=e362] [cursor=pointer]:
+          - /url: /pricing
+          - button "View Pricing" [ref=e363]
+    - contentinfo [ref=e364]:
+      - generic [ref=e365]:
+        - generic [ref=e366]:
+          - generic [ref=e367]:
+            - generic [ref=e368]:
+              - img [ref=e369]
+              - generic [ref=e371]: CommodityView
+            - paragraph [ref=e372]: The intelligence platform for physical commodity trading firms. Document automation from day one. Infrastructure by year one.
+            - generic [ref=e373]:
+              - link "X" [ref=e374] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e375]
+              - link "LI" [ref=e377] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e378]
+          - generic [ref=e380]:
+            - heading "Platform" [level=4] [ref=e381]
+            - list [ref=e382]:
+              - listitem [ref=e383]:
+                - link "Document Intelligence" [ref=e384] [cursor=pointer]:
+                  - /url: /products
+              - listitem [ref=e385]:
+                - link "Operations Hub" [ref=e386] [cursor=pointer]:
+                  - /url: /products
+              - listitem [ref=e387]:
+                - link "The Terminal" [ref=e388] [cursor=pointer]:
+                  - /url: /products
+              - listitem [ref=e389]:
+                - link "Pricing" [ref=e390] [cursor=pointer]:
+                  - /url: /pricing
+          - generic [ref=e391]:
+            - heading "Markets" [level=4] [ref=e392]
+            - list [ref=e393]:
+              - listitem [ref=e394]:
+                - link "Grains & Oilseeds" [ref=e395] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e396]:
+                - link "Energy & Crude" [ref=e397] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e398]:
+                - link "Metals" [ref=e399] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e400]:
+                - link "Freight" [ref=e401] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e402]:
+            - heading "Resources" [level=4] [ref=e403]
+            - list [ref=e404]:
+              - listitem [ref=e405]:
+                - link "Documentation" [ref=e406] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e407]:
+                - link "API Reference" [ref=e408] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e409]:
+                - link "Status" [ref=e410] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e411]:
+                - link "Contact" [ref=e412] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e413]:
+            - heading "Company" [level=4] [ref=e414]
+            - list [ref=e415]:
+              - listitem [ref=e416]:
+                - link "About" [ref=e417] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e418]:
+                - link "Blog" [ref=e419] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e420]:
+                - link "Careers" [ref=e421] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e422]:
+                - link "Privacy" [ref=e423] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e424]:
+          - paragraph [ref=e425]: © 2026 CommodityView. Not financial advice. Market data for reference only.
+          - generic [ref=e426]:
+            - link "Terms" [ref=e427] [cursor=pointer]:
+              - /url: "#"
+            - link "Privacy" [ref=e428] [cursor=pointer]:
+              - /url: "#"
+            - link "Cookies" [ref=e429] [cursor=pointer]:
+              - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e435] [cursor=pointer]:
+    - img [ref=e436]
+  - alert [ref=e439]

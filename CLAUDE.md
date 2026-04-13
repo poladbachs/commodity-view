@@ -89,7 +89,7 @@ Full strategy in /docs/PRD.md — read first.
 
 ---
 
-## Installed Skills (/skills and .agents/skills)
+## Installed Skills (/skills)
 
 ### Process Skills (Use First)
 - **brainstorming** → Generate ideas, explore multiple directions before committing to approach
@@ -118,7 +118,7 @@ Full strategy in /docs/PRD.md — read first.
 - **using-superpowers** → Framework for choosing and invoking skills (reference only)
 - **skill-creator** → Create new skills (rarely needed)
 
-## Stitch & Frontend Skills (.agents/skills)
+## Stitch & Frontend Skills
 
 ### Design & Stitch Skills
 - **stitch-design** → Unified entry point for Stitch work. Prompt enhancement + DESIGN.md synthesis + screen generation/editing via Stitch MCP. Use for all UI screen generation tasks.
@@ -131,6 +131,39 @@ Full strategy in /docs/PRD.md — read first.
 ### Component & Integration Skills
 - **react-components** → Converts Stitch designs into modular Vite + React components. Use after screen generation to get production-ready code.
 - **shadcn-ui** → Expert guidance for integrating and customizing shadcn/ui components. Use when adding/customizing shadcn components.
+
+### UX Strategy & Direction Skills
+- **shape** → Plan UX/UI direction before coding via structured discovery and design brief.
+- **critique** → Evaluate UI quality (hierarchy, IA, cognitive load, resonance) with actionable feedback.
+- **clarify** → Improve UX copy, labels, microcopy, and error messaging clarity.
+
+### Frontend Craft & Quality Skills
+- **impeccable** → Build distinctive, production-grade interfaces; use for high-quality component/page implementation.
+- **redesign-existing-projects** → Upgrade existing UI to premium quality without breaking functionality.
+- **audit** → Run technical quality audits (a11y, performance, theming, responsive, anti-patterns).
+- **optimize** → Diagnose and fix UI performance bottlenecks (rendering, bundle, animation, media).
+- **adapt** → Ensure responsive behavior and cross-device readiness.
+- **polish** → Final pre-ship pass for spacing, alignment, consistency, and micro-details.
+
+### Visual System & Styling Skills
+- **design-taste-frontend** → Senior-level design engineering system for metric-driven UI execution.
+- **high-end-visual-design** → Enforce premium visual standards (type, spacing, depth, motion, composition).
+- **typeset** → Improve typography hierarchy, readability, and font intent.
+- **layout** → Improve composition, spacing rhythm, and visual hierarchy.
+- **colorize** → Add strategic color to improve expression and emphasis.
+- **distill** → Simplify UI by removing unnecessary complexity.
+- **bolder** → Increase visual personality and impact when design feels too safe.
+- **quieter** → Reduce visual intensity while preserving quality.
+
+### Motion, Personality & Experimental Skills
+- **animate** → Add purposeful motion and micro-interactions that improve UX.
+- **delight** → Add tasteful moments of personality and surprise.
+- **overdrive** → Push ambitious interaction/visual execution (advanced motion, shader-like effects).
+- **emil-design-eng** → Apply Emil Kowalski-inspired polish and interaction detail principles.
+
+### Prompting & Output Control Skills
+- **stitch-design-taste** → Generate DESIGN.md constraints for premium anti-generic Stitch output.
+- **full-output-enforcement** → Enforce complete, non-truncated generation and ban placeholder output.
 
 ### Convex Backend Skills
 - **convex-quickstart** → Initialize a new Convex project or add Convex to an existing app.
@@ -152,6 +185,13 @@ Full strategy in /docs/PRD.md — read first.
 8. **Convex backend work?** → convex-quickstart / convex-setup-auth / convex-create-component / convex-migration-helper / convex-performance-audit
 9. **Done with feature?** → verification-before-completion → webapp-testing
 10. **Ready to merge?** → requesting-code-review → finishing-a-development-branch
+11. **Need UX plan before coding?** → shape → critique (if refining existing screen) → implementation
+12. **Need stronger visual quality?** → design-taste-frontend / high-end-visual-design → typeset + layout + colorize
+13. **Too busy or too plain?** → distill (simplify) or bolder (increase impact) or quieter (reduce intensity)
+14. **Need motion/personality?** → animate → delight (or overdrive for wow-factor builds)
+15. **Final hardening pass?** → adapt + audit + optimize + polish
+16. **Stitch outputs feel generic?** → stitch-design-taste (+ enhance-prompt / taste-design)
+17. **Output gets truncated/incomplete?** → full-output-enforcement
 
 ---
 

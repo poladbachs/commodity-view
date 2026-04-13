@@ -1,0 +1,20 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CommodityView" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - text: CommodityView
+      - generic [ref=e9]:
+        - link "Product" [ref=e10] [cursor=pointer]:
+          - /url: /#features
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /#pricing
+        - link "Markets" [ref=e12] [cursor=pointer]:
+          - /url: /#markets
+  - generic [ref=e15]:
+    - heading "404" [level=1] [ref=e16]
+    - heading "This page could not be found." [level=2] [ref=e18]
+  - button "Open Next.js Dev Tools" [ref=e24] [cursor=pointer]:
+    - img [ref=e25]
+  - alert [ref=e28]

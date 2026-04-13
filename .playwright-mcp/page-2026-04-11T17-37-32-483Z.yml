@@ -1,0 +1,470 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CommodityView" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - text: CommodityView
+      - generic [ref=e9]:
+        - link "Product" [ref=e10] [cursor=pointer]:
+          - /url: /#features
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /#pricing
+        - link "Markets" [ref=e12] [cursor=pointer]:
+          - /url: /#markets
+  - generic [ref=e15]:
+    - generic [ref=e17]:
+      - generic [ref=e18]: Pricing
+      - heading "Plans for every level of ambition" [level=1] [ref=e19]
+      - paragraph [ref=e20]: From solo traders protecting a single shipment to global desk operations automating your entire document workflow. Start free, scale when you need it.
+      - generic [ref=e21]:
+        - generic [ref=e22]: Monthly
+        - button [ref=e23]
+        - generic [ref=e25]: AnnualSAVE 17%
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Free
+        - generic [ref=e31]: $0forever
+        - paragraph [ref=e32]: Get started — no commitment, no card.
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - img [ref=e35]
+            - text: 3 analyses total
+          - listitem [ref=e37]:
+            - img [ref=e38]
+            - text: 1 user
+          - listitem [ref=e40]:
+            - img [ref=e41]
+            - text: AI extraction (PDF)
+          - listitem [ref=e43]:
+            - img [ref=e44]
+            - text: COA + Contract check
+          - listitem [ref=e46]:
+            - img [ref=e47]
+            - text: Violations report
+        - link "Sign Up Free" [ref=e49] [cursor=pointer]:
+          - /url: /deals/new
+          - button "Sign Up Free" [ref=e50]
+      - generic [ref=e51]:
+        - paragraph [ref=e52]: Starter
+        - generic [ref=e53]: $49/month
+        - paragraph [ref=e54]: Solo traders handling day-to-day document compliance.
+        - list [ref=e55]:
+          - listitem [ref=e56]:
+            - img [ref=e57]
+            - text: 30 analyses / month
+          - listitem [ref=e59]:
+            - img [ref=e60]
+            - text: 1 user
+          - listitem [ref=e62]:
+            - img [ref=e63]
+            - text: COA + Contract check
+          - listitem [ref=e65]:
+            - img [ref=e66]
+            - text: Violations panel
+          - listitem [ref=e68]:
+            - img [ref=e69]
+            - text: PDF export reports
+        - link "Try for Free" [ref=e71] [cursor=pointer]:
+          - /url: /deals/new
+          - button "Try for Free" [ref=e72]
+      - generic [ref=e73]:
+        - generic [ref=e75]: Most Popular
+        - paragraph [ref=e76]: Growth
+        - generic [ref=e77]: $199/month
+        - paragraph [ref=e78]: Operations teams running deals across the full document set.
+        - list [ref=e79]:
+          - listitem [ref=e80]:
+            - img [ref=e81]
+            - text: 100 analyses / month
+          - listitem [ref=e83]:
+            - img [ref=e84]
+            - text: 3 users + Workspace
+          - listitem [ref=e86]:
+            - img [ref=e87]
+            - text: LC & BL compliance
+          - listitem [ref=e89]:
+            - img [ref=e90]
+            - text: Cross-doc validation
+          - listitem [ref=e92]:
+            - img [ref=e93]
+            - text: Full deal audit log
+          - listitem [ref=e95]:
+            - img [ref=e96]
+            - text: Role-based access
+        - link "Choose Growth" [ref=e98] [cursor=pointer]:
+          - /url: /deals/new
+          - button "Choose Growth" [ref=e99]
+      - generic [ref=e100]:
+        - paragraph [ref=e101]: Professional
+        - generic [ref=e102]: $499/month
+        - paragraph [ref=e103]: Larger desks needing market data and logistics automation.
+        - list [ref=e104]:
+          - listitem [ref=e105]:
+            - img [ref=e106]
+            - text: 300 analyses / month
+          - listitem [ref=e108]:
+            - img [ref=e109]
+            - text: 10 users
+          - listitem [ref=e111]:
+            - img [ref=e112]
+            - text: Email auto-ingestion
+          - listitem [ref=e114]:
+            - img [ref=e115]
+            - text: Live vessel tracking
+          - listitem [ref=e117]:
+            - img [ref=e118]
+            - text: Market data layer
+          - listitem [ref=e120]:
+            - img [ref=e121]
+            - text: Historical analytics
+        - link "Choose Pro" [ref=e123] [cursor=pointer]:
+          - /url: /deals/new
+          - button "Choose Pro" [ref=e124]
+      - generic [ref=e125]:
+        - paragraph [ref=e126]: Enterprise
+        - generic [ref=e127]:
+          - text: Custom
+          - generic [ref=e128]: from $1,500 / mo
+        - paragraph [ref=e129]: Global trading desks with compliance, API, and security needs.
+        - list [ref=e130]:
+          - listitem [ref=e131]:
+            - img [ref=e132]
+            - text: Unlimited analyses
+          - listitem [ref=e134]:
+            - img [ref=e135]
+            - text: 20+ users
+          - listitem [ref=e137]:
+            - img [ref=e138]
+            - text: Full API access
+          - listitem [ref=e140]:
+            - img [ref=e141]
+            - text: Sanctions screening
+          - listitem [ref=e143]:
+            - img [ref=e144]
+            - text: Counterparty intel
+          - listitem [ref=e146]:
+            - img [ref=e147]
+            - text: SOC2 / On-prem deploy
+        - link "Contact Sales" [ref=e149] [cursor=pointer]:
+          - /url: mailto:sales@commodityview.com
+          - button "Contact Sales" [ref=e150]
+    - generic [ref=e152]:
+      - heading "Full feature comparison" [level=2] [ref=e153]
+      - table [ref=e155]:
+        - rowgroup [ref=e156]:
+          - row "Feature Free Starter Growth Professional Enterprise" [ref=e157]:
+            - columnheader "Feature" [ref=e158]
+            - columnheader "Free" [ref=e159]
+            - columnheader "Starter" [ref=e160]
+            - columnheader "Growth" [ref=e161]
+            - columnheader "Professional" [ref=e162]
+            - columnheader "Enterprise" [ref=e163]
+        - rowgroup [ref=e164]:
+          - row "Usage & Access" [ref=e165]:
+            - cell "Usage & Access" [ref=e166]
+          - row "Analyses / month 3 total 30 100 300 Unlimited" [ref=e167]:
+            - cell "Analyses / month" [ref=e168]
+            - cell "3 total" [ref=e169]
+            - cell "30" [ref=e170]
+            - cell "100" [ref=e171]
+            - cell "300" [ref=e172]
+            - cell "Unlimited" [ref=e173]
+          - row "Seats included 1 1 3 10 20+" [ref=e174]:
+            - cell "Seats included" [ref=e175]
+            - cell "1" [ref=e176]
+            - cell "1" [ref=e177]
+            - cell "3" [ref=e178]
+            - cell "10" [ref=e179]
+            - cell "20+" [ref=e180]
+          - row "Document Intelligence" [ref=e181]:
+            - cell "Document Intelligence" [ref=e182]
+          - row "COA + Contract check" [ref=e183]:
+            - cell "COA + Contract check" [ref=e184]
+            - cell [ref=e185]:
+              - img [ref=e186]
+            - cell [ref=e188]:
+              - img [ref=e189]
+            - cell [ref=e191]:
+              - img [ref=e192]
+            - cell [ref=e194]:
+              - img [ref=e195]
+            - cell [ref=e197]:
+              - img [ref=e198]
+          - row "Violations panel" [ref=e200]:
+            - cell "Violations panel" [ref=e201]
+            - cell [ref=e202]:
+              - img [ref=e203]
+            - cell [ref=e204]:
+              - img [ref=e205]
+            - cell [ref=e207]:
+              - img [ref=e208]
+            - cell [ref=e210]:
+              - img [ref=e211]
+            - cell [ref=e213]:
+              - img [ref=e214]
+          - row "PDF export reports" [ref=e216]:
+            - cell "PDF export reports" [ref=e217]
+            - cell [ref=e218]:
+              - img [ref=e219]
+            - cell [ref=e220]:
+              - img [ref=e221]
+            - cell [ref=e223]:
+              - img [ref=e224]
+            - cell [ref=e226]:
+              - img [ref=e227]
+            - cell [ref=e229]:
+              - img [ref=e230]
+          - row "LC + BL compliance" [ref=e232]:
+            - cell "LC + BL compliance" [ref=e233]
+            - cell [ref=e234]:
+              - img [ref=e235]
+            - cell [ref=e236]:
+              - img [ref=e237]
+            - cell [ref=e238]:
+              - img [ref=e239]
+            - cell [ref=e241]:
+              - img [ref=e242]
+            - cell [ref=e244]:
+              - img [ref=e245]
+          - row "Cross-document validation" [ref=e247]:
+            - cell "Cross-document validation" [ref=e248]
+            - cell [ref=e249]:
+              - img [ref=e250]
+            - cell [ref=e251]:
+              - img [ref=e252]
+            - cell [ref=e253]:
+              - img [ref=e254]
+            - cell [ref=e256]:
+              - img [ref=e257]
+            - cell [ref=e259]:
+              - img [ref=e260]
+          - row "Operations Hub" [ref=e262]:
+            - cell "Operations Hub" [ref=e263]
+          - row "Team workspace" [ref=e264]:
+            - cell "Team workspace" [ref=e265]
+            - cell [ref=e266]:
+              - img [ref=e267]
+            - cell [ref=e268]:
+              - img [ref=e269]
+            - cell [ref=e270]:
+              - img [ref=e271]
+            - cell [ref=e273]:
+              - img [ref=e274]
+            - cell [ref=e276]:
+              - img [ref=e277]
+          - row "Role-based access" [ref=e279]:
+            - cell "Role-based access" [ref=e280]
+            - cell [ref=e281]:
+              - img [ref=e282]
+            - cell [ref=e283]:
+              - img [ref=e284]
+            - cell [ref=e285]:
+              - img [ref=e286]
+            - cell [ref=e288]:
+              - img [ref=e289]
+            - cell [ref=e291]:
+              - img [ref=e292]
+          - row "Full deal audit log" [ref=e294]:
+            - cell "Full deal audit log" [ref=e295]
+            - cell [ref=e296]:
+              - img [ref=e297]
+            - cell [ref=e298]:
+              - img [ref=e299]
+            - cell [ref=e300]:
+              - img [ref=e301]
+            - cell [ref=e303]:
+              - img [ref=e304]
+            - cell [ref=e306]:
+              - img [ref=e307]
+          - row "Email auto-ingestion" [ref=e309]:
+            - cell "Email auto-ingestion" [ref=e310]
+            - cell [ref=e311]:
+              - img [ref=e312]
+            - cell [ref=e313]:
+              - img [ref=e314]
+            - cell [ref=e315]:
+              - img [ref=e316]
+            - cell [ref=e317]:
+              - img [ref=e318]
+            - cell [ref=e320]:
+              - img [ref=e321]
+          - row "Terminal & Intelligence" [ref=e323]:
+            - cell "Terminal & Intelligence" [ref=e324]
+          - row "Live vessel tracking" [ref=e325]:
+            - cell "Live vessel tracking" [ref=e326]
+            - cell [ref=e327]:
+              - img [ref=e328]
+            - cell [ref=e329]:
+              - img [ref=e330]
+            - cell [ref=e331]:
+              - img [ref=e332]
+            - cell [ref=e333]:
+              - img [ref=e334]
+            - cell [ref=e336]:
+              - img [ref=e337]
+          - row "Market data layer" [ref=e339]:
+            - cell "Market data layer" [ref=e340]
+            - cell [ref=e341]:
+              - img [ref=e342]
+            - cell [ref=e343]:
+              - img [ref=e344]
+            - cell [ref=e345]:
+              - img [ref=e346]
+            - cell [ref=e347]:
+              - img [ref=e348]
+            - cell [ref=e350]:
+              - img [ref=e351]
+          - row "Historical analytics" [ref=e353]:
+            - cell "Historical analytics" [ref=e354]
+            - cell [ref=e355]:
+              - img [ref=e356]
+            - cell [ref=e357]:
+              - img [ref=e358]
+            - cell [ref=e359]:
+              - img [ref=e360]
+            - cell [ref=e361]:
+              - img [ref=e362]
+            - cell [ref=e364]:
+              - img [ref=e365]
+          - row "Sanctions screening" [ref=e367]:
+            - cell "Sanctions screening" [ref=e368]
+            - cell [ref=e369]:
+              - img [ref=e370]
+            - cell [ref=e371]:
+              - img [ref=e372]
+            - cell [ref=e373]:
+              - img [ref=e374]
+            - cell [ref=e375]:
+              - img [ref=e376]
+            - cell [ref=e377]:
+              - img [ref=e378]
+          - row "Counterparty intel" [ref=e380]:
+            - cell "Counterparty intel" [ref=e381]
+            - cell [ref=e382]:
+              - img [ref=e383]
+            - cell [ref=e384]:
+              - img [ref=e385]
+            - cell [ref=e386]:
+              - img [ref=e387]
+            - cell [ref=e388]:
+              - img [ref=e389]
+            - cell [ref=e390]:
+              - img [ref=e391]
+          - row "Security & Compliance" [ref=e393]:
+            - cell "Security & Compliance" [ref=e394]
+          - row "Data encryption at rest" [ref=e395]:
+            - cell "Data encryption at rest" [ref=e396]
+            - cell [ref=e397]:
+              - img [ref=e398]
+            - cell [ref=e400]:
+              - img [ref=e401]
+            - cell [ref=e403]:
+              - img [ref=e404]
+            - cell [ref=e406]:
+              - img [ref=e407]
+            - cell [ref=e409]:
+              - img [ref=e410]
+          - row "SOC2 Type II" [ref=e412]:
+            - cell "SOC2 Type II" [ref=e413]
+            - cell [ref=e414]:
+              - img [ref=e415]
+            - cell [ref=e416]:
+              - img [ref=e417]
+            - cell [ref=e418]:
+              - img [ref=e419]
+            - cell [ref=e420]:
+              - img [ref=e421]
+            - cell [ref=e422]:
+              - img [ref=e423]
+          - row "On-premise deployment" [ref=e425]:
+            - cell "On-premise deployment" [ref=e426]
+            - cell [ref=e427]:
+              - img [ref=e428]
+            - cell [ref=e429]:
+              - img [ref=e430]
+            - cell [ref=e431]:
+              - img [ref=e432]
+            - cell [ref=e433]:
+              - img [ref=e434]
+            - cell [ref=e435]:
+              - img [ref=e436]
+          - row "API access" [ref=e438]:
+            - cell "API access" [ref=e439]
+            - cell [ref=e440]:
+              - img [ref=e441]
+            - cell [ref=e442]:
+              - img [ref=e443]
+            - cell [ref=e444]:
+              - img [ref=e445]
+            - cell [ref=e446]:
+              - img [ref=e447]
+            - cell [ref=e448]:
+              - img [ref=e449]
+    - generic [ref=e452]:
+      - heading "Frequently asked questions" [level=2] [ref=e453]
+      - generic [ref=e454]:
+        - generic [ref=e456]:
+          - button "How secure is my trade data?" [ref=e457]:
+            - text: How secure is my trade data?
+            - img [ref=e458]
+          - paragraph [ref=e460]: CommodityView is SOC2 Type II compliant. All document extractions happen in encrypted VPCs. We never use your private trade data to train public models.
+        - generic [ref=e462]:
+          - button "Can we upgrade mid-billing cycle?" [ref=e463]:
+            - text: Can we upgrade mid-billing cycle?
+            - img [ref=e464]
+          - paragraph [ref=e466]: Yes. You can upgrade at any time. Your current month will be pro-rated, and you'll immediately gain access to the higher usage limits and advanced features of your new plan.
+        - generic [ref=e468]:
+          - button "What document formats are supported?" [ref=e469]:
+            - text: What document formats are supported?
+            - img [ref=e470]
+          - paragraph [ref=e472]: We support PDF, JPEG, PNG, and Excel. Our AI is trained specifically on GAFTA, FOSFA, and standard ISO commodity specifications.
+        - generic [ref=e474]:
+          - button "Do you offer on-premise deployment?" [ref=e475]:
+            - text: Do you offer on-premise deployment?
+            - img [ref=e476]
+          - paragraph [ref=e478]: On-premise and Private Cloud deployments are available for Enterprise clients with minimum 2-year commitments.
+        - generic [ref=e480]:
+          - button "Is there an annual discount?" [ref=e481]:
+            - text: Is there an annual discount?
+            - img [ref=e482]
+          - paragraph [ref=e484]: Yes — annual billing saves up to 17% across all paid plans. You can switch between monthly and annual billing at any time.
+    - generic [ref=e486]:
+      - paragraph [ref=e487]: Trusted by traders following GAFTA/FOSFA standards globally
+      - heading "Secure your shipments. Automate your ops." [level=2] [ref=e488]:
+        - text: Secure your shipments.
+        - text: Automate your ops.
+      - paragraph [ref=e489]: The intelligence platform for physical commodity traders.
+      - generic [ref=e490]:
+        - link "Start Free" [ref=e491] [cursor=pointer]:
+          - /url: /deals/new
+          - button "Start Free" [ref=e492]:
+            - generic [ref=e493]:
+              - text: Start Free
+              - img [ref=e494]
+        - link "Talk to Sales" [ref=e496] [cursor=pointer]:
+          - /url: mailto:sales@commodityview.com
+    - contentinfo [ref=e497]:
+      - generic [ref=e498]:
+        - link "← CommodityView" [ref=e499] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e500]: © 2025 CommodityView. Not financial advice.
+        - generic [ref=e501]:
+          - link "Terms" [ref=e502] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=e503] [cursor=pointer]:
+            - /url: "#"
+          - link "Contact" [ref=e504] [cursor=pointer]:
+            - /url: "#"
+  - generic [ref=e509] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e510]:
+      - img [ref=e511]
+    - generic [ref=e514]:
+      - button "Open issues overlay" [ref=e515]:
+        - generic [ref=e516]:
+          - generic [ref=e517]: "0"
+          - generic [ref=e518]: "1"
+        - generic [ref=e519]: Issue
+      - button "Collapse issues badge" [ref=e520]:
+        - img [ref=e521]
+  - alert [ref=e523]

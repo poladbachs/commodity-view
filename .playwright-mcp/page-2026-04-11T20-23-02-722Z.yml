@@ -1,0 +1,321 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "CommodityView" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - text: CommodityView
+      - generic [ref=e9]:
+        - link "Products" [ref=e10] [cursor=pointer]:
+          - /url: /products
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /pricing
+        - link "Markets" [ref=e12] [cursor=pointer]:
+          - /url: /#markets
+  - generic [ref=e14]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: BRENT CRUDE
+        - generic [ref=e19]: $78.42
+        - generic [ref=e20]: +1.15%
+      - generic [ref=e21]:
+        - generic [ref=e22]: PANAMAX
+        - generic [ref=e23]: $12,450
+        - generic [ref=e24]: "-2.40%"
+      - generic [ref=e25]:
+        - generic [ref=e26]: CORN
+        - generic [ref=e27]: $445.50
+        - generic [ref=e28]: "-0.12%"
+      - generic [ref=e29]:
+        - generic [ref=e30]: WHEAT
+        - generic [ref=e31]: $584.25
+        - generic [ref=e32]: +1.24%
+      - generic [ref=e33]:
+        - generic [ref=e34]: SOYBEANS
+        - generic [ref=e35]: $1,212.75
+        - generic [ref=e36]: +0.45%
+      - generic [ref=e37]:
+        - generic [ref=e38]: LME COPPER
+        - generic [ref=e39]: $8,345
+        - generic [ref=e40]: +0.82%
+      - generic [ref=e41]:
+        - generic [ref=e42]: GASOIL
+        - generic [ref=e43]: $692.50
+        - generic [ref=e44]: +0.65%
+      - generic [ref=e45]:
+        - generic [ref=e46]: SUGAR
+        - generic [ref=e47]: $24.15
+        - generic [ref=e48]: "-0.31%"
+      - generic [ref=e49]:
+        - generic [ref=e50]: BRENT CRUDE
+        - generic [ref=e51]: $78.42
+        - generic [ref=e52]: +1.15%
+      - generic [ref=e53]:
+        - generic [ref=e54]: PANAMAX
+        - generic [ref=e55]: $12,450
+        - generic [ref=e56]: "-2.40%"
+      - generic [ref=e57]:
+        - generic [ref=e58]: CORN
+        - generic [ref=e59]: $445.50
+        - generic [ref=e60]: "-0.12%"
+      - generic [ref=e61]:
+        - generic [ref=e62]: WHEAT
+        - generic [ref=e63]: $584.25
+        - generic [ref=e64]: +1.24%
+      - generic [ref=e65]:
+        - generic [ref=e66]: SOYBEANS
+        - generic [ref=e67]: $1,212.75
+        - generic [ref=e68]: +0.45%
+      - generic [ref=e69]:
+        - generic [ref=e70]: LME COPPER
+        - generic [ref=e71]: $8,345
+        - generic [ref=e72]: +0.82%
+      - generic [ref=e73]:
+        - generic [ref=e74]: GASOIL
+        - generic [ref=e75]: $692.50
+        - generic [ref=e76]: +0.65%
+      - generic [ref=e77]:
+        - generic [ref=e78]: SUGAR
+        - generic [ref=e79]: $24.15
+        - generic [ref=e80]: "-0.31%"
+    - generic [ref=e81]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e86]: The Platform for Physical Commodity Traders
+          - heading "The Platform for Physical Commodity Traders" [level=1] [ref=e88]:
+            - generic "The Platform for Physical Commodity Traders" [ref=e89]:
+              - generic [ref=e90]: The
+              - generic [ref=e91]: Platform
+              - generic [ref=e92]: for
+              - generic [ref=e93]: Physical
+              - generic [ref=e94]: Commodity
+              - generic [ref=e95]: Traders
+          - paragraph [ref=e96]: Automate document compliance, manage deals, track shipments, and act on market intelligence - one platform for your entire trading firm.
+          - link "Get Started Free" [ref=e98] [cursor=pointer]:
+            - /url: /pricing
+            - button "Get Started Free" [ref=e99]:
+              - generic [ref=e100]: Get Started Free
+              - img [ref=e102]
+          - paragraph [ref=e104]: No setup. No templates. Start with live deals in minutes.
+        - generic [ref=e106]:
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic: Compliant
+              - paragraph: 4 docs verified
+              - paragraph: COA, LC, BL, Contract
+          - generic:
+            - generic:
+              - generic:
+                - generic: Live Route
+              - paragraph: Rotterdam → Houston
+              - paragraph: ETA 18 days · Crude oil
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic: Alert
+              - paragraph: Port mismatch
+              - paragraph: Caught before cost
+      - generic [ref=e113]: scroll to explore
+    - generic [ref=e116]:
+      - generic [ref=e118]:
+        - generic [ref=e119]: Platform
+        - heading "Where deals move forward" [level=2] [ref=e120]
+        - paragraph [ref=e121]: Bring clarity and control to every trade decision
+        - link "Explore Features" [ref=e123] [cursor=pointer]:
+          - /url: /products
+          - button "Explore Features" [ref=e124]:
+            - generic [ref=e125]: Explore Features
+            - img [ref=e127]
+      - generic [ref=e129]:
+        - generic [ref=e130]:
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - img [ref=e135]
+              - generic [ref=e139]: Document Intelligence
+            - heading "Catch it before you pay." [level=3] [ref=e140]
+            - paragraph [ref=e141]: AI-powered extraction and compliance automation for COAs, Bills of Lading, Letters of Credit and Contracts. Instantly flag discrepancies before they impact your P&L.
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - generic [ref=e145]: Analysis Result
+              - generic [ref=e146]: 1 VIOLATION
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - generic [ref=e149]: Parameter
+                - generic [ref=e150]: COA Value
+                - generic [ref=e151]: Spec
+              - generic [ref=e153]:
+                - generic [ref=e154]: Sulphur content
+                - generic [ref=e155]: 0.45%
+                - generic [ref=e156]: ≤0.50%
+                - generic [ref=e157]:
+                  - img [ref=e158]
+                  - generic [ref=e161]: PASS
+              - generic [ref=e162]:
+                - generic [ref=e163]: Flash point
+                - generic [ref=e164]: 62°C
+                - generic [ref=e165]: ≥60°C
+                - generic [ref=e166]:
+                  - img [ref=e167]
+                  - generic [ref=e170]: PASS
+              - generic [ref=e171]:
+                - generic [ref=e172]: Port of loading
+                - generic [ref=e173]: Novorossiysk
+                - generic [ref=e174]: Odessa
+                - generic [ref=e175]:
+                  - img [ref=e176]
+                  - generic [ref=e178]: FAIL
+              - generic [ref=e179]:
+                - generic [ref=e180]: Quantity MT
+                - generic [ref=e181]: 25,000
+                - generic [ref=e182]: 25,000
+                - generic [ref=e183]:
+                  - img [ref=e184]
+                  - generic [ref=e187]: PASS
+        - generic [ref=e188]:
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - img [ref=e193]
+              - generic [ref=e198]: Deal Workspace
+            - heading "One window for every deal." [level=3] [ref=e199]
+            - paragraph [ref=e200]: Coordinate documents, shipment status, and approvals in one shared workspace. Green means go. Red means act now.
+          - generic [ref=e202]:
+            - generic [ref=e203]:
+              - generic [ref=e204]: Deal Workspace
+              - generic [ref=e205]: 4 active
+            - generic [ref=e206]:
+              - generic [ref=e207]:
+                - generic [ref=e208]: Crude Oil — VLCC Atlas
+                - generic [ref=e209]: COMPLIANT
+              - generic [ref=e210]:
+                - generic [ref=e211]: Wheat SRW — Bulk Pacific
+                - generic [ref=e212]: 1 VIOLATION
+              - generic [ref=e213]:
+                - generic [ref=e214]: LNG — Horizon Star
+                - generic [ref=e215]: PENDING
+              - generic [ref=e216]:
+                - generic [ref=e217]: Soybeans — Ocean Prince
+                - generic [ref=e218]: COMPLIANT
+        - generic [ref=e219]:
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - img [ref=e224]
+              - generic [ref=e225]: Market Intelligence
+            - heading "Intelligence in context." [level=3] [ref=e226]
+            - paragraph [ref=e227]: Bring freight signals, commodity context, and risk alerts directly into active deals so decisions happen faster.
+          - generic [ref=e229]:
+            - generic [ref=e230]:
+              - img [ref=e231]
+              - generic [ref=e234]: Intelligence Layer
+            - generic [ref=e235]:
+              - generic [ref=e236]:
+                - generic [ref=e237]: BRENT
+                - generic [ref=e238]: $78.42
+                - generic [ref=e239]: +1.2%
+              - generic [ref=e240]:
+                - generic [ref=e241]: FREIGHT
+                - generic [ref=e242]: $12,450
+                - generic [ref=e243]: "-2.4%"
+              - generic [ref=e244]:
+                - generic [ref=e245]: Counterparty
+                - generic [ref=e246]: Clean
+                - generic [ref=e247]: OFAC/UN
+              - generic [ref=e248]:
+                - generic [ref=e249]: Analytics
+                - generic [ref=e250]: 3 fails
+                - generic [ref=e251]: Supplier A
+    - generic [ref=e253]:
+      - paragraph [ref=e254]: Start trading smarter
+      - heading "One platform. Full control." [level=2] [ref=e255]
+      - paragraph [ref=e256]: Start with 3 free analyses today. Verify documents quickly, manage deals clearly, and make shipment decisions with live context.
+      - link "Get Started Free" [ref=e258] [cursor=pointer]:
+        - /url: /pricing
+        - button "Get Started Free" [ref=e259]:
+          - generic [ref=e260]: Get Started Free
+          - img [ref=e262]
+    - contentinfo [ref=e264]:
+      - generic [ref=e265]:
+        - generic [ref=e266]:
+          - generic [ref=e267]:
+            - generic [ref=e268]:
+              - img [ref=e269]
+              - generic [ref=e271]: CommodityView
+            - paragraph [ref=e272]: The intelligence platform for physical commodity trading firms. Automate compliance, manage deals, track shipments, and act on market intelligence.
+            - generic [ref=e273]:
+              - link "X" [ref=e274] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e275]
+              - link "LI" [ref=e277] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e278]
+          - generic [ref=e280]:
+            - heading "Platform" [level=4] [ref=e281]
+            - list [ref=e282]:
+              - listitem [ref=e283]:
+                - link "Document Intelligence" [ref=e284] [cursor=pointer]:
+                  - /url: /products
+              - listitem [ref=e285]:
+                - link "Deal Workspace" [ref=e286] [cursor=pointer]:
+                  - /url: /products
+              - listitem [ref=e287]:
+                - link "Market Intelligence" [ref=e288] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=e289]:
+            - heading "Markets" [level=4] [ref=e290]
+            - list [ref=e291]:
+              - listitem [ref=e292]:
+                - link "Grains & Oilseeds" [ref=e293] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e294]:
+                - link "Energy & Crude" [ref=e295] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e296]:
+                - link "Metals" [ref=e297] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e298]:
+                - link "Freight" [ref=e299] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e300]:
+            - heading "Resources" [level=4] [ref=e301]
+            - list [ref=e302]:
+              - listitem [ref=e303]:
+                - link "Documentation" [ref=e304] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e305]:
+                - link "API Reference" [ref=e306] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e307]:
+                - link "Status" [ref=e308] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e309]:
+                - link "Contact" [ref=e310] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e311]:
+            - heading "Company" [level=4] [ref=e312]
+            - list [ref=e313]:
+              - listitem [ref=e314]:
+                - link "About" [ref=e315] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e316]:
+                - link "Blog" [ref=e317] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e318]:
+                - link "Careers" [ref=e319] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e320]:
+                - link "Privacy" [ref=e321] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e322]:
+          - paragraph [ref=e323]: © 2026 CommodityView. Not financial advice. Market data for reference only.
+          - generic [ref=e324]:
+            - link "Terms" [ref=e325] [cursor=pointer]:
+              - /url: "#"
+            - link "Privacy" [ref=e326] [cursor=pointer]:
+              - /url: "#"
+            - link "Cookies" [ref=e327] [cursor=pointer]:
+              - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e333] [cursor=pointer]:
+    - img [ref=e334]
+  - alert [ref=e337]

@@ -1,0 +1,141 @@
+[     153ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.47366) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     155ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.437975) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     157ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.400514) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     163ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.361294) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     196ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.320328) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     283ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.277635) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     304ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[     356ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.233231) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     432ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.187134) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     425ms] [LOG] [Fast Refresh] done in 223ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[     522ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.139362) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     569ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.0899339) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     617ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.0388702) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     716ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.75641) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     807ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.742552) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     858ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.726796) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     896ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.70915) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     933ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.68962) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[     979ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.668214) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[    1016ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.644941) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[    1058ms] IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.619811) is negative.
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:255:37)
+    at Array.forEach (<anonymous>)
+    at WireframeDottedGlobe.useEffect.render (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:231:27)
+    at WireframeDottedGlobe.useEffect.timer (http://localhost:3000/_next/static/chunks/commodityview_0h-vsb.._.js:302:21)
+    at timerFlush (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3095:52)
+    at wake (http://localhost:3000/_next/static/chunks/09o~_0t49ox8._.js:3104:9)
+[    1502ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    1649ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    1868ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[    1926ms] [WARNING] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly. @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   25865ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431
+[   25937ms] [LOG] [Fast Refresh] done in 176ms @ http://localhost:3000/_next/static/chunks/09o~_next_dist_03lusgl._.js:2431

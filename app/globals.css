@@ -42,35 +42,35 @@
   --radius-4xl: 0px;
 }
 
-/* Dark mode only — PRD Section 10 */
+/* Dark mode only — PRD Section 10 — WARM ESPRESSO, zero blue cast */
 :root {
-  --background: #0A0F1E;
-  --foreground: #E8EDF5;
-  --card: #0D1B2E;
-  --card-foreground: #E8EDF5;
-  --popover: #0D1B2E;
-  --popover-foreground: #E8EDF5;
-  --primary: #00D4FF;
-  --primary-foreground: #0A0F1E;
-  --secondary: #111D30;
-  --secondary-foreground: #E8EDF5;
-  --muted: #111D30;
-  --muted-foreground: #8892A4;
-  --accent: #00D4FF;
-  --accent-foreground: #0A0F1E;
-  --destructive: #FF4757;
-  --border: #1C2D45;
-  --input: #1C2D45;
-  --ring: #00D4FF;
+  --background: #0C0A07;
+  --foreground: #EEF2F8;
+  --card: #131009;
+  --card-foreground: #EEF2F8;
+  --popover: #131009;
+  --popover-foreground: #EEF2F8;
+  --primary: #F59E0B;
+  --primary-foreground: #0C0A07;
+  --secondary: #1A1610;
+  --secondary-foreground: #EEF2F8;
+  --muted: #1A1610;
+  --muted-foreground: #7A8898;
+  --accent: #F59E0B;
+  --accent-foreground: #0C0A07;
+  --destructive: #EF4444;
+  --border: #231E17;
+  --input: #231E17;
+  --ring: #F59E0B;
   --radius: 0px;
-  --sidebar: #0D1B2E;
-  --sidebar-foreground: #E8EDF5;
-  --sidebar-primary: #00D4FF;
-  --sidebar-primary-foreground: #0A0F1E;
-  --sidebar-accent: #111D30;
-  --sidebar-accent-foreground: #E8EDF5;
-  --sidebar-border: #1C2D45;
-  --sidebar-ring: #00D4FF;
+  --sidebar: #131009;
+  --sidebar-foreground: #EEF2F8;
+  --sidebar-primary: #F59E0B;
+  --sidebar-primary-foreground: #0C0A07;
+  --sidebar-accent: #1A1610;
+  --sidebar-accent-foreground: #EEF2F8;
+  --sidebar-border: #231E17;
+  --sidebar-ring: #F59E0B;
 }
 
 @layer base {
@@ -238,4 +238,18 @@
 @keyframes cv-slide-right {
   0%   { stroke-dashoffset: 200; }
   100% { stroke-dashoffset: 0; }
+}
+
+/* Accessibility — respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar for proof strip divide */
+.divide-x > * + * {
+  border-left: 1px solid rgba(255,255,255,0.055);
 }

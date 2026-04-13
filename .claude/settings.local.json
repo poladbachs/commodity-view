@@ -21,7 +21,13 @@
       "Bash(npm install:*)",
       "WebFetch(domain:contribution.usercontent.google.com)",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['version']\\); print\\(d.get\\('exports','no exports'\\)\\)\")",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(ls /Users/polad/commodityview/.playwright-mcp/console-2026-04-11T19-00-41*.log)",
+      "Bash(pkill -f \"next dev\\\\|node.*next\")",
+      "Bash(npx next:*)",
+      "mcp__playwright__browser_run_code"
     ]
   }
 }
