@@ -173,14 +173,13 @@ function Hero() {
               No setup. No templates. Start with live deals in minutes.
             </motion.p>
           </div>
-          <div className="relative hidden lg:block overflow-hidden">
+          <div className="relative block overflow-hidden">
             {globeReady && (
               <motion.div className="absolute inset-0 flex items-center"
                 initial={{opacity:0,x:36}} animate={{opacity:1,x:0}}
                 transition={{duration:1.2,ease:EASE,delay:0.2}}
                 style={{y:globeY}}>
-                {/* ── 640px constrained globe area — globe reads this div's height ── */}
-                <div className="relative w-full" style={{height:"640px"}}>
+                <div className="relative w-full" style={{height:"clamp(320px, 48vw, 640px)"}}>
                   <WireframeDottedGlobe className="w-full h-full" style={{willChange:"transform",backfaceVisibility:"hidden"}} loading="lazy"/>
                   <motion.div className="absolute pointer-events-none"
                     style={{top:"14%",right:"6%",animation:"cv-float 5s ease-in-out infinite"}}
@@ -562,17 +561,35 @@ function FeaturesSection() {
   return (
     <section style={{background:T.bg}}>
       {/* Section header */}
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-8 pt-32 lg:pt-44 pb-20 lg:pb-28">
-        <motion.span {...fadeUp(0)} style={{
-          display:"block",color:T.amber,fontSize:"9px",fontWeight:700,
-          letterSpacing:"0.22em",textTransform:"uppercase",fontFamily:T.mono,marginBottom:"1.6rem",
-        }}>Platform</motion.span>
+      <div className="mx-auto max-w-[1400px] px-5 lg:px-8 pt-32 lg:pt-44 pb-20 lg:pb-28 text-center flex flex-col items-center">
         <motion.h2 {...fadeUp(0.06)} style={{
           fontSize:"clamp(2rem,4vw,3.1rem)",fontWeight:900,
-          letterSpacing:"-0.033em",lineHeight:1.06,color:T.text,maxWidth:"680px",
+          letterSpacing:"-0.033em",lineHeight:1.06,color:T.text,maxWidth:"760px",
         }}>
-          One platform for every decision from first document to final payment.
+          Where deals move forward.
         </motion.h2>
+        <motion.p {...fadeUp(0.12)} style={{
+          marginTop:"1rem",fontSize:"clamp(0.92rem,1.5vw,1.05rem)",lineHeight:1.78,
+          color:T.sub,maxWidth:"56ch",
+        }}>
+          Bring clarity and control to every trade decision.
+        </motion.p>
+        <motion.div {...fadeUp(0.18)} className="mt-8">
+          <Link href="/products">
+            <button className="group relative h-11 pl-5 pr-2 flex items-center gap-3 font-bold text-sm overflow-hidden"
+              style={{background:T.amber,color:T.bg,transition:"all 0.25s cubic-bezier(0.32,0.72,0,1)"}}
+              onMouseEnter={e=>{const el=e.currentTarget as HTMLElement;el.style.background="#FBBF24";el.style.transform="translateY(-1px)";}}
+              onMouseLeave={e=>{const el=e.currentTarget as HTMLElement;el.style.background=T.amber;el.style.transform="translateY(0)";}}
+              onMouseDown={e=>{(e.currentTarget as HTMLElement).style.transform="scale(0.97)";}}
+              onMouseUp={e=>{(e.currentTarget as HTMLElement).style.transform="translateY(-1px)";}}>
+              <span className="absolute inset-0 pointer-events-none" style={{background:"linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.28) 50%,transparent 60%)",animation:"cv-shimmer-sweep 3.5s linear infinite"}}/>
+              <span className="relative z-10">Explore features</span>
+              <span className="relative z-10 flex h-7 w-7 items-center justify-center" style={{background:"rgba(0,0,0,0.15)"}}>
+                <ArrowRight size={12}/>
+              </span>
+            </button>
+          </Link>
+        </motion.div>
       </div>
 
       {/* Three feature rows */}

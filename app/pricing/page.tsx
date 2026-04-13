@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Fragment } from "react";
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { ArrowRight, Check, Minus, ChevronDown } from "lucide-react";
@@ -456,8 +457,8 @@ export default function PricingPage() {
 
                   {/* Feature sections */}
                   {TABLE_SECTIONS.slice(1).map(section => (
-                    <>
-                      <tr key={section.title}>
+                    <Fragment key={section.title}>
+                      <tr>
                         <td colSpan={6} className="pt-8 pb-2">
                           <span className="text-[9px] font-bold tracking-[0.16em] uppercase" style={{ color: C.amber }}>
                             {section.title}
@@ -477,7 +478,7 @@ export default function PricingPage() {
                           ))}
                         </tr>
                       ))}
-                    </>
+                    </Fragment>
                   ))}
                 </tbody>
               </table>

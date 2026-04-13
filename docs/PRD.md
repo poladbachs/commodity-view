@@ -10,7 +10,7 @@
 **What:** CommodityView is the platform for physical 
 commodity traders.
 
-**Why:** One document mismatch in a commodity shipment = $50k–$500k
+**Why (founder only):** One document mismatch in a commodity shipment = $50k–$500k
 loss. The 4 documents that cause 90% of trade disputes — COA,
 contract, LC, Bill of Lading — checked automatically before payment
 is released. Beyond compliance: vessel tracking, market data, and

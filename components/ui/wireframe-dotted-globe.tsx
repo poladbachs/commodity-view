@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import type { CSSProperties } from "react"
 import * as d3 from "d3"
+import landData from "../../public/ne_110m_land.json"
 
 interface WireframeDottedGlobeProps {
   width?: number
@@ -35,7 +36,6 @@ export default function WireframeDottedGlobe({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState(false)
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return
@@ -222,33 +222,27 @@ export default function WireframeDottedGlobe({
       })
     }
 
-    const loadData = async () => {
-      try {
-        if (cachedLandFeatures && cachedDots) {
-          landFeatures = cachedLandFeatures
-          allDots.push(...cachedDots)
-          setLoaded(true)
-          return
-        }
-
-        const res = await fetch("/ne_110m_land.json", { cache: "force-cache" })
-        if (!res.ok) throw new Error("fetch failed")
-        landFeatures = await res.json()
-
-        const localDots: Array<{ lng: number; lat: number }> = []
-        for (const feature of landFeatures.features) {
-          for (const [lng, lat] of generateDots(feature)) {
-            localDots.push({ lng, lat })
-          }
-        }
-
-        cachedLandFeatures = landFeatures
-        cachedDots = localDots
-        allDots.push(...localDots)
+    const loadData = () => {
+      if (cachedLandFeatures && cachedDots) {
+        landFeatures = cachedLandFeatures
+        allDots.push(...cachedDots)
         setLoaded(true)
-      } catch {
-        setError(true)
+        return
       }
+
+      landFeatures = landData as any
+
+      const localDots: Array<{ lng: number; lat: number }> = []
+      for (const feature of landFeatures.features) {
+        for (const [lng, lat] of generateDots(feature)) {
+          localDots.push({ lng, lat })
+        }
+      }
+
+      cachedLandFeatures = landFeatures
+      cachedDots = localDots
+      allDots.push(...localDots)
+      setLoaded(true)
     }
 
     const timer = d3.timer(() => {
@@ -287,8 +281,6 @@ export default function WireframeDottedGlobe({
       canvas.removeEventListener("mousedown", handleMouseDown)
     }
   }, [width, height])
-
-  if (error) return null
 
   return (
     <div ref={containerRef} className={`relative w-full h-full ${className}`} style={style}>
