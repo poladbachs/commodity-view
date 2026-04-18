@@ -27,7 +27,15 @@
       "Bash(ls /Users/polad/commodityview/.playwright-mcp/console-2026-04-11T19-00-41*.log)",
       "Bash(pkill -f \"next dev\\\\|node.*next\")",
       "Bash(npx next:*)",
-      "mcp__playwright__browser_run_code"
+      "mcp__playwright__browser_run_code",
+      "Bash(/opt/homebrew/bin/npx tsc:*)",
+      "Bash(/Users/polad/commodityview/.claude/worktrees/determined-pascal/node_modules/.bin/tsc --noEmit)",
+      "Bash(/Users/polad/commodityview/node_modules/.bin/tsc --noEmit)",
+      "Bash(export PATH=\"/Users/polad/.nvm/versions/node/v20.20.2/bin:$PATH\")",
+      "Bash(ls -la /Users/polad/commodityview/.env*)",
+      "Bash(cp /Users/polad/commodityview/.env.local /Users/polad/commodityview/.claude/worktrees/determined-pascal/.env.local)",
+      "Bash(cp /Users/polad/commodityview/.env /Users/polad/commodityview/.claude/worktrees/determined-pascal/.env)",
+      "Bash(ls -la /Users/polad/commodityview/.claude/worktrees/determined-pascal/.env*)"
     ]
   }
 }
