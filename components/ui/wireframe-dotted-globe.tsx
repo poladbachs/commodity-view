@@ -17,15 +17,40 @@ let cachedLandFeatures: any | null = null
 let cachedDots: Array<{ lng: number; lat: number }> | null = null
 
 const PORTS = [
-  { name: "Rotterdam",  lat: 51.9,   lng: 4.5,    size: 5 },
-  { name: "Singapore",  lat: 1.35,   lng: 103.82, size: 5 },
-  { name: "Houston",    lat: 29.76,  lng: -95.37, size: 4 },
-  { name: "Santos",     lat: -23.96, lng: -46.33, size: 4 },
-  { name: "Dubai",      lat: 25.2,   lng: 55.27,  size: 4 },
-  { name: "Shanghai",   lat: 31.23,  lng: 121.47, size: 4 },
+  { name: "Rotterdam", lat: 51.9, lng: 4.5, size: 5 },
+  { name: "Singapore", lat: 1.35, lng: 103.82, size: 5 },
+  { name: "Houston", lat: 29.76, lng: -95.37, size: 4 },
+  { name: "Santos", lat: -23.96, lng: -46.33, size: 4 },
+  { name: "Dubai", lat: 25.2, lng: 55.27, size: 4 },
+  { name: "Shanghai", lat: 31.23, lng: 121.47, size: 4 },
   { name: "Novorossiysk", lat: 44.7, lng: 37.77,  size: 3.5 },
-  { name: "Cape Town",  lat: -33.92, lng: 18.42,  size: 3.5 },
+  { name: "Cape Town", lat: -33.92, lng: 18.42, size: 3.5 },
 ]
+
+const ROUTES: Array<[string, string]> = [
+  ["Santos", "Shanghai"],
+  ["Santos", "Rotterdam"],
+  ["Houston", "Rotterdam"],
+  ["Houston", "Singapore"],
+  ["Houston", "Shanghai"],
+  ["Shanghai", "Singapore"],
+  ["Dubai", "Shanghai"],
+  ["Dubai", "Singapore"],
+  ["Dubai", "Rotterdam"],
+  ["Rotterdam", "Dubai"],
+  ["Cape Town", "Singapore"],
+  ["Cape Town", "Dubai"],
+  ["Singapore", "Rotterdam"],
+  ["Rotterdam", "Singapore"],
+  ["Rotterdam", "Houston"],
+  ["Singapore", "Dubai"],
+  ["Shanghai", "Dubai"],
+  ["Novorossiysk", "Dubai"],
+  ["Novorossiysk", "Singapore"],
+]
+
+const PORT_BY_NAME = new Map(PORTS.map((p) => [p.name, p]))
+const HUB_NAMES = new Set(["Rotterdam", "Singapore", "Dubai", "Shanghai", "Houston"])
 
 export default function WireframeDottedGlobe({
   width = 800,
@@ -45,7 +70,6 @@ export default function WireframeDottedGlobe({
 
     const containerWidth = containerRef.current.offsetWidth || width
     const containerHeight = containerRef.current.offsetHeight || height
-    const radius = Math.min(containerWidth, containerHeight) / 2.1
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     canvas.width = containerWidth * dpr
@@ -54,14 +78,7 @@ export default function WireframeDottedGlobe({
     canvas.style.height = `${containerHeight}px`
     context.scale(dpr, dpr)
 
-    const cx = containerWidth / 2
-    const cy = containerHeight / 2
-
-    const projection = d3
-      .geoOrthographic()
-      .scale(radius)
-      .translate([cx, cy])
-      .clipAngle(90)
+    const projection = d3.geoNaturalEarth1().translate([containerWidth / 2, containerHeight / 2]).scale(containerWidth / 6.1)
 
     const path = d3.geoPath().projection(projection).context(context)
 
@@ -100,104 +117,251 @@ export default function WireframeDottedGlobe({
       return false
     }
 
-    const generateDots = (feature: any, stepDeg = 3.1, maxDots = 420): [number, number][] => {
+    const generateDots = (feature: any, stepDeg = 2.2, maxDots = 1500): [number, number][] => {
       const dots: [number, number][] = []
       const [[minLng, minLat], [maxLng, maxLat]] = d3.geoBounds(feature)
       for (let lng = minLng; lng <= maxLng; lng += stepDeg) {
         for (let lat = minLat; lat <= maxLat; lat += stepDeg) {
           if (pointInFeature([lng, lat], feature)) {
             dots.push([lng, lat])
-            if (dots.length >= maxDots) return dots
           }
         }
       }
-      return dots
+
+      if (dots.length <= maxDots) return dots
+
+      // Sample evenly so large landmasses do not lose coverage on one side.
+      const sampled: [number, number][] = []
+      const stride = dots.length / maxDots
+      for (let i = 0; i < maxDots; i++) {
+        sampled.push(dots[Math.floor(i * stride)])
+      }
+      return sampled
     }
 
     interface Dot { lng: number; lat: number }
     const allDots: Dot[] = []
     let landFeatures: any
-    const rotation = [30, -20, 0]
-    let autoRotate = true
-    let pingPhase = 0
+    let pulsePhase = 0
 
-    const render = () => {
+    const maxJumpX = containerWidth * 0.24
+    const maxJumpY = containerHeight * 0.32
+
+    const strokeSegmentedLine = (
+      points: Array<[number, number] | null>,
+      draw: () => void,
+    ) => {
+      context.beginPath()
+      let started = false
+      let prev: [number, number] | null = null
+      let hasSegment = false
+
+      for (const point of points) {
+        if (!point) {
+          started = false
+          prev = null
+          continue
+        }
+
+        const [x, y] = point
+        if (!started || !prev) {
+          context.moveTo(x, y)
+          started = true
+          prev = point
+          hasSegment = true
+          continue
+        }
+
+        const dx = Math.abs(x - prev[0])
+        const dy = Math.abs(y - prev[1])
+        if (dx > maxJumpX || dy > maxJumpY) {
+          context.moveTo(x, y)
+          prev = point
+          continue
+        }
+
+        context.lineTo(x, y)
+        prev = point
+      }
+
+      if (hasSegment) draw()
+    }
+
+    const render = (elapsedMs = 0) => {
       context.clearRect(0, 0, containerWidth, containerHeight)
-      const scale = projection.scale()
-      const sf = scale / radius
+      const sf = Math.min(containerWidth, containerHeight) / 600
 
-      // Ocean fill
-      context.beginPath()
-      context.arc(cx, cy, scale, 0, 2 * Math.PI)
-      context.fillStyle = "#050A14"
-      context.fill()
+      const bg = context.createLinearGradient(0, 0, 0, containerHeight)
+      bg.addColorStop(0, "#030711")
+      bg.addColorStop(0.56, "#091425")
+      bg.addColorStop(1, "#0A1627")
+      context.fillStyle = bg
+      context.fillRect(0, 0, containerWidth, containerHeight)
 
-      // Outer amber glow ring
-      const grd = context.createRadialGradient(cx, cy, scale * 0.9, cx, cy, scale * 1.15)
-      grd.addColorStop(0, "rgba(245,158,11,0)")
-      grd.addColorStop(0.5, "rgba(245,158,11,0.04)")
-      grd.addColorStop(1, "rgba(245,158,11,0)")
-      context.beginPath()
-      context.arc(cx, cy, scale * 1.15, 0, 2 * Math.PI)
-      context.fillStyle = grd
-      context.fill()
+      const haze = context.createRadialGradient(
+        containerWidth * 0.52,
+        containerHeight * 0.38,
+        Math.min(containerWidth, containerHeight) * 0.04,
+        containerWidth * 0.52,
+        containerHeight * 0.38,
+        Math.max(containerWidth, containerHeight) * 0.66,
+      )
+      haze.addColorStop(0, "rgba(245,158,11,0.12)")
+      haze.addColorStop(1, "rgba(245,158,11,0)")
+      context.fillStyle = haze
+      context.fillRect(0, 0, containerWidth, containerHeight)
 
-      // Globe edge ring
+      const sweepX = ((elapsedMs * 0.045) % (containerWidth * 1.7)) - containerWidth * 0.35
+      const sweep = context.createLinearGradient(sweepX, 0, sweepX + containerWidth * 0.26, 0)
+      sweep.addColorStop(0, "rgba(245,158,11,0)")
+      sweep.addColorStop(0.5, "rgba(245,158,11,0.07)")
+      sweep.addColorStop(1, "rgba(245,158,11,0)")
+      context.fillStyle = sweep
+      context.fillRect(0, 0, containerWidth, containerHeight)
+
+      context.strokeStyle = "rgba(245,158,11,0.03)"
+      context.lineWidth = Math.max(0.5, 0.6 * sf)
+      const gridStep = Math.max(42, Math.floor(containerWidth / 15))
+      for (let x = 0; x <= containerWidth; x += gridStep) {
+        context.beginPath()
+        context.moveTo(x + 0.5, 0)
+        context.lineTo(x + 0.5, containerHeight)
+        context.stroke()
+      }
+      for (let y = 0; y <= containerHeight; y += gridStep) {
+        context.beginPath()
+        context.moveTo(0, y + 0.5)
+        context.lineTo(containerWidth, y + 0.5)
+        context.stroke()
+      }
+
+      const graticule = d3.geoGraticule().step([20, 20])
       context.beginPath()
-      context.arc(cx, cy, scale, 0, 2 * Math.PI)
-      context.strokeStyle = "rgba(245,158,11,0.22)"
-      context.lineWidth = 1.2 * sf
+      path(graticule())
+      context.strokeStyle = "rgba(245,158,11,0.08)"
+      context.lineWidth = 0.7 * sf
       context.stroke()
 
       if (!landFeatures) return
 
-      // Graticule
-      const graticule = d3.geoGraticule().step([20, 20])
-      context.beginPath()
-      path(graticule())
-      context.strokeStyle = "rgba(245,158,11,0.07)"
-      context.lineWidth = 0.7 * sf
-      context.globalAlpha = 1
-      context.stroke()
-
-      // Land outlines
       context.beginPath()
       landFeatures.features.forEach((f: any) => path(f))
-      context.strokeStyle = "rgba(245,158,11,0.28)"
+      context.fillStyle = "rgba(245,158,11,0.035)"
+      context.fill()
+
+      context.beginPath()
+      landFeatures.features.forEach((f: any) => path(f))
+      context.strokeStyle = "rgba(245,158,11,0.33)"
       context.lineWidth = 0.8 * sf
       context.stroke()
 
-      // Land dots (amber)
       allDots.forEach((dot) => {
         const proj = projection([dot.lng, dot.lat])
         if (!proj) return
         const [px, py] = proj
-        if (px < 0 || px > containerWidth || py < 0 || py > containerHeight) return
+        const alpha = 0.42 + 0.26 * (0.5 + 0.5 * Math.sin((dot.lng + dot.lat) * 0.12 + elapsedMs * 0.0014))
+        const r = (0.72 + 0.48 * (0.5 + 0.5 * Math.cos(dot.lat * 0.16))) * sf
         context.beginPath()
-        context.arc(px, py, 1.1 * sf, 0, 2 * Math.PI)
-        context.fillStyle = "rgba(245,158,11,0.65)"
+        context.arc(px, py, r, 0, 2 * Math.PI)
+        context.fillStyle = `rgba(245,158,11,${alpha.toFixed(3)})`
         context.fill()
       })
 
-      // Port markers — amber glow with ping animation
-      pingPhase += 0.018
-      PORTS.forEach((port) => {
-        // Visibility check: use dot product against current rotation
-        const rot = rotation as [number, number, number]
-        const lngRad = (port.lng - (-rot[0])) * Math.PI / 180
-        const latRad = port.lat * Math.PI / 180
-        const tiltRad = rot[1] * Math.PI / 180
-        const dotProduct = Math.cos(latRad + tiltRad) * Math.cos(lngRad)
-        if (dotProduct < 0) return // behind the globe
+      const routeTime = elapsedMs * 0.00011
+      ROUTES.forEach(([from, to], idx) => {
+        const a = PORT_BY_NAME.get(from)
+        const b = PORT_BY_NAME.get(to)
+        if (!a || !b) return
+        const primaryLane = HUB_NAMES.has(from) || HUB_NAMES.has(to)
 
+        const interp = d3.geoInterpolate([a.lng, a.lat], [b.lng, b.lat])
+        const samples = 64
+
+        const routePoints: Array<[number, number] | null> = []
+        for (let i = 0; i <= samples; i++) {
+          routePoints.push(projection(interp(i / samples)))
+        }
+
+        strokeSegmentedLine(routePoints, () => {
+          context.strokeStyle = "rgba(245,158,11,0.12)"
+          context.lineWidth = (primaryLane ? 1.15 : 0.9) * sf
+          context.lineCap = "round"
+          context.lineJoin = "round"
+          context.stroke()
+        })
+
+        strokeSegmentedLine(routePoints, () => {
+          context.strokeStyle = primaryLane ? "rgba(245,158,11,0.14)" : "rgba(245,158,11,0.09)"
+          context.lineWidth = (primaryLane ? 3.4 : 2.7) * sf
+          context.lineCap = "round"
+          context.lineJoin = "round"
+          context.stroke()
+        })
+
+        const windowT = 0.12
+        const headT = (routeTime + idx * 0.137) % 1
+
+        const drawTracerSegment = (startT: number, endT: number) => {
+          const segSamples = 20
+          const segmentPoints: Array<[number, number] | null> = []
+          for (let s = 0; s <= segSamples; s++) {
+            const t = startT + ((endT - startT) * s) / segSamples
+            segmentPoints.push(projection(interp(t)))
+          }
+
+          strokeSegmentedLine(segmentPoints, () => {
+            context.strokeStyle = "rgba(245,158,11,0.9)"
+            context.lineWidth = 1.95 * sf
+            context.lineCap = "round"
+            context.lineJoin = "round"
+            context.stroke()
+          })
+
+          strokeSegmentedLine(segmentPoints, () => {
+            context.strokeStyle = "rgba(245,158,11,0.26)"
+            context.lineWidth = 4.6 * sf
+            context.lineCap = "round"
+            context.lineJoin = "round"
+            context.stroke()
+          })
+        }
+
+        if (headT >= windowT) {
+          drawTracerSegment(headT - windowT, headT)
+        } else {
+          drawTracerSegment(0, headT)
+          drawTracerSegment(1 - (windowT - headT), 1)
+        }
+
+        const tp = projection(interp(headT))
+        if (tp) {
+          const [tx, ty] = tp
+          context.beginPath()
+          context.arc(tx, ty, 2.35 * sf, 0, 2 * Math.PI)
+          context.fillStyle = "rgba(245,158,11,0.95)"
+          context.fill()
+          context.beginPath()
+          context.arc(tx, ty, 3.7 * sf, 0, 2 * Math.PI)
+          context.strokeStyle = "rgba(251,191,36,0.6)"
+          context.lineWidth = 0.9 * sf
+          context.stroke()
+          context.beginPath()
+          context.arc(tx, ty, 6.1 * sf, 0, 2 * Math.PI)
+          context.strokeStyle = "rgba(245,158,11,0.32)"
+          context.lineWidth = 1.0 * sf
+          context.stroke()
+        }
+      })
+
+      pulsePhase += 0.024
+      PORTS.forEach((port) => {
         const proj = projection([port.lng, port.lat])
         if (!proj) return
         const [px, py] = proj
-        if (px < 0 || px > containerWidth || py < 0 || py > containerHeight) return
+        const isHub = HUB_NAMES.has(port.name)
 
-        // Outer ping ring — clamp radius to non-negative
-        const t = ((pingPhase + port.lat * 0.08) % (Math.PI * 2)) / (Math.PI * 2)
-        const pingR = Math.max(0.01, port.size * (1 + t * 2.2) * sf)
+        const t = ((pulsePhase + port.lat * 0.08) % (Math.PI * 2)) / (Math.PI * 2)
+        const pingR = Math.max(0.01, port.size * (1 + t * 2.1) * sf)
         const pingAlpha = Math.max(0, 0.35 * (1 - t))
         context.beginPath()
         context.arc(px, py, pingR, 0, 2 * Math.PI)
@@ -205,7 +369,6 @@ export default function WireframeDottedGlobe({
         context.lineWidth = 0.7 * sf
         context.stroke()
 
-        // Middle ring
         const midR = Math.max(0.01, port.size * 0.65 * sf)
         context.beginPath()
         context.arc(px, py, midR, 0, 2 * Math.PI)
@@ -213,13 +376,37 @@ export default function WireframeDottedGlobe({
         context.lineWidth = 0.8 * sf
         context.stroke()
 
-        // Core dot
+        if (isHub) {
+          context.beginPath()
+          context.arc(px, py, Math.max(0.01, port.size * 1.25 * sf), 0, 2 * Math.PI)
+          context.strokeStyle = "rgba(251,191,36,0.35)"
+          context.lineWidth = 0.9 * sf
+          context.stroke()
+        }
+
         const coreR = Math.max(0.01, port.size * 0.28 * sf)
         context.beginPath()
         context.arc(px, py, coreR, 0, 2 * Math.PI)
-        context.fillStyle = "#F59E0B"
+        context.fillStyle = isHub ? "#FBBF24" : "#F59E0B"
         context.fill()
+
+        context.font = `${Math.max(8, 9.5 * sf)}px ui-monospace, SFMono-Regular, Menlo, monospace`
+        context.fillStyle = isHub ? "rgba(251,191,36,0.78)" : "rgba(245,158,11,0.55)"
+        context.fillText(port.name.split(" ")[0].toUpperCase(), px + 6 * sf, py - 6 * sf)
       })
+
+      const vignette = context.createRadialGradient(
+        containerWidth / 2,
+        containerHeight / 2,
+        Math.min(containerWidth, containerHeight) * 0.34,
+        containerWidth / 2,
+        containerHeight / 2,
+        Math.max(containerWidth, containerHeight) * 0.72,
+      )
+      vignette.addColorStop(0, "rgba(0,0,0,0)")
+      vignette.addColorStop(1, "rgba(0,0,0,0.28)")
+      context.fillStyle = vignette
+      context.fillRect(0, 0, containerWidth, containerHeight)
     }
 
     const loadData = () => {
@@ -231,6 +418,13 @@ export default function WireframeDottedGlobe({
       }
 
       landFeatures = landData as any
+      projection.fitExtent(
+        [
+          [containerWidth * 0.04, containerHeight * 0.08],
+          [containerWidth * 0.96, containerHeight * 0.92],
+        ],
+        landFeatures,
+      )
 
       const localDots: Array<{ lng: number; lat: number }> = []
       for (const feature of landFeatures.features) {
@@ -245,40 +439,13 @@ export default function WireframeDottedGlobe({
       setLoaded(true)
     }
 
-    const timer = d3.timer(() => {
-      if (autoRotate) {
-        rotation[0] += 0.18
-        projection.rotate(rotation as [number, number, number])
-      }
-      render()
+    const timer = d3.timer((elapsed) => {
+      render(elapsed)
     })
-
-    // Drag to rotate
-    const handleMouseDown = (e: MouseEvent) => {
-      autoRotate = false
-      const [sx, sy] = [e.clientX, e.clientY]
-      const startRot = [...rotation]
-
-      const move = (me: MouseEvent) => {
-        rotation[0] = startRot[0] + (me.clientX - sx) * 0.35
-        rotation[1] = Math.max(-75, Math.min(75, startRot[1] - (me.clientY - sy) * 0.35))
-        projection.rotate(rotation as [number, number, number])
-      }
-      const up = () => {
-        document.removeEventListener("mousemove", move)
-        document.removeEventListener("mouseup", up)
-        setTimeout(() => { autoRotate = true }, 800)
-      }
-      document.addEventListener("mousemove", move)
-      document.addEventListener("mouseup", up)
-    }
-
-    canvas.addEventListener("mousedown", handleMouseDown)
     loadData()
 
     return () => {
       timer.stop()
-      canvas.removeEventListener("mousedown", handleMouseDown)
     }
   }, [width, height])
 
@@ -302,7 +469,7 @@ export default function WireframeDottedGlobe({
       )}
       <canvas
         ref={canvasRef}
-        className="w-full h-full cursor-grab active:cursor-grabbing"
+        className="w-full h-full"
         style={{ display: "block" }}
       />
     </div>

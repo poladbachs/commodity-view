@@ -33,7 +33,7 @@ commodity traders worldwide.
 - Free (3 analyses total) + $49/month (30 analyses/month, 1 user)
 
 **Phase 2 ($3k→$10k MRR): Ops Hub**
-- Team workspace via Clerk Organizations, ops found a violation, trader needs to see it, no more email chains
+- Team workspace, ops found a violation, trader needs to see it, no more email chains
 - Letter of Credit compliance checks, catch LC discrepancies before bank submission, saves thousands
 - Bill of Lading checks (port, date, quantity vs contract), wrong port or date on a BL delays payment, caught in seconds
 - Cross-document validation (all docs checked against each other, not just COA vs contract)
@@ -149,7 +149,7 @@ PATCH /api/deals/[id]
 ## Phase 2 — Ops Hub
 
 ### New features
-- Team workspace via Clerk Organizations, ops found a violation, trader needs to see it, no more email chains
+- Team workspace, ops found a violation, trader needs to see it, no more email chains
 - Letter of Credit compliance checks, catch LC discrepancies before bank submission, saves thousands
 - Bill of Lading checks (port, date, quantity vs contract), wrong port or date on a BL delays payment, caught in seconds
 - Cross-document validation (all docs checked against each other, not just COA vs contract)
@@ -213,7 +213,7 @@ POST /api/org/invite
 ## Phase 3 — Terminal
 
 ### New capabilities
-- Email ingestion (n8n) — documents arrive automatically, zero manual upload, documents arrive, system reads them, ops wakes up to action list
+- Email ingestion — documents arrive automatically, zero manual upload, documents arrive, system reads them, ops wakes up to action list
 - Historical analytics — failure patterns by supplier, commodity, origin, after a few months you know which supplier fails specs most often
 - Vessel tracking — MarineTraffic embed per deal, where is your cargo right now, live ETA updates
 - Market data layer — freight rates + commodity prices in context of your deals (Note for freight rates: Freight rates API costs money. Only build when customers ask for it specifically.)
