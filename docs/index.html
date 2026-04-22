@@ -492,13 +492,7 @@ const Chrome = ({ route, onNav, children, onTweaksToggle }) => {
 
         {/* Right: clock, org, user */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 18, fontFamily: 'var(--mono)', fontSize: 12.5, color: 'var(--ink-dim)', letterSpacing: '0.04em' }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--accent-2)', boxShadow: '0 0 8px var(--accent-2)' }} />
-            LIVE
-          </span>
-          <span>{hh} UTC</span>
-          <span style={{ color: 'var(--ink-faint)' }}>|</span>
-          <span>MERIDIAN TRADING LLC</span>
+          <span>MERCURIA ENERGY TRADING</span>
           <span style={{
             width: 32, height: 32, borderRadius: '50%',
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -1065,7 +1059,11 @@ const Landing = ({ onNav }) => {
       {/* Hero */}
       <section style={{
         position: 'relative',
-        padding: '56px 0 40px',
+        minHeight: 'clamp(760px, 80vh, 920px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '72px 0 64px',
         borderBottom: '1px solid var(--line)',
         overflow: 'hidden'
       }}>
@@ -1077,25 +1075,63 @@ const Landing = ({ onNav }) => {
           maskImage: 'radial-gradient(ellipse at 50% 40%, #000 40%, transparent 80%)'
         }} />
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 40,
-          maxWidth: 1440, margin: '0 auto', padding: '0 32px',
-          alignItems: 'center', position: 'relative'
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '0 max(20px, 2vw)',
+          zIndex: 0
+        }}>
+          <div style={{
+            width: 'min(96vw, 1520px)',
+            opacity: 0.36,
+            transform: 'translateY(-1%) scale(1.05)',
+            filter: 'saturate(1.02) contrast(1.04)'
+          }}>
+            <div style={{ aspectRatio: '9 / 5' }}>
+              <WorldMap width={900} height={500} />
+            </div>
+          </div>
+        </div>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 0,
+          background: 'radial-gradient(circle at 50% 44%, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.03) 16%, transparent 50%), radial-gradient(circle at 18% 34%, rgba(232,230,223,0.06) 0%, transparent 34%), linear-gradient(90deg, rgba(3,7,17,0.20) 0%, rgba(3,7,17,0.12) 20%, rgba(3,7,17,0.05) 50%, rgba(3,7,17,0.12) 80%, rgba(3,7,17,0.20) 100%)'
+        }} />
+        <div style={{
+          position: 'relative',
+          zIndex: 1,
+          maxWidth: 1440,
+          margin: '0 auto',
+          padding: '0 32px',
+          width: '100%'
         }}>
           {/* Left: text */}
-          <div>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 16, color: 'var(--accent)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 18, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{
+            width: 'min(100%, 840px)',
+            position: 'relative',
+            margin: '0 auto',
+            padding: '16px 0 0',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 28, color: 'var(--accent)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
               <span style={{ width: 24, height: 1, background: 'var(--accent)' }} />
               WHERE PHYSICAL TRADES ARE MANAGED
+              <span style={{ width: 24, height: 1, background: 'var(--accent)' }} />
             </div>
             <h1 style={{
               margin: 0, fontFamily: 'var(--serif)', fontWeight: 400,
-              fontSize: 'clamp(42px, 5vw, 72px)', lineHeight: 1.02,
+              fontSize: 'clamp(44px, 5.1vw, 78px)', lineHeight: 0.98,
               letterSpacing: '-0.015em', color: 'var(--ink)'
             }}>
               <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>One</em> Platform. <br/>Every <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Deal.</em> <br/> Every <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Decision.</em>
             </h1>
             <p style={{
-              marginTop: 22, maxWidth: 520, fontSize: 15.5, lineHeight: 1.55,
+              margin: '22px auto 0', maxWidth: 540, fontSize: 16, lineHeight: 1.6,
               color: 'var(--ink-dim)'
             }}>Upload your trade documents. Get a compliance verdict 
               in 30 seconds. Then manage deals, track shipments, 
@@ -1104,26 +1140,17 @@ const Landing = ({ onNav }) => {
 
             </p>
 
-            <div style={{ marginTop: 28, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: 28, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Btn variant="primary" size="lg" onClick={() => onNav('detail')}>
                 See an example deal →
               </Btn>
               <Btn variant="default" size="lg" onClick={() => onNav('deals')}>
                 Browse example deals
               </Btn>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)', marginLeft: 8, letterSpacing: '0.06em' }}>1ST ANALYSIS FREE · NO CARD
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)', marginLeft: 8, letterSpacing: '0.06em' }}>2 ANALYSES FREE · NO CARD
 
               </span>
             </div>
-          </div>
-
-          {/* Right: world map */}
-          <div style={{ position: 'relative' }}>
-            <CrossCorners style={{ background: 'var(--bg-1)', border: '1px solid var(--line)', padding: 16 }}>
-              <div style={{ aspectRatio: '9 / 5' }}>
-                <WorldMap width={900} height={500} />
-              </div>
-            </CrossCorners>
           </div>
         </div>
       </section>
@@ -1152,7 +1179,7 @@ const Landing = ({ onNav }) => {
                 'Plain-English explanation for every failed parameter',
                 'Audit-ready PDF export',
               ],
-              price: 'From $49/mo',
+              price: 'From $149/mo',
               state: 'ready'
             },
             {
@@ -1166,7 +1193,7 @@ const Landing = ({ onNav }) => {
                   'Every document checked against each other',
                   'Full audit log - who approved what and when',
                 ],
-              price: 'From $199/mo',
+              price: 'From $299/mo',
               state: 'soon'
             },
             {
@@ -1210,7 +1237,7 @@ const Landing = ({ onNav }) => {
                 <div style={{ marginTop: 20, paddingTop: 14, borderTop: '1px dashed var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink)', letterSpacing: '0.04em' }}>{p.price}</span>
                   {p.state === 'ready' ?
-                <Btn variant="default" size="sm" onClick={() => onNav('detail')}>Try now →</Btn> :
+                <Btn variant="primary" size="sm" onClick={() => onNav('detail')}>Try now free →</Btn> :
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)', letterSpacing: '0.08em' }}>JOIN WAITLIST</span>}
                 </div>
               </CrossCorners>
@@ -1239,7 +1266,7 @@ const Landing = ({ onNav }) => {
       <section style={{ padding: '64px 0', borderBottom: '1px solid var(--line)', background: 'var(--bg-1)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 32px' }}>
           <SectionTitle
-            eyebrow="Phase 1 · Mechanics · Available Now"
+            eyebrow="Phase 1 · Compliance · Available Now"
             title="Upload. Compare. Decide."
             right={<span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--accent-2)', letterSpacing: '0.12em' }}>● SHIPPING</span>}
           />
@@ -1259,7 +1286,7 @@ const Landing = ({ onNav }) => {
                 </div>
               )}
               <div style={{ marginTop: 4, paddingTop: 18, borderTop: '1px dashed var(--line)', display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)', letterSpacing: '0.06em' }}>FROM $49/MO · 1 USER</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)', letterSpacing: '0.06em' }}>FROM $149/MO · 50 analyses/MO</span>
                 <span style={{ color: 'var(--ink-faint)' }}>·</span>
                 <Btn variant="primary" size="sm" onClick={() => onNav('products')}>See the Document Intelligence →</Btn>
               </div>
@@ -1302,7 +1329,7 @@ const Landing = ({ onNav }) => {
       <section style={{ padding: '64px 0', borderBottom: '1px solid var(--line)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 32px' }}>
           <SectionTitle
-            eyebrow="Phase 2 · Coming Soon · Ops Hub"
+            eyebrow="Phase 2 · Ops Hub · Coming Soon"
             title="Four documents. One verdict. One team."
             right={<span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--accent)', letterSpacing: '0.12em' }}>● ROLLING SOON</span>}
           />
@@ -1364,9 +1391,9 @@ const Landing = ({ onNav }) => {
                 </div>
               ))}
               <div style={{ marginTop: 4, paddingTop: 18, borderTop: '1px dashed var(--line)', display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)', letterSpacing: '0.06em' }}>FROM $199/MO · 3 USERS</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)', letterSpacing: '0.06em' }}>FROM $299/MO</span>
                 <span style={{ color: 'var(--ink-faint)' }}>·</span>
-                <Btn variant="default" size="sm" onClick={() => onNav('products')}>See Ops Hub Features →</Btn>
+                <Btn variant="primary" size="sm" onClick={() => onNav('products')}>See Ops Hub Features →</Btn>
               </div>
             </div>
           </div>
@@ -1377,7 +1404,7 @@ const Landing = ({ onNav }) => {
       <section style={{ padding: '64px 0', borderBottom: '1px solid var(--line)', background: 'var(--bg-1)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 32px' }}>
           <SectionTitle
-            eyebrow="Phase 3 · Coming Soon · Terminal"
+            eyebrow="Phase 3 · Terminal· Coming Soon"
             title="Zero manual upload. Every signal, one tab."
             right={<span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--accent)', letterSpacing: '0.12em' }}>● ROLLING SOON</span>}
           />
@@ -1400,7 +1427,7 @@ const Landing = ({ onNav }) => {
               <div style={{ marginTop: 4, paddingTop: 18, borderTop: '1px dashed var(--line)', display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink)', letterSpacing: '0.06em' }}>FROM $499/MO · ENTERPRISE $1,500+/MO</span>
                 <span style={{ color: 'var(--ink-faint)' }}>·</span>
-                <Btn variant="default" size="sm" onClick={() => onNav('products')}>See Terminal Features →</Btn>
+                <Btn variant="primary" size="sm" onClick={() => onNav('products')}>See Terminal Features →</Btn>
               </div>
             </div>
 
@@ -1470,7 +1497,7 @@ const Landing = ({ onNav }) => {
         }}>
           <div>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--accent)', letterSpacing: '0.14em', marginBottom: 10 }}>START IN UNDER A MINUTE</div>
-            <h2 style={{ margin: 0, fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 44, lineHeight: 1.05 }}>Your first analysis is on us. The next mismatch won't be.
+            <h2 style={{ margin: 0, fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 44, lineHeight: 1.05 }}>Your first analysis is on us. Get the deal done.
 
             </h2>
           </div>
@@ -1624,7 +1651,7 @@ const Deals = ({ onOpenDeal, onNav }) => {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16, fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)', letterSpacing: '0.06em' }}>
         <span>SHOWING 1–{deals.length} OF {deals.length}</span>
-        <span>USAGE · 3 OF 3 FREE ANALYSES USED · UPGRADE TO STARTER $49/MO</span>
+        <span>USAGE · 2 OF 2 FREE ANALYSes USED · UPGRADE TO pro $149/MO</span>
       </div>
     </div>);
 
@@ -1665,7 +1692,7 @@ const DealNew = ({ onSubmit, onCancel }) => {
       {/* Form */}
       <CrossCorners style={{ background: 'var(--bg-1)', border: '1px solid var(--line)', padding: 28 }}>
         <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)', letterSpacing: '0.1em', marginBottom: 18 }}>
-          01 · DEAL METADATA
+          DEAL METADATA
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 20, marginBottom: 6 }}>
           <Field label="Deal Name" required>
@@ -1689,15 +1716,18 @@ const DealNew = ({ onSubmit, onCancel }) => {
           <Field label="Origin" required>
             <input value={form.origin} onChange={(e) => set('origin', e.target.value)} placeholder="e.g. Santos, Brazil" style={inputStyle} />
           </Field>
-          <Field label="Commodity">
-            <select value={form.commodity} onChange={(e) => set('commodity', e.target.value)} style={inputStyle}>
-              <option value="">Select commodity…</option>
-              {commodities.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
+          <Field label="Commodity" required>
+            <input
+              type="text"
+              value={form.commodity}
+              onChange={(e) => set('commodity', e.target.value)}
+              placeholder="e.g. Brent Crude"
+              style={inputStyle}
+            />
           </Field>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 20 }}>
-          <Field label="Quantity">
+          <Field label="Quantity" required>
             <input value={form.quantity} onChange={(e) => set('quantity', e.target.value)} placeholder="50,000 MT ±5%" style={inputStyle} />
           </Field>
         </div>
@@ -1707,18 +1737,6 @@ const DealNew = ({ onSubmit, onCancel }) => {
       <div style={{ marginTop: 28, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
         <UploadZone label="COA · Certificate of Analysis" sub="PDF · up to 20MB" file={coa} onFile={setCoa} hint="SGS, Intertek, Cotecna, lab report…" />
         <UploadZone label="Contract" sub="PDF · up to 20MB" file={contract} onFile={setContract} hint="GAFTA, FOSFA, or custom sales contract" />
-      </div>
-
-      {/* Rules preview */}
-      <div style={{ marginTop: 20, background: 'var(--bg-1)', border: '1px solid var(--line)', padding: 16, display: 'flex', alignItems: 'center', gap: 14 }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--accent)', letterSpacing: '0.1em' }}>RULES ENGINE</div>
-        <div style={{ fontSize: 12.5, color: 'var(--ink-dim)' }}>
-          {form.commodity ?
-          <>Ready to run <span style={{ color: 'var(--ink)' }}>{form.commodity.toUpperCase()}</span> ruleset — {ruleCount(form.commodity)} checks incl. moisture, protein, damaged kernels, aflatoxin, origin.</> :
-
-          <>Pick a commodity above to preview the ruleset. Default ruleset applies 7 base checks.</>
-          }
-        </div>
       </div>
 
       {/* Footer actions */}
@@ -2342,7 +2360,7 @@ const FEATURES = [
     eyebrow: 'AI EXTRACTION',
     title: 'Any COA, any format — no templates.',
     desc: 'Drop in a PDF from SGS, Intertek, Cotecna, or a private lab. The extractor reads GAFTA, FOSFA, and ISO-style certificates without configuration. Every number it finds points back to a page and clause.',
-    bullets: ['Scans and text PDFs', '11 default commodity rulesets', 'Every value traceable to source'],
+    bullets: ['Scans and text PDFs', 'Any certificate format', 'Every value traceable to source'],
     demo: 'extract'
   },
   {
@@ -2351,8 +2369,8 @@ const FEATURES = [
     availColor: 'var(--accent-2)',
     eyebrow: 'RULES ENGINE',
     title: 'Deterministic verdict. Not a vibe.',
-    desc: 'Extraction is AI. Compliance is not. Every parameter runs through a rules engine with explicit tolerances — moisture, protein, oil, damaged kernels, aflatoxin — same answer every time. No hallucinations, no interpretation.',
-    bullets: ['Tolerance-aware checks', 'Per-commodity rulesets', 'Override any value with one click'],
+    desc: 'Extraction is AI. Compliance is not. Every parameter runs through a rules engine based on your contract specs — moisture, protein, oil, damaged kernels — same answer every time. No hallucinations, no interpretation.',
+    bullets: ['Tolerance-aware checks', 'Contract-driven rules — no manual setup', 'Override any value with one click'],
     demo: 'rules'
   },
   {
@@ -2797,7 +2815,7 @@ const FeatureBlock = ({ feat, index, onNav }) => {
             </ul>
             {feat.phase === 'PHASE 1' ? (
               <div style={{ marginTop: 26 }}>
-                <Btn variant="primary" size="lg" onClick={() => onNav('detail')}>See it on a real deal →</Btn>
+                <Btn variant="primary" size="lg" onClick={() => onNav('deals')}>See it on example deals →</Btn>
               </div>
             ) : (
               <div style={{ marginTop: 26, display: 'flex', gap: 10, alignItems: 'center' }}>
@@ -2825,21 +2843,21 @@ const Products = ({ onNav }) => {
   return (
     <div>
       {/* Hero */}
-      <section style={{ padding: '64px 0 48px', borderBottom: '1px solid var(--line)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '64px 0 48px', borderBottom: '1px solid var(--line)', position: '', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           backgroundImage: 'linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
           maskImage: 'radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%)'
         }} />
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative' }}>
-          <h1 style={{ margin: 0, fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(42px, 5vw, 72px)', lineHeight: 1.02, letterSpacing: '-0.015em', maxWidth: 900 }}>
-            Every <em style={{ color: 'var(--accent)' }}>capability.</em> <br/>Every <em style={{ color: 'var(--accent)' }}>phase.</em>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', textAlign: 'center' }}>
+          <h1 style={{ margin: '0 auto', fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(42px, 5vw, 72px)', lineHeight: 1.02, letterSpacing: '-0.015em', maxWidth: 900 }}>
+            From <em style={{ color: 'var(--accent)' }}>Compliance</em> <br/> to <em style={{ color: 'var(--accent)' }}>Intelligence.</em> <br/> Get the <em style={{ color: 'var(--accent)' }}> Deal</em> Done.
           </h1>
-          <p style={{ marginTop: 20, maxWidth: 620, fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink-dim)' }}>
+          <p style={{ margin: '20px auto 0', maxWidth: 620, fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink-dim)' }}>
             Start with document compliance. Grow into the ops hub for your trading team. End with a full terminal — vessels, market data, counterparty intelligence. Scroll through every feature below.
           </p>
-          <div style={{ marginTop: 32, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <div style={{ marginTop: 32, display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
             <Btn variant="primary" size="lg" onClick={() => onNav('detail')}>See an example deal →</Btn>
             <Btn variant="default" size="lg" onClick={() => onNav('pricing')}>See pricing</Btn>
           </div>
@@ -2857,7 +2875,7 @@ const Products = ({ onNav }) => {
           <div>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--accent)', letterSpacing: '0.14em', marginBottom: 10 }}>READY · UNDER ONE MINUTE</div>
             <h2 style={{ margin: 0, fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 44, lineHeight: 1.05 }}>
-              Phase 1 is live. The rest is coming. You get in now.
+              Phase 1 is live. The rest is coming. <br/>Get the deal done now.
             </h2>
           </div>
           <div>
@@ -2866,7 +2884,7 @@ const Products = ({ onNav }) => {
               <Btn variant="default" size="lg" onClick={() => onNav('pricing')}>See pricing</Btn>
             </div>
             <div style={{ marginTop: 18, fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--ink-faint)', letterSpacing: '0.06em' }}>
-              NO CREDIT CARD · 3 FREE ANALYSES · CANCEL ANYTIME
+              NO CREDIT CARD · 1 FREE ANALYSIS · CANCEL ANYTIME
             </div>
           </div>
         </div>
@@ -2892,7 +2910,7 @@ const PLANS = [
     ctaVariant: 'default',
     ctaRoute: 'detail',
     users: '1 user',
-    analyses: '1st analysis free',
+    analyses: '2 analyses free',
     highlight: false,
     available: true,
     perks: [
@@ -2904,38 +2922,38 @@ const PLANS = [
     ]
   },
   {
-    key: 'starter',
-    name: 'Starter',
-    price: '$49',
+    key: 'pro',
+    name: 'Pro',
+    price: '$149',
     cadence: 'per month',
     tagline: 'For the ops manager running real deals, alone.',
-    cta: 'Start on Starter',
+    cta: 'Start on Pro',
     ctaVariant: 'primary',
     ctaRoute: 'new',
     users: '1 user',
-    analyses: '30 analyses / mo',
+    analyses: '50 analyses / mo',
     highlight: true,
     available: true,
     perks: [
       'Everything in Free',
-      '30 analyses a month',
+      '50 analyses a month',
     ]
   },
   {
-    key: 'growth',
-    name: 'Growth',
-    price: '$199',
+    key: 'team',
+    name: 'Team',
+    price: '$299',
     cadence: 'per month',
     tagline: 'For the ops desk, the trader, and the CFO.',
     cta: 'Join waitlist',
     ctaVariant: 'default',
     ctaRoute: null,
     users: '3 users',
-    analyses: '100 analyses / mo',
+    analyses: '150 analyses / mo',
     highlight: false,
     available: false,
     perks: [
-      'Everything in Starter',
+      'Everything in Pro',
       'Team workspace',
       'Letter of Credit checks',
       'Bill of Lading checks',
@@ -2945,8 +2963,8 @@ const PLANS = [
     ]
   },
   {
-    key: 'pro',
-    name: 'Professional',
+    key: 'business',
+    name: 'Business',
     price: '$499',
     cadence: 'per month',
     tagline: 'For trading firms running the full ops hub and terminal.',
@@ -2954,7 +2972,7 @@ const PLANS = [
     ctaVariant: 'default',
     ctaRoute: null,
     users: '10 users',
-    analyses: '300 analyses / mo',
+    analyses: '500 analyses / mo',
     highlight: false,
     available: false,
     perks: [
@@ -2997,7 +3015,7 @@ const COMPARE_ROWS = [
     { label: 'Violations panel + reasons', vals: [true, true, true, true, true] },
     { label: 'Comparison table', vals: [true, true, true, true, true] },
     { label: 'Audit-ready PDF export', vals: [true, true, true, true, true] },
-    { label: 'Analyses per month', vals: ['1', '30', '100', '300', 'unlimited'] },
+    { label: 'Analyses per month', vals: ['2', '50', '150', '500', 'unlimited'] },
     { label: 'Users in workspace', vals: ['1', '1', '3', '10', '20+'] }
   ]},
   { group: 'OPS HUB · PHASE 2', rows: [
@@ -3017,13 +3035,6 @@ const COMPARE_ROWS = [
     { label: 'Sanctions screening', vals: [false, false, false, false, true] },
     { label: 'Counterparty intelligence', vals: [false, false, false, false, true] }
   ]},
-  { group: 'SUPPORT · COMMERCIAL', rows: [
-    { label: 'Email support', vals: [false, true, true, true, true] },
-    { label: 'Priority extraction queue', vals: [false, true, true, true, true] },
-    { label: 'Dedicated account manager', vals: [false, false, false, true, true] },
-    { label: 'Custom SLAs', vals: [false, false, false, false, true] },
-    { label: 'White-label reports', vals: [false, false, false, false, true] }
-  ]}
 ];
 
 const Pricing = ({ onNav }) => {
@@ -3080,14 +3091,7 @@ const Pricing = ({ onNav }) => {
                     height: 3, background: 'var(--accent)'
                   }} />
                 )}
-                {p.highlight && (
-                  <div style={{
-                    position: 'absolute', top: 8, right: 12,
-                    fontFamily: 'var(--mono)', fontSize: 9.5, color: 'var(--accent)',
-                    letterSpacing: '0.14em', padding: '2px 6px',
-                    border: '1px solid var(--accent)', background: 'rgba(245,165,36,0.08)'
-                  }}>MOST POPULAR</div>
-                )}
+                
                 <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: p.available ? 'var(--accent-2)' : 'var(--accent)', letterSpacing: '0.1em' }}>
                   ● {p.available ? 'AVAILABLE' : 'SOON'}
                 </div>
@@ -3170,13 +3174,13 @@ const Pricing = ({ onNav }) => {
       {/* FAQ strip (short) */}
       <section style={{ padding: '56px 0', borderBottom: '1px solid var(--line)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 32px' }}>
-          <SectionTitle eyebrow="Questions" title="The short version." />
+          <SectionTitle eyebrow="Questions" title="Essentials." />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 22 }}>
             {[
               { q: 'What counts as an analysis?', a: 'One COA + one contract, run through the extractor and rules engine, produces one analysis. Re-running after updating a document doesn\'t double-count within 24 hours.' },
               { q: 'Do I need to configure templates?', a: 'No. The extractor reads GAFTA, FOSFA, ISO-style certificates, and most lab reports without setup. Paste the PDF, get the verdict.' },
               { q: 'Is my data used to train AI?', a: 'Never. Your documents are used to answer your queries, and only your queries. We use Claude API with training opt-out enforced at the account level.' },
-              { q: 'What about EU VAT?', a: 'Clerk Billing doesn\'t handle VAT, so Starter+ uses Stripe Tax directly. EU customers see VAT added at checkout, invoices are compliant.' },
+              { q: 'What about EU VAT?', a: 'EU customers see VAT added at checkout, invoices are compliant.' },
             ].map((f, i) => (
               <div key={i} style={{ borderTop: '1px solid var(--line)', paddingTop: 16 }}>
                 <div style={{ fontFamily: 'var(--serif)', fontSize: 20, color: 'var(--ink)', lineHeight: 1.2 }}>{f.q}</div>
@@ -3193,7 +3197,7 @@ const Pricing = ({ onNav }) => {
           <div>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--accent)', letterSpacing: '0.14em', marginBottom: 10 }}>START FREE · NO CARD</div>
             <h2 style={{ margin: 0, fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 44, lineHeight: 1.05 }}>
-              First analysis on us. The next mismatch won't be.
+              First analysis is on us. Get the deal done.
             </h2>
           </div>
           <div>
