@@ -224,7 +224,7 @@ POST /api/org/invite
 ### Phase 3 Pages
 /terminal
 Content: dense dashboard of all active deals. Each row: Deal Name | Commodity | Buyer | Doc Status (colored badges) | Vessel ETA | Market Price | Flags. Click row to expand inline preview or navigate to /deals/[id].
-Layout: full width dense table. Dark background. Sticky header with filters (by commodity, by status, by flag). Market data ticker strip at top showing freight rates and commodity prices. Alert banner if any deal has critical flags.
+Layout: full width dense table. Sticky header with filters (by commodity, by status, by flag). Market data ticker strip at top showing freight rates and commodity prices. Alert banner if any deal has critical flags.
 
 /analytics
 Content: failure pattern intelligence across all historical deals. Charts: top 5 failing parameters, failure rate by supplier, failure rate by commodity, failure rate by origin. All filterable by date range and commodity type.
