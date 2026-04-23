@@ -36,11 +36,16 @@ CommodityAI (YC W24, San Francisco) is building autonomous agents for commodity 
 
 CommodityOps is not trying to be CommodityAI.
 
-CommodityAI sells to large commodity enterprises through enterprise sales cycles. They build autonomous agents that replace human decision-making in operational workflows. Their model requires trust in AI making consequential decisions autonomously.
+CommodityAI sells to commodity enterprises through enterprise sales cycles. They build autonomous agents that replace human decision-making in operational workflows. Their model requires trust in AI making consequential decisions autonomously.
 
-CommodityOps is self-serve, affordable, and built on a different philosophy: AI reads, humans decide. Every compliance verdict is deterministic, traceable, and requires human sign-off. For a trading firm making $500k decisions on every shipment, this is not a limitation — it is a legal and operational requirement. Banks, regulators, and counterparties require a human accountability chain. CommodityAI's autonomous model struggles to satisfy that requirement in compliance-critical workflows.
+CommodityOps is self-serve, affordable, and built on a different philosophy: it gives humans better 
+information to make the call themselves: AI reads, humans decide. Every compliance verdict is deterministic, traceable, and requires human sign-off. For a trading firm making $500k decisions on every shipment, this is not a limitation — it is a legal and operational requirement. Banks, regulators, and counterparties require a human accountability chain. CommodityAI's autonomous model struggles to satisfy that requirement in compliance-critical workflows by replacing human decision-making with autonomous agents.
 
-The gap CommodityOps fills: thousands of mid-size physical commodity trading firms worldwide — 10 to 200 employees, trading actively, operating manually — who cannot afford CommodityAI's enterprise model and will never get a sales call from them. These firms need self-serve access to the same intelligence layer, at a price that makes sense for their scale, live in minutes.
+The gap CommodityOps fills: any physical commodity trading firm that 
+wants self-serve access to the same intelligence layer — no sales call, 
+no implementation project, live in minutes. CommodityAI sells through enterprise sales 
+cycles. CommodityOps has a pricing page. The customers overlap. 
+The philosophy does not.
 
 ---
 
@@ -334,11 +339,11 @@ Rules: same input always produces same output. Users can override any extracted 
 ✓ MCPs: Stitch + 21dev in Antigravity
 ✓ .env.local with all keys
 
-1. Backend    — Real Claude API extraction. Real rule engine. Zero mock data.
-2. Design     — Stitch generates full design system for all phases at once.
-3. UI         — Claude Code builds Phase 1 UI from Stitch screens.
-4. Spline     — 3D globe with trade routes. Embed in home hero.
-5. Billing    — Clerk Billing. Free + Pro live.
+1. Backend    — Real Claude API extraction. Convex DB with full RLS.
+2. Design     — Claude Design generates full design system for all phases.
+3. UI         — Claude Code builds Phase 1 UI from Claude Design system and high-fidelity Claude Design prototype.
+4. Billing    — Clerk Billing. Free + Pro live. Make sure Clerk Billing and Stripe are properly configured.
+5. Security   — Ensure Convex RLS is properly configured with role-based access control and data encryption.
 6. Deploy     — Vercel. commodityops.com live.
 7. Validate   — 3 real ops managers use it. Do not build Phase 2 before this.
 8. Marketing  — Pomelli + Remotion + NotebookLM. Not before Step 7.
