@@ -1,193 +1,150 @@
 # CommodityOps
 ## Product Requirements Document
-**Version 4.0 | April 2026 | Confidential**
+**Version 5.0 | April 2026 | Confidential**
 
 ---
 
 ## What Is CommodityOps
 
-CommodityOps is the operations platform for physical commodity trading firms.
+CommodityOps is the self-serve AI platform that automates physical commodity trade operations.
 
-Physical commodity trading is the buying, selling, and movement of real goods — oil, grain, metals, soft commodities — across the world. Every trade involves a chain of documents, counterparties, vessels, banks, and inspectors. The ops team at a trading firm is the function that manages all of it: checking documents, coordinating shipments, ensuring payment is released correctly, and keeping the desk informed.
+Every physical commodity trade moves through a lifecycle: confirmation, document validation, shipment, delivery. At every step documents arrive — trade confirmations, COAs, contracts, Letters of Credit, Bills of Lading, invoices. Ops teams process these manually today. Reading emails. Opening PDFs. Cross-checking spreadsheets. Chasing exceptions. Hours of work per shipment. Every day.
 
-CommodityOps is where that work happens. Not in email. Not in spreadsheets. Here.
-
----
-
-## The Problem — Full Lifecycle
-
-A physical commodity trade moves through three critical checkpoints before money changes hands:
-
-**Pre-shipment:** The Certificate of Analysis (COA) arrives from the inspection company. It shows the quality of the cargo — moisture, protein, oil content, contamination levels. The ops manager must check every parameter against the contract specs. One violation — moisture at 14.2% against a contract maximum of 14.0% — means the cargo fails. That failure, if missed, costs $50k–$500k in renegotiation, rejection, or cargo disputes.
-
-**Loading:** The Letter of Credit (LC) arrives from the bank. The Bill of Lading (BL) arrives from the shipping agent. The ops manager must check both against the contract and against each other. Wrong port name on the BL, expired LC presentation deadline, missing document requirement in clause 46A — any one of these gets the LC rejected by the bank. Each rejection costs bank fees, delays payment by weeks, and strains counterparty relationships.
-
-**Arrival:** The cargo arrives. Inspection report vs COA vs contract. Did what arrived match what was certified? If not, who pays for the shortfall?
-
-At every checkpoint, the ops team is doing this manually. Opening PDFs. Cross-referencing spreadsheets. Flagging issues by email. 2–4 hours per shipment. No audit trail. No visibility for the trader or CFO. No intelligence on patterns across deals.
-
-CommodityOps automates every checkpoint and layers intelligence on top of every deal.
+CommodityOps automates that entire workflow. Documents arrive by email, Claude reads them, extracts structured data, validates against contract terms, flags exceptions, and presents the result for human decision. The ops team approves or rejects. The lifecycle moves forward. No manual work. No missed exceptions. Full audit trail.
 
 ---
 
 ## The Market
 
-CommodityAI (YC W24, San Francisco) is building autonomous agents for commodity operations — agents that read documents, update systems, and execute workflows with minimal human involvement. They are proving the market is real and the pain is severe. Their customers manage thousands of shipments per month and spend 70% of their ops team's time on administrative work.
+CommodityAI (YC W24) is building agentic AI for commodity companies — purpose-built AI that automates the busywork in commodity operations. They own execution throughout commercial, logistics, and finance operations. Their trade lifecycle: trade confirmation captured → COA validated → LC validated → trade confirmed → shipment dispatched → in transit → delivered → invoiced. They are YC-backed, SOC 2 certified, connected to CTRMs, ERPs, Teams, WhatsApp, and industry data sources.
 
-CommodityOps is not trying to be CommodityAI.
+CommodityOps is not trying to be different. CommodityOps is building the same thing — accessible to everyone.
 
-CommodityAI sells to commodity enterprises through enterprise sales cycles. They build autonomous agents that replace human decision-making in operational workflows. Their model requires trust in AI making consequential decisions autonomously.
+CommodityAI sells through enterprise sales cycles. Book a call. Implementation project. Months to go live. CommodityOps has a pricing page. Sign up. Connect your email. Live today. Same customers. Same operations. Different door.
 
-CommodityOps is self-serve, affordable, and built on a different philosophy: it gives humans better 
-information to make the call themselves: AI reads, humans decide. Every compliance verdict is deterministic, traceable, and requires human sign-off. For a trading firm making $500k decisions on every shipment, this is not a limitation — it is a legal and operational requirement. Banks, regulators, and counterparties require a human accountability chain. CommodityAI's autonomous model struggles to satisfy that requirement in compliance-critical workflows by replacing human decision-making with autonomous agents.
-
-The gap CommodityOps fills: any physical commodity trading firm that 
-wants self-serve access to the same intelligence layer — no sales call, 
-no implementation project, live in minutes. CommodityAI sells through enterprise sales 
-cycles. CommodityOps has a pricing page. The customers overlap. 
-The philosophy does not.
+Every compliance verdict in CommodityOps is deterministic — pure logic against the firm's exact contract terms, not AI guessing. Same input always produces same output. Every verdict traceable. Every auditor can verify the logic. This is a stronger trust argument than any black box agent for decisions where $500k is on the line.
 
 ---
 
-## Three Moats
+## Three Layers
 
-**Moat 1 — Self-serve distribution**
+### Layer 1 — Trade Capture
+**Plans: Free + Pro ($199/mo)**
+**Self-sufficient for:** trade confirmation capture, COA and contract compliance
 
-CommodityAI sells through enterprise sales. They cannot go self-serve without destroying their sales motion and repricing their entire business. CommodityOps is self-serve by design. Any ops manager at any trading firm anywhere in the world signs up, pays $149/month, and gets a compliance result on their first real document in under 30 seconds. No sales call. No implementation project. No procurement process. This distribution advantage is structural — CommodityAI cannot copy it.
+**What it does:**
+- Email arrives or PDF uploaded → Claude reads it → extracts trade confirmation (commodity, grade, quantity, price, counterparty, delivery terms) → structured editable card presented → user edits any field inline if needed → Approve or Reject → on Approve deal record created, lifecycle starts, activity feed logs action
+- COA arrives via email or upload → Claude extracts every quality parameter → deterministic rule engine compares against contract specs → exceptions flagged → user sees full compliance result → Accept cargo or Reject cargo → decision logged with timestamp
+- Contract arrives via email or upload → Claude extracts all specific terms and tolerances → if contract references standard terms (GAFTA, FOSFA, ICE, CME) Claude consults built-in reference library and applies deal-specific exceptions on top → stored as deal-specific validation rules applied to every subsequent document for that deal automatically → low confidence values flagged for user review
+- Email ingestion from day one — documents arrive from any sender, Claude classifies and routes to correct deal automatically. Manual upload available as fallback.
+- Activity feed per deal: every AI action and every human decision logged chronologically with firm name, user, and timestamp
 
-**Moat 2 — Human-in-the-loop compliance philosophy**
-
-CommodityAI positions AI as the operator — autonomous agents doing the work. CommodityOps positions AI as the reader — Claude extracts, code decides, humans approve. The compliance verdict is always deterministic TypeScript logic, never an AI opinion. Every value is traceable to its source document. Every decision is logged with a human timestamp.
-
-This is not a technical limitation. It is a deliberate product philosophy. In physical commodity trading, compliance decisions carry legal weight. A CFO signing off on a payment needs to point to a human-reviewed document chain — not an AI agent's conclusion. CommodityOps is built for that requirement. CommodityAI is not.
-
-**Moat 3 — Proprietary data that compounds**
-
-Every deal run through CommodityOps stores structured data: which supplier, which commodity, which parameter failed, which origin, which trade lane. After 12 months across hundreds of firms, CommodityOps knows things no competitor can access without replicating the entire user base:
-
-- Brazilian soybean suppliers fail moisture specs 34% of the time in Q3
-- LC rejections cluster around specific UCP 600 clause types
-- Certain origins have systematic gaps between certified and actual quality
-
-This intelligence surfaces in Phase 3 as historical analytics — telling firms which suppliers carry the most risk, which trade lanes are most dispute-prone, which parameters to negotiate harder in future contracts. A competitor starting today cannot replicate 12 months of structured commodity trade data. This moat builds silently with every deal and becomes more valuable the longer a firm uses the platform.
+**How it works:**
+- Claude reads any email or PDF — no templates, no setup
+- System prompt includes GAFTA/FOSFA/ICE/CME reference library — Claude consults when contract references standard terms, applies deal-specific exceptions on top
+- Deterministic rule engine runs every compliance verdict — same input always same output, fully traceable
+- Every extracted field editable before approval — low confidence values highlighted
+- n8n webhook receives emails, Claude classifies document type, routes to correct deal
+- Convex stores every action with firm name, timestamp, and user ID
 
 ---
 
-## Product — Three Phases
+### Layer 2 — Shipment Operations
+**Plans: Team ($499/mo)**
+**Self-sufficient for:** full document package, complete trade lifecycle from confirmation to invoiced
 
-### Phase 1 — Document Intelligence
-**The wedge. Automates the pre-shipment checkpoint.**
+**What it does:**
+- LC arrives via email → Claude extracts all LC terms → deterministic rule engine checks LC port vs contract port, LC quantity vs contract quantity, LC dates vs contract delivery window, LC document requirements vs available documents → exceptions flagged before bank submission → Approve or Reject
+- BL arrives via email → Claude extracts vessel, port, loading date, quantity → checked against LC (port matches, shipment date before LC deadline, quantity matches) and against contract simultaneously → exceptions flagged → Approve or Reject
+- Invoice arrives via email → Claude extracts amounts, quantities, counterparty → validated against contract price and delivered quantity → exceptions flagged → Approve or Reject
+- Full trade lifecycle tracked automatically: confirmed → dispatched → in transit → delivered → invoiced
+- Activity feed updated continuously — every document processed, every exception flagged, every human decision logged
 
-Ops manager uploads COA and contract. Claude API extracts every quality parameter from both documents — any PDF format, any certificate issuer, no templates, no setup. A deterministic rule engine compares every extracted value against contract specs. COMPLIANT or NON_COMPLIANT verdict in under 30 seconds with full source traceability. Audit-ready PDF export.
+**How it works:**
+- Same Claude extraction pattern as Layer 1, different prompts per document type
+- Deterministic cross-document rule engine — BL port vs LC port vs contract port, all checked simultaneously
+- Lifecycle status updates automatically as each document is processed and approved
 
-This is not a nice to have. Every physical trade requires this check. It happens manually at every firm, every day. CommodityOps replaces the manual process with something faster, more accurate, and fully traceable.
+---
 
-**Pricing:**
-| Plan | Price | Limit |
+### Layer 3 — Connected Intelligence
+**Plans: Business ($999/mo) + Enterprise ($2,500+/mo)**
+**Self-sufficient for:** zero manual work, market-aware operations, counterparty risk
+
+**What it does:**
+- Live vessel tracking — vessel position and ETA per deal via MarineTraffic, vessel IMO extracted automatically from BL
+- Market intelligence per deal — current commodity price vs contract price, current freight rate vs locked rate → Claude generates position summary: "Market moved $40/MT above your contract. Your position: +$2M. Freight eating $150k of that gain."
+- Counterparty screening — sanctions checked via OpenSanctions API, risk signals and news via Claude web search — run automatically on every new counterparty
+- CTRM/ERP integration — Enterprise only, deal data flows into existing systems automatically
+- SSO/SAML — Enterprise only via Clerk
+
+---
+
+## Pricing
+
+| Plan | Price | Includes |
 |---|---|---|
-| Free | $0 | 2 analyses lifetime |
-| Pro | $149/month | 50 analyses/month |
-
----
-
-### Phase 2 — Ops Hub
-**The moat begins. Automates loading checkpoint. Creates switching costs.**
-
-Expands to the full shipment document package. LC compliance checks catch discrepancies before bank submission. BL checks catch port, date, and quantity mismatches before loading. Cross-document validation checks all four documents against each other simultaneously — finding the conflicts that manual checking always misses because nobody reads four PDFs side by side.
-
-Team workspace brings the entire commercial team — ops, trader, CFO — onto the same deal view. No more email chains. Trader sees compliance status in real time. CFO has audit log on demand.
-
-Every deal now stores a complete structured record: who checked what, when, what the result was, what was overridden, who approved. This is where Moat 3 starts building.
-
-**Pricing:**
-| Plan | Price | Limit |
-|---|---|---|
-| Team | $349/month | Unlimited analyses |
-| Business | $699/month | Unlimited analyses + Phase 3 features |
-
----
-
-### Phase 3 — Terminal
-**The lock-in. Automates arrival checkpoint. Surfaces intelligence.**
-
-Documents arrive automatically via email ingestion — suppliers email COAs, banks send LCs, shipping agents drop BLs. The system classifies each document, matches it to the correct deal, and runs the analysis. The ops team wakes up to an action list, not an inbox.
-
-Vessel tracking shows live cargo position and ETA per deal. Market data surfaces current prices and freight rates in context of each active deal — not raw numbers, but intelligence: "Your cargo locked at $380/MT, current market is $420/MT, you are $2M in the money on this deal." Claude generates the natural language summary. The math is always deterministic code.
-
-Historical analytics surface failure patterns across all deals — which supplier fails most, which commodity has the worst quality consistency, which trade lane carries the most dispute risk. This is Moat 3 fully materialised. The longer a firm uses CommodityOps, the smarter these patterns become. Switching away means losing this institutional intelligence entirely.
-
-Counterparty intelligence and sanctions screening are checked on every new counterparty — OFAC, UN, EU blacklists via OpenSanctions, plus news and risk signals via Claude web search. Enterprise firms get API access for CTRM/ERP integration — their system pushes deals in automatically.
-
-**Pricing:**
-| Plan | Price | Features |
-|---|---|---|
-| Business | $699/month | Full Phase 2 + all Phase 3 features |
-| Enterprise | $2,000+/month | Business + API access + custom onboarding |
+| Free | $0 | 2 analyses lifetime — Layer 1 trial |
+| Pro | $199/mo | Full Layer 1 — Trade Capture |
+| Team | $499/mo | Layer 1 + 2 — Shipment Operations |
+| Business | $999/mo | Full platform — Layer 1 + 2 + 3 |
+| Enterprise | $2,500+/mo | Everything + CTRM/ERP + SSO |
 
 ---
 
 ## Pages
 
-### Phase 1
+### All Phases
 
 **/home**
-Content: Full product vision across all three phases — not Phase 1 only. Headline: "WHERE PHYSICAL TRADES ARE MANAGED". Subheadline: "One Platform. Every Deal. Every Decision." Subtext: "Upload your trade documents. Get a compliance verdict in 30 seconds. Then manage deals, track shipments, and act on market and counterparty intelligence without switching tabs." Primary CTA: "SEE AN EXAMPLE DEAL". Secondary CTA: "BROWSE EXAMPLE DEALS". Stats row: 30s / 4 doc types / $149. Phase roadmap cards: The Wedge / The Moat / The Infrastructure. Mechanics section: Upload. Compare. Decide. with terminal output demo. CTA: "Your first analysis is on us. The next mismatch won't be." TradingView-style ticker at top. TradingView-style footer. Pricing section shows Free + Pro only — not Phase 2 or 3 pricing.
-Layout: Animated globe with live trade routes as hero background (Spline). Centered hero text. Full-width sections below.
-Internal: Never render competitor names, MRR targets, or moat descriptions in any UI component.
+Hero: "WHERE PHYSICAL TRADES ARE MANAGED". Subheadline: "One Platform. Every Deal. Every Decision." Subtext: "Upload your trade documents. Get a compliance verdict in 30 seconds. Then manage deals, track shipments, and act on market and counterparty intelligence without switching tabs." Primary CTA: SEE AN EXAMPLE DEAL. Secondary CTA: BROWSE EXAMPLE DEALS. TradingView-style ticker at top showing live commodity prices. Animated globe with trade routes as hero background (Spline). Below fold: trade lifecycle visualization (confirmed → dispatched → in transit → delivered → invoiced), layer cards (Trade Capture / Shipment Operations / Connected Intelligence), mechanics section, pricing table (Free + Pro only). TradingView-style footer.
+Internal: never render competitor names, pricing targets, or internal notes in any UI component.
 
 **/products**
-Content: "From Compliance to Intelligence. Get the Deal Done." All features across all three phases with live mini-demos for Phase 1 features, roadmap badges for Phase 2 and 3. Status legend: Live / Roadmap / Enterprise. Bottom CTA: "2 free analyses. No card, no setup."
+Hero: "From Compliance to Intelligence. Get the Deal Done." All features across all three layers with live mini-demos for Layer 1, roadmap badges for Layer 2 and 3. Bottom CTA: "2 free analyses. No card, no setup."
 
 **/pricing**
-Content: "$0 to start. See an example deal. Run your first check free." Five plan cards: Free, Pro, Team, Business, Enterprise. Feature comparison matrix. FAQ section. Bottom CTA: "First analysis on us. The next mismatch won't be."
-Free + Pro: AVAILABLE. Team + Business + Enterprise: SOON.
+Hero: "$0 to start." Five plan cards: Free, Pro, Team, Business, Enterprise. Feature comparison matrix. FAQ. Bottom CTA: "First analysis on us. The next mismatch won't be." Free + Pro available now. Team + Business + Enterprise coming soon.
 
 **/deals**
-Table: Deal Name | Commodity | Buyer | Status | Last Updated | Actions. Search bar. Status filter. New Deal button top right. Empty state: "No deals yet. Create your first deal →". Pagination over 20 deals.
+Table: Deal Name | Commodity | Buyer | Status | Last Updated | Actions. Search. Filter by status. New Deal button. Empty state: "No deals yet. Create your first deal →".
 
 **/deals/new**
-Form: Deal Name*, Buyer*, Origin*, Commodity* (free text input, not dropdown), Quantity*, Delivery Month (optional). COA upload zone + Contract upload zone side by side. Save Draft + Run Analysis buttons. Run Analysis disabled until both PDFs uploaded and required fields filled.
+Form: Deal Name*, Buyer*, Origin*, Commodity* (free text), Quantity*, Delivery Month (optional). COA upload + Contract upload. Save Draft + Run Analysis buttons. Run Analysis disabled until both PDFs uploaded and required fields filled.
 
 **/deals/[id]**
-Status badge header (COMPLIANT / NON_COMPLIANT / PENDING). PENDING: "Extracting documents..." spinner. Failed: error + retry. Complete: violations panel first (parameter | COA value | spec | reason), comparison table (Parameter | COA Value | Spec | Result), traceability footer (source document per value), Export PDF button.
+Header: deal name, commodity, buyer, lifecycle status bar (confirmed → dispatched → in transit → delivered → invoiced). Activity feed: chronological log of every AI action and human decision. Compliance result: violations panel first (parameter | extracted value | contract spec | result), comparison table, source traceability. Export PDF button.
 
 **/demo**
-Permanent public showcase. Pre-populated NON_COMPLIANT Brazilian soybean deal. Full analysis visible without auth. Identical layout to /deals/[id]. No back button to /deals.
+Permanent public showcase. Pre-populated NON_COMPLIANT deal. Full analysis visible without auth. No back button to /deals.
 
-### Phase 2
+### Layer 2 Additional Pages
 
-**/org** — Org name + plan badge header. Member list: Name | Email | Role | Last Active. Usage bar. Invite Member button.
+**/deals/[id]** (updated) — same as Layer 1 plus document tabs (Trade Confirmation | COA | Contract | LC | BL | Invoice). Each tab shows extraction result, compliance check, Approve/Reject button. Cross-document conflicts surfaced at top.
 
-**/org/invite** — Email input. Role selector (Admin / Member). Send Invite.
+### Layer 3 Additional Pages
 
-**/deals/[id]** (updated) — Phase 1 layout plus document tabs (COA | Contract | LC | BL). LC compliance section. BL compliance section. Cross-document conflicts panel. Audit button top right.
+**/deals/[id]** (updated) — same as Layer 2 plus vessel tracking section (MarineTraffic embed, live position and ETA) and market intelligence section (Claude-generated position summary).
 
-**/deals/[id]/documents** — All uploaded documents. Each row: type | filename | upload date | extraction status | replace | remove. Upload zones for missing documents.
-
-**/deals/[id]/audit** — Chronological log: timestamp | user | action | result. Filterable. Export CSV.
-
-### Phase 3
-
-**/terminal** — Dense dashboard of all active deals. Each row: Deal Name | Commodity | Buyer | Doc Status | Vessel ETA | Market Price | Flags. Sticky filter header. Market data ticker strip at top. Alert banner for critical flags.
-
-**/analytics** — Failure patterns across all historical deals. Charts: top failing parameters, failure rate by supplier, by commodity, by origin. Filter by date range and commodity. Export CSV.
-
-**/deals/[id]** (updated) — Phase 2 layout plus vessel tracking (MarineTraffic embed, live ETA) and market intelligence section (contract price vs current price, freight context, Claude-generated natural language summary). Counterparty screening result.
-
-**/settings/integrations** — API key management. CTRM/ERP webhook URL. Email ingestion n8n webhook URL. Connected integrations with status.
+**/settings/integrations** — email ingestion config, CTRM/ERP webhook URL, API key management, SSO setup (Enterprise).
 
 ---
 
 ## API
 
-### Phase 1
+### Layer 1
 ```
 POST /api/analyze
   Input:   FormData (COA PDF + Contract PDF + deal metadata)
-  Validate: both PDFs present, PDF type, under 20MB, required fields filled
+  Validate: files present, PDF type, under 20MB, required fields filled
   Process: base64 → Claude extracts COA → Claude extracts Contract → rule engine → store
   Success: { status, violations, checks, extractedCOA, extractedContract }
   Error:   { error: "extraction_failed" | "file_too_large" | "invalid_file_type" | "missing_fields" }
+
+POST /api/ingest/email
+  Input:   n8n webhook payload with parsed email + attachments
+  Process: Claude classifies document type → routes to correct deal → triggers analysis
+  Output:  { dealId, documentType, analysisTriggered }
 
 GET  /api/deals
   Output: { deals: [{ id, title, buyer, commodity, status, updatedAt }] }
@@ -202,49 +159,44 @@ POST /api/deals
 PATCH /api/deals/[id]
   Input:  partial deal fields
   Output: { success }
+
+POST /api/deals/[id]/approve
+  Input:  { documentType, overrides? }
+  Output: { success, auditEntry }
+
+POST /api/deals/[id]/reject
+  Input:  { documentType, reason }
+  Output: { success, auditEntry }
 ```
 
-### Phase 2
+### Layer 2
 ```
 POST /api/analyze/lc
   Input:   FormData (LC PDF + dealId)
-  Process: extract UCP 600 fields → compliance checks → store
+  Process: extract LC terms → validate against contract → cross-validate against COA and BL
   Output:  { status, violations, extractedLC }
 
 POST /api/analyze/bl
   Input:   FormData (BL PDF + dealId)
-  Process: extract port/date/quantity → cross-checks → store
+  Process: extract vessel/port/date/quantity → validate against LC and contract simultaneously
   Output:  { status, violations, extractedBL }
 
-POST /api/analyze/cross
-  Input:   { dealId }
-  Process: fetch all extracted docs → cross-document rules → store
-  Output:  { status, conflicts, checks }
+POST /api/analyze/invoice
+  Input:   FormData (Invoice PDF + dealId)
+  Process: extract amounts/quantities → validate against contract price and delivery
+  Output:  { status, violations, extractedInvoice }
 
-GET  /api/deals/[id]/audit
-  Output: { entries: [{ timestamp, userId, action, result }] }
-
-POST /api/org/invite
-  Input:   { email, role }
-  Output:  { success, inviteId }
+GET  /api/deals/[id]/lifecycle
+  Output: { stage, history: [{ stage, timestamp, userId }] }
 ```
 
-### Phase 3
+### Layer 3
 ```
 GET  /api/vessel/[dealId]
   Output:  { vesselName, lat, lng, eta, speed, destination }
 
-GET  /api/market
-  Input:   { commodity, unit }
-  Output:  { commodity, price, currency, unit, updatedAt }
-
-GET  /api/analytics
-  Input:   { orgId, dateFrom, dateTo, commodity? }
-  Output:  { topFailingParams, failureBySupplier, failureByCommodity, failureByOrigin }
-
-POST /api/ingest/email
-  Input:   n8n webhook payload with parsed email attachments
-  Output:  { dealId, documentType, analysisTriggered }
+GET  /api/market/[dealId]
+  Output:  { commodity, contractPrice, currentPrice, delta, freightRate, summary }
 
 POST /api/screen/[dealId]
   Output:  { sanctionsResult, riskSignals, news }
@@ -255,38 +207,35 @@ POST /api/screen/[dealId]
 ## Data Model
 
 ```typescript
-deals: {
-  id, orgId, title, buyer, origin, commodity,
-  quantity, deliveryMonth?, contractPrice?, currency?,
-  vesselName?, vesselIMO?, status, userId, createdAt
-}
-documents: {
-  id, dealId, type (COA | CONTRACT | LC | BL),
-  filename, storageKey, extractedData, uploadedAt
-}
-analysisRuns: {
-  id, dealId, status, checks, violations,
-  executedAt, engineVersion
-}
-auditLog: {
-  id, orgId, dealId, userId, action, result, timestamp
-}
+firms:    { id, name, plan, createdAt }
+users:    { id, firmId, clerkId, email, role }
+deals:    { id, firmId, title, buyer, origin, commodity, quantity,
+            deliveryMonth?, contractPrice?, currency?,
+            vesselName?, vesselIMO?, lifecycleStage, createdAt }
+documents:{ id, dealId, type, filename, storageKey, extractedData,
+            confidence, uploadedAt }
+analyses: { id, dealId, documentType, status, violations, checks,
+            executedAt }
+activity: { id, dealId, firmId, userId, actor, action, result, timestamp }
 ```
 
 ---
 
 ## AI Architecture
 
-Claude API handles document understanding and natural language summaries only. Never compliance decisions.
-
 ```
-PDF → Claude API → structured JSON extraction
+Email/PDF → Claude API → structured JSON extraction
 JSON → deterministic TypeScript rule engine → PASS / FAIL
-Numbers → deterministic TypeScript math → price/position calculations
-Numbers + deal context → Claude API → natural language intelligence summary
+Numbers → deterministic TypeScript math → position calculations
+Numbers + context → Claude API → natural language intelligence summary
 ```
 
-Rules: same input always produces same output. Users can override any extracted value. Low-confidence extractions flagged. No customer documents used for model training. Claude API training opt-out enforced.
+- Claude API: extraction and intelligence summaries only
+- Rule engine: all compliance verdicts — deterministic, never AI
+- Every extracted value editable before approval
+- Low confidence values flagged for human review
+- No customer data used for model training
+- GAFTA/FOSFA/ICE/CME reference library in system prompt — consulted when contracts reference standard terms
 
 ---
 
@@ -296,35 +245,38 @@ Rules: same input always produces same output. Users can override any extracted 
 |---|---|
 | Framework | Next.js 14 App Router + TypeScript |
 | UI | Tailwind + shadcn/ui + Motion |
-| Auth + Billing | Clerk + Clerk Billing (Stripe) |
+| Auth | Clerk |
+| Billing | Clerk Billing (Stripe) |
 | Database | Convex |
 | Storage | Vercel Blob → Cloudflare R2 |
-| AI Extraction | Claude API (claude-sonnet-4-20250514) |
-| 3D Hero | Spline (@splinetool/react-spline) |
-| Email Ingestion | n8n (Phase 3) |
+| AI | Claude API (claude-sonnet-4-20250514) |
+| Email Ingestion | n8n |
+| Vessel Tracking | MarineTraffic API |
+| Sanctions | OpenSanctions API |
+| 3D Hero | Spline |
 | Deploy | Vercel |
 
 **Claude Code skills:** Superpowers → Self-Healing → Frontend Design → UI UX Pro Max → Webapp Testing
 
 **Design:** Stitch MCP + 21dev MagicUI MCP
 
-**Marketing (post-launch only):** Pomelli + Remotion + NotebookLM
+**Marketing (post-launch):** Pomelli + Remotion + NotebookLM
 
 ---
 
 ## Security
 
-**Phase 1:** Clerk auth. Claude API server-side only. Vercel Blob private. HTTPS only.
+**Now:** Clerk auth. Claude API server-side only. Vercel HTTPS/TLS. Convex encryption at rest. Audit logs every layer. EU/US data residency via Convex.
 
-**Phase 2+:** Convex row-level security per org. R2 private buckets, signed URLs 15-min expiry. Full audit log. No training on customer docs. GDPR compliant.
+**Roadmap:** SOC 2 Type II after revenue. SSO/SAML for Enterprise via Clerk.
 
 ---
 
 ## Go-To-Market
 
-**Launch:** Pomelli (LinkedIn 3x/week) + Remotion (demo videos) + NotebookLM (content) + LinkedIn engagement first, outreach second.
+**Launch:** LinkedIn content via Pomelli. Demo videos via Remotion. Industry content via NotebookLM. Engage commodity ops community — comment first, outreach second.
 
-**After $3k MRR:** LinkedIn ads by job title. SGS / Bureau Veritas / Cotecna partnerships. Geneva Trading Week, STSA, Commodities Week London.
+**After $3k MRR:** LinkedIn ads by job title. Industry events — Geneva Trading Week, STSA, Commodities Week London.
 
 **After $10k MRR:** CTRM API partnerships. Referral program.
 
@@ -333,22 +285,19 @@ Rules: same input always produces same output. Users can override any extracted 
 ## Build Order
 
 ```
-✓ CLAUDE.md in project root
-✓ PRD.md in /docs
-✓ Skills in /skills
-✓ MCPs: Stitch + 21dev in Antigravity
-✓ .env.local with all keys
-
-1. Backend    — Real Claude API extraction. Convex DB with full RLS.
-2. Design     — Claude Design generates full design system for all phases.
-3. UI         — Claude Code builds Phase 1 UI from Claude Design system and high-fidelity Claude Design prototype.
-4. Billing    — Clerk Billing. Free + Pro live. Make sure Clerk Billing and Stripe are properly configured.
-5. Security   — Ensure Convex RLS is properly configured with role-based access control and data encryption.
-6. Deploy     — Vercel. commodityops.com live.
-7. Validate   — 3 real ops managers use it. Do not build Phase 2 before this.
-8. Marketing  — Pomelli + Remotion + NotebookLM. Not before Step 7.
+1. Backend    — Claude extraction on trade confirmation + COA + contract. 
+                Deterministic rule engine. Approve/Reject flow. Activity feed.
+                Zero mock data.
+2. Design     — Stitch generates full design system. All layers designed at once.
+3. UI         — Claude Code builds Layer 1 UI from Stitch screens.
+4. Email      — n8n webhook. Document classification. Deal routing.
+5. Spline     — 3D globe with trade routes. Embed in home hero.
+6. Billing    — Clerk Billing. Free + Pro live.
+7. Deploy     — Vercel. commodityops.com live.
+8. Validate   — 3 real ops managers use it on real documents.
+9. Marketing  — Pomelli + Remotion + NotebookLM. Not before Step 8.
 ```
 
 ---
 
-*CommodityOps PRD v4.0 | April 2026 | Where physical trades are managed.*
+*CommodityOps PRD v5.0 | April 2026 | AI that automates physical commodity trade operations.*
