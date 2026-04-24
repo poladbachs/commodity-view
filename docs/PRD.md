@@ -20,9 +20,9 @@ Every compliance verdict is deterministic — pure logic against the firm's exac
 
 CommodityAI (YC W24) is building agentic AI for commodity companies — purpose-built AI that automates the busywork in commodity operations. Trade confirmation captured → COA validated → LC validated → trade confirmed → shipment dispatched → in transit → delivered → invoiced. YC-backed, SOC 2 certified, connected to CTRMs, ERPs, Teams, WhatsApp.
 
-CommodityOps builds the same thing. Accessible to everyone.
+CommodityOps is building the same thing — but self-serve and live in minutes.
 
-CommodityAI requires a meeting. CommodityOps requires a credit card. Same customers. Same operations. Different door.
+CommodityAI sells through enterprise sales cycles. Book a call. Implementation project. Months to go live. CommodityOps has a pricing page for everyone. Sign up. Connect your email. Live today. Same customers. Same operations. Different door. CommodityOps handles standard contracts, custom contracts, and hybrid contracts that reference standard terms with amendments. All three cases. CommodityAI handles standard contracts well. CommodityOps handles everything.
 
 ---
 
@@ -42,8 +42,8 @@ What it does:
 How it works:
 - Claude reads any email or PDF — no templates, no setup
 - System prompt includes GAFTA/FOSFA/ICE/CME reference library — Claude consults when contract references standard terms, applies deal-specific exceptions on top
-- Deterministic rule engine runs every compliance verdict — same input always same output, fully traceable
-- Every extracted field editable before approval — low confidence values highlighted in yellow
+- Deterministic rule engine runs every compliance verdict — same input always same output, fully traceable, no black box decisions
+- Every extracted field editable before approval — low confidence values highlighted
 - n8n webhook receives emails, Claude classifies document type, routes to correct deal
 - Convex stores every action with firm name, user ID, and timestamp
 
@@ -98,8 +98,8 @@ Security roadmap: SOC 2 Type II after revenue.
 ## Pages
 
 **/home**
-Content: Full product vision across all three layers. Headline: "WHERE PHYSICAL TRADES ARE MANAGED". Subheadline: "One Platform. Every Deal. Every Decision." Subtext: "From trade confirmation to delivery — CommodityOps automates every document, every validation, every exception. Your ops team makes the calls. We handle everything else." CTA: GET STARTED FREE (primary) + SEE HOW IT WORKS (secondary, scrolls to mechanics). TradingView-style ticker at top. Animated globe with trade routes (Spline). Trade lifecycle visualization below hero: confirmed → dispatched → in transit → delivered → invoiced. Three layer cards. Mechanics section showing email → extraction → editable card → Approve/Reject flow. Pricing table (Free + Pro only). TradingView-style footer.
-Internal note: never render competitor names, pricing targets, or layer descriptions as UI text.
+Content: Full product vision across all three layers. Headline: "WHERE PHYSICAL TRADES ARE MANAGED". Subheadline: "One Platform. Every Deal. Every Decision." Subtext: "From trade confirmation to delivery — CommodityOps automates every document, every validation, every exception. Your ops team makes the calls. We handle everything else." CTA: GET STARTED FREE (primary) + SEE HOW IT WORKS (secondary, scrolls to mechanics). TradingView-style ticker at top. Animated map with trade routes. Trade lifecycle visualization below hero: confirmed → dispatched → in transit → delivered → invoiced. Three layer cards. Mechanics section showing email → extraction → editable card → Approve/Reject flow. Pricing table (Free + Pro only). TradingView-style footer.
+Internal note for Claude Design: never render competitor names, pricing targets, or layer descriptions as UI text.
 
 **/products**
 Hero: "From Trade Confirmation to Delivery. Automated." All features across all layers. Live mini-demos for Layer 1. Roadmap badges for Layer 2 and 3. Bottom CTA: "2 free analyses. No card, no setup."
@@ -118,6 +118,14 @@ Header: deal name, commodity, buyer. Lifecycle bar: confirmed → dispatched →
 
 **/demo**
 Permanent public showcase. Pre-populated NON_COMPLIANT Brazilian soybean deal. Full lifecycle shown. Activity feed visible. Full editable card with Approve/Reject visible. No auth required.
+
+### Layer 2 Additional Pages
+
+**/deals/[id]** (updated) — same as Layer 1 plus document tabs (Trade Confirmation | COA | Contract | LC | BL | Invoice). Each tab shows extraction result, compliance check, Approve/Reject button. Cross-document conflicts surfaced at top.
+
+### Layer 3 Additional Pages
+
+**/deals/[id]** (updated) — same as Layer 2 plus vessel tracking section (MarineTraffic embed, live position and ETA) and market intelligence section (Claude-generated position summary).
 
 **/settings/integrations**
 Email ingestion setup. CTRM/ERP webhook (Enterprise). API key management (Enterprise). SSO setup (Enterprise).
@@ -233,7 +241,7 @@ Numbers + deal context → Claude API → natural language summary
 | Layer | Tool |
 |---|---|
 | Framework | Next.js 14 App Router + TypeScript |
-| UI | Tailwind + shadcn/ui + Motion |
+| UI | Tailwind + shadcn/ui + Motion + Claude Design + 21dev MagicUI MCP |
 | Auth | Clerk |
 | Billing | Clerk Billing (Stripe) |
 | Database | Convex |
@@ -242,11 +250,9 @@ Numbers + deal context → Claude API → natural language summary
 | Email Ingestion | n8n |
 | Vessel Tracking | MarineTraffic API |
 | Sanctions | OpenSanctions API |
-| 3D Hero | Spline |
 | Deploy | Vercel |
 
-Claude Code skills: Superpowers → Self-Healing → Frontend Design → UI UX Pro Max → Webapp Testing
-Design: Stitch MCP + 21dev MagicUI MCP
+Design: Claude Design + 21dev MagicUI MCP 
 Marketing (post-launch): Pomelli + Remotion + NotebookLM
 
 ---
@@ -257,8 +263,8 @@ Marketing (post-launch): Pomelli + Remotion + NotebookLM
 1. Backend    — Claude extraction on trade confirmation + COA + contract.
                 Deterministic rule engine. Approve/Reject flow. Activity feed.
                 Email ingestion via n8n. Zero mock data.
-2. Design     — Stitch generates full design system. All layers at once.
-3. UI         — Claude Code builds Layer 1 UI from Stitch screens.
+2. Design     — Claude Design generates full design system. All layers at once.
+3. UI         — Claude Code builds Layer 1 UI from Claude Design screens.
 4. Spline     — 3D globe with trade routes. Home hero.
 5. Billing    — Clerk Billing. Free + Pro live.
 6. Deploy     — Vercel. commodityops.com live.
