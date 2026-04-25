@@ -6,7 +6,7 @@
 
 ## What Is CommodityOps
 
-AI that automates physical commodity trade operations.
+AI that runs physical commodity trade operations.
 
 Purpose-built AI that captures trade confirmations, validates documents, and manages the full trade lifecycle — from confirmation to delivery. No sales call. No implementation project. Pricing page. Live today.
 
@@ -20,9 +20,9 @@ Every compliance verdict is deterministic — pure logic against the firm's exac
 
 CommodityAI (YC W24) is building agentic AI for commodity companies — purpose-built AI that automates the busywork in commodity operations. Trade confirmation captured → COA validated → LC validated → trade confirmed → shipment dispatched → in transit → delivered → invoiced. YC-backed, SOC 2 certified, connected to CTRMs, ERPs, Teams, WhatsApp.
 
-CommodityOps is building the same thing — but self-serve and live in minutes.
+CommodityOps is building the same thing — but self-serve and live in minutes. 
 
-CommodityAI sells through enterprise sales cycles. Book a call. Implementation project. Months to go live. CommodityOps has a pricing page for everyone. Sign up. Connect your email. Live today. Same customers. Same operations. Different door. CommodityOps handles standard contracts, custom contracts, and hybrid contracts that reference standard terms with amendments. All three cases. CommodityAI handles standard contracts well. CommodityOps handles everything.
+CommodityAI sells through enterprise sales cycles. Book a call. Implementation project. Months to go live. CommodityOps has a pricing page for everyone. Sign up. Connect your email. Live today. Same customers. Same operations. Different door. CommodityOps handles standard contracts, custom contracts, and hybrid contracts that reference standard terms with amendments. All three cases. CommodityAI handles standard template contracts well. CommodityOps handles everything.
 
 ---
 
@@ -262,16 +262,15 @@ Marketing (post-launch): Pomelli + Remotion + NotebookLM
 ```
 1. Backend    — Claude extraction on trade confirmation + COA + contract.
                 Deterministic rule engine. Approve/Reject flow. Activity feed.
-                Email ingestion via n8n. Zero mock data.
+                Email ingestion via n8n.
 2. Design     — Claude Design generates full design system. All layers at once.
 3. UI         — Claude Code builds Layer 1 UI from Claude Design screens.
-4. Spline     — 3D globe with trade routes. Home hero.
-5. Billing    — Clerk Billing. Free + Pro live.
-6. Deploy     — Vercel. commodityops.com live.
-7. Validate   — 3 real ops managers on real documents.
-8. Marketing  — Pomelli + Remotion + NotebookLM. Not before Step 7.
+4. Billing    — Clerk Billing. Free + Pro live.
+5. Deploy     — Vercel. commodityops.com live. Already done.
+6. Validate   — 3 real ops managers on real documents.
+7. Marketing  — Pomelli + Remotion + NotebookLM. Not before Step 7.
 ```
 
 ---
 
-*CommodityOps PRD v5.1 | April 2026 | AI that automates physical commodity trade operations.*
+*CommodityOps PRD v5.1 | April 2026 | AI that runs physical commodity trade operations.*
