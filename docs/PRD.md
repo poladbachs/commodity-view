@@ -6,23 +6,23 @@
 
 ## What Is CommodityOps
 
-AI that runs physical commodity trade operations.
+Agentic AI that runs physical commodity trade operations.
 
 Purpose-built AI that captures trade confirmations, validates documents, and manages the full trade lifecycle — from confirmation to delivery. No sales call. No implementation project. Pricing page. Live today.
 
 Built on Claude AI, CommodityOps operates directly from emails and documents — extracting trade confirmations, validating COAs against exact contract terms, checking Letters of Credit and Bills of Lading, tracking vessels, and surfacing market and counterparty intelligence alongside every active deal.
 
-Every compliance verdict is deterministic — pure logic against the firm's exact contract terms. Not a black box. Every decision traceable. Every action logged.
+Every compliance verdict is deterministic — pure logic against the firm's contract terms. Not a black box. Every decision traceable. Every action logged.
 
 ---
 
-## The Market
+## The Market (Internal only: Internal note for Claude Design: never render competitor names, pricing targets, or layer descriptions as UI text/content)
 
 CommodityAI (YC W24) is building agentic AI for commodity companies — purpose-built AI that automates the busywork in commodity operations. Trade confirmation captured → COA validated → LC validated → trade confirmed → shipment dispatched → in transit → delivered → invoiced. YC-backed, SOC 2 certified, connected to CTRMs, ERPs, Teams, WhatsApp.
 
-CommodityOps is building the same thing — but self-serve and live in minutes. 
+CommodityOps is building the same thing — but self-serve and live in minutes.
 
-CommodityAI sells through enterprise sales cycles. Book a call. Implementation project. Months to go live. CommodityOps has a pricing page for everyone. Sign up. Connect your email. Live today. Same customers. Same operations. Different door. CommodityOps handles standard contracts, custom contracts, and hybrid contracts that reference standard terms with amendments. All three cases. CommodityAI handles standard template contracts well. CommodityOps handles everything.
+CommodityAI sells through enterprise sales cycles. Book a call. Implementation project. Months to go live. CommodityOps has a pricing page for everyone. Sign up. Connect your email. Live today. Same customers. Same operations. Different door. Moreover, CommodityOps handles standard contracts, custom contracts, and hybrid contracts that reference standard terms with amendments. All three cases. CommodityAI handles standard template contracts well. CommodityOps handles everything.
 
 ---
 
@@ -50,7 +50,7 @@ How it works:
 ---
 
 ### Layer 2 — Shipment Operations
-**Plans: Team ($499/mo)**
+**Plans: Desk ($499/mo)**
 **Self-sufficient for:** full document package, complete trade lifecycle from confirmation to invoiced
 
 What it does:
@@ -68,15 +68,15 @@ How it works:
 ---
 
 ### Layer 3 — Connected Intelligence
-**Plans: Business ($999/mo) + Enterprise ($2,500+/mo)**
+**Plans: Floor ($999/mo) + Enterprise ($2,500+/mo)**
 **Self-sufficient for:** zero manual work, market-aware operations, counterparty risk
 
 What it does:
 - Live vessel tracking — vessel position and ETA per deal via MarineTraffic, vessel IMO extracted automatically from BL
 - Market intelligence per deal — current commodity price vs contract price, current freight rate vs locked rate → Claude generates position summary: "Market moved $40/MT above your contract. Your position: +$2M. Freight eating $150k of that gain."
 - Counterparty screening — sanctions checked via OpenSanctions API, risk signals and news via Claude web search — run automatically on every new counterparty
-- CTRM/ERP integration — Enterprise only
-- SSO/SAML — Enterprise only via Clerk
+- CTRM/ERP integration — Enterprise plan only
+- SSO/SAML — Enterprise plan only via Clerk
 
 Security now: HTTPS/TLS (Vercel), encryption at rest (Convex), audit logs (every layer), EU/US data residency (Convex).
 Security roadmap: SOC 2 Type II after revenue.
@@ -88,9 +88,9 @@ Security roadmap: SOC 2 Type II after revenue.
 | Plan | Price | Includes |
 |---|---|---|
 | Free | $0 | 2 analyses lifetime |
-| Pro | $199/mo | Full Layer 1 |
-| Team | $499/mo | Layer 1 + 2 |
-| Business | $999/mo | Layer 1 + 2 + 3 |
+| Pro | $199/mo | Layer 1 |
+| Desk | $499/mo | Layer 1 + 2 |
+| Floor | $999/mo | Layer 1 + 2 + 3 |
 | Enterprise | $2,500+/mo | Everything + CTRM/ERP + SSO |
 
 ---
@@ -98,14 +98,14 @@ Security roadmap: SOC 2 Type II after revenue.
 ## Pages
 
 **/home**
-Content: Full product vision across all three layers. Headline: "WHERE PHYSICAL TRADES ARE MANAGED". Subheadline: "One Platform. Every Deal. Every Decision." Subtext: "From trade confirmation to delivery — CommodityOps automates every document, every validation, every exception. Your ops team makes the calls. We handle everything else." CTA: GET STARTED FREE (primary) + SEE HOW IT WORKS (secondary, scrolls to mechanics). TradingView-style ticker at top. Animated map with trade routes. Trade lifecycle visualization below hero: confirmed → dispatched → in transit → delivered → invoiced. Three layer cards. Mechanics section showing email → extraction → editable card → Approve/Reject flow. Pricing table (Free + Pro only). TradingView-style footer.
+Content: Full product vision across all three layers. Headline: "WHERE PHYSICAL TRADES ARE MANAGED". Subheadline: "One Platform. Every Deal. Every Decision." Subtext: "From trade confirmation to delivery — CommodityOps automates every document, every validation, every exception. Your ops team makes the calls. We handle everything else." CTA: GET STARTED FREE (primary) + SEE HOW IT WORKS (secondary, scrolls to mechanics). TradingView-style ticker scroll at top. Animated map with trade routes in hero background. Trade lifecycle visualization below hero: confirmed → dispatched → in transit → delivered → invoiced. Three layer cards. Mechanics section showing email → extraction → editable card → Approve/Reject flow. Pricing table (Free + Pro only). TradingView-style footer.
 Internal note for Claude Design: never render competitor names, pricing targets, or layer descriptions as UI text.
 
 **/products**
 Hero: "From Trade Confirmation to Delivery. Automated." All features across all layers. Live mini-demos for Layer 1. Roadmap badges for Layer 2 and 3. Bottom CTA: "2 free analyses. No card, no setup."
 
 **/pricing**
-Hero: "$0 to start. No card required." Five plan cards: Free, Pro, Team, Business, Enterprise. Feature comparison matrix. FAQ. Bottom CTA: "First analysis on us. The next mismatch won't be." Free + Pro available. Team + Business + Enterprise coming soon.
+Hero: "$0 to start. No card required." Five plan cards: Free, Pro, Desk, Floor, Enterprise. Feature comparison matrix. FAQ. Bottom CTA: "First analysis on us. The next mismatch won't be." Free + Pro available. Desk + Floor + Enterprise coming soon.
 
 **/deals**
 Table: Deal Name | Commodity | Buyer | Lifecycle Stage | Status | Last Updated | Actions. Search. Filter by status and lifecycle stage. New Deal button. Empty state: "No deals yet. Create your first deal →".
@@ -228,7 +228,7 @@ Numbers + deal context → Claude API → natural language summary
 ```
 
 - Claude API: document extraction and intelligence summaries only
-- Rule engine: all compliance verdicts — deterministic, never AI
+- Rule engine: all compliance verdicts — deterministic, based on deal contracts, never AI black box
 - GAFTA/FOSFA/ICE/CME reference library in system prompt
 - Every extracted value editable before approval
 - Low confidence values flagged for human review
@@ -241,7 +241,7 @@ Numbers + deal context → Claude API → natural language summary
 | Layer | Tool |
 |---|---|
 | Framework | Next.js 14 App Router + TypeScript |
-| UI | Tailwind + shadcn/ui + Motion + Claude Design + 21dev MagicUI MCP |
+| UI | Tailwind + shadcn/ui + Motion + Claude Design + 21dev MagicUI MCP + Design /Skills |
 | Auth | Clerk |
 | Billing | Clerk Billing (Stripe) |
 | Database | Convex |
@@ -252,7 +252,7 @@ Numbers + deal context → Claude API → natural language summary
 | Sanctions | OpenSanctions API |
 | Deploy | Vercel |
 
-Design: Claude Design + 21dev MagicUI MCP 
+Design: Claude Design + 21dev MagicUI MCP
 Marketing (post-launch): Pomelli + Remotion + NotebookLM
 
 ---
@@ -260,15 +260,15 @@ Marketing (post-launch): Pomelli + Remotion + NotebookLM
 ## Build Order
 
 ```
-1. Backend    — Claude extraction on trade confirmation + COA + contract.
+1. Backend    — (Layer 1 now) Claude extraction on trade confirmation + COA + contract.
                 Deterministic rule engine. Approve/Reject flow. Activity feed.
                 Email ingestion via n8n.
 2. Design     — Claude Design generates full design system. All layers at once.
-3. UI         — Claude Code builds Layer 1 UI from Claude Design screens.
+3. UI         — Claude Code builds Layer 1 UI from Claude Design.
 4. Billing    — Clerk Billing. Free + Pro live.
 5. Deploy     — Vercel. commodityops.com live. Already done.
 6. Validate   — 3 real ops managers on real documents.
-7. Marketing  — Pomelli + Remotion + NotebookLM. Not before Step 7.
+7. Marketing  — Pomelli + Remotion + NotebookLM. Vloxo
 ```
 
 ---

@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en" data-mode="ink">
+<head>
+  <meta charset="utf-8" />
+  <title>CommodityOps — Interactive Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+/* CommodityOps — Design Tokens
+ * Aesthetic: Bloomberg terminal × modern editorial fintech
+ * Density: trader-grade. Tabular nums. Hairline rules. Sodium amber accent.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap');
+
+:root {
+  /* ============ TYPE ============ */
+  --font-ui: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: "Newsreader", "Times New Roman", serif;
+
+  /* ============ INK / PAPER ============ */
+  /* Ink (default — trading floor) */
+  --ink-bg:        oklch(16% 0.005 240);
+  --ink-bg-2:      oklch(19% 0.005 240);
+  --ink-bg-3:      oklch(23% 0.005 240);
+  --ink-line:      oklch(32% 0.006 240);
+  --ink-line-soft: oklch(26% 0.005 240);
+  --ink-fg:        oklch(96% 0.005 90);
+  --ink-fg-2:      oklch(78% 0.006 90);
+  --ink-fg-3:      oklch(58% 0.006 90);
+  --ink-fg-4:      oklch(42% 0.006 90);
+
+  /* Paper (alternative — daylight) */
+  --paper-bg:      oklch(98.2% 0.004 90);
+  --paper-bg-2:    oklch(95.5% 0.005 90);
+  --paper-bg-3:    oklch(92% 0.006 90);
+  --paper-line:    oklch(85% 0.006 90);
+  --paper-line-soft: oklch(91% 0.005 90);
+  --paper-fg:      oklch(18% 0.005 240);
+  --paper-fg-2:    oklch(36% 0.005 240);
+  --paper-fg-3:    oklch(52% 0.005 240);
+  --paper-fg-4:    oklch(68% 0.005 240);
+
+  /* ============ SIGNAL COLORS (shared, share chroma) ============ */
+  --signal-amber:  oklch(78% 0.155 75);   /* sodium / "live AI" */
+  --signal-amber-2:oklch(70% 0.155 75);
+  --signal-pass:   oklch(72% 0.155 145);  /* PASS / approve */
+  --signal-fail:   oklch(64% 0.215 25);   /* FAIL / reject */
+  --signal-info:   oklch(70% 0.135 235);  /* informational */
+  --signal-warn:   oklch(80% 0.155 95);   /* low confidence */
+
+  /* ============ SPACING (4px base) ============ */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-7: 32px; --s-8: 40px;
+  --s-9: 48px; --s-10: 64px; --s-11: 80px; --s-12: 120px;
+
+  /* ============ RADII (sharp) ============ */
+  --r-0: 0px;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 6px;
+  --r-pill: 999px;
+
+  /* ============ HAIRLINES ============ */
+  --hair: 1px;
+}
+
+/* Mode application */
+[data-mode="ink"] {
+  --bg: var(--ink-bg);
+  --bg-2: var(--ink-bg-2);
+  --bg-3: var(--ink-bg-3);
+  --line: var(--ink-line);
+  --line-soft: var(--ink-line-soft);
+  --fg: var(--ink-fg);
+  --fg-2: var(--ink-fg-2);
+  --fg-3: var(--ink-fg-3);
+  --fg-4: var(--ink-fg-4);
+  --shadow-card: 0 1px 0 oklch(100% 0 0 / 0.03) inset, 0 0 0 1px var(--line);
+  color-scheme: dark;
+}
+[data-mode="paper"] {
+  --bg: var(--paper-bg);
+  --bg-2: var(--paper-bg-2);
+  --bg-3: var(--paper-bg-3);
+  --line: var(--paper-line);
+  --line-soft: var(--paper-line-soft);
+  --fg: var(--paper-fg);
+  --fg-2: var(--paper-fg-2);
+  --fg-3: var(--paper-fg-3);
+  --fg-4: var(--paper-fg-4);
+  --shadow-card: 0 1px 0 oklch(0% 0 0 / 0.02) inset, 0 0 0 1px var(--line);
+  color-scheme: light;
+}
+
+/* Reset-ish */
+*, *::before, *::after { box-sizing: border-box; }
+
+.surface {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "ss01", "cv11", "tnum";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============ PRIMITIVES ============ */
+
+.mono { font-family: var(--font-mono); font-feature-settings: "tnum"; letter-spacing: -0.01em; }
+.tnum { font-variant-numeric: tabular-nums; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.display {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+.editorial {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.hr { height: 1px; background: var(--line); border: 0; }
+.vr { width: 1px; background: var(--line); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  border-radius: var(--r-1);
+  transition: background 120ms, border-color 120ms, color 120ms;
+}
+.btn:hover { background: var(--bg-2); border-color: var(--fg-3); }
+.btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+.btn-primary:hover { background: var(--fg-2); color: var(--bg); border-color: var(--fg-2); }
+.btn-amber {
+  background: var(--signal-amber);
+  color: oklch(18% 0.02 75);
+  border-color: var(--signal-amber);
+}
+.btn-pass {
+  background: var(--signal-pass);
+  color: oklch(15% 0.05 145);
+  border-color: var(--signal-pass);
+}
+.btn-fail {
+  background: transparent;
+  color: var(--signal-fail);
+  border-color: color-mix(in oklch, var(--signal-fail) 50%, var(--line));
+}
+.btn-fail:hover { background: color-mix(in oklch, var(--signal-fail) 10%, transparent); }
+.btn-sm { padding: 6px 10px; font-size: 12px; }
+.btn-lg { padding: 14px 22px; font-size: 14px; }
+
+/* Pills / tags */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  color: var(--fg-2);
+  white-space: nowrap;
+}
+.tag-amber { color: var(--signal-amber); border-color: color-mix(in oklch, var(--signal-amber) 40%, var(--line)); }
+.tag-pass  { color: var(--signal-pass);  border-color: color-mix(in oklch, var(--signal-pass) 40%, var(--line)); }
+.tag-fail  { color: var(--signal-fail);  border-color: color-mix(in oklch, var(--signal-fail) 40%, var(--line)); }
+.tag-info  { color: var(--signal-info);  border-color: color-mix(in oklch, var(--signal-info) 40%, var(--line)); }
+.tag-warn  { color: var(--signal-warn);  border-color: color-mix(in oklch, var(--signal-warn) 50%, var(--line)); }
+
+.dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--fg-3); display: inline-block;
+}
+.dot-amber { background: var(--signal-amber); box-shadow: 0 0 0 3px color-mix(in oklch, var(--signal-amber) 25%, transparent); }
+.dot-pass  { background: var(--signal-pass); }
+.dot-fail  { background: var(--signal-fail); }
+.dot-pulse { animation: pulse 1.6s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Crosshair / grid bg helpers */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.bg-dots {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Card */
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+}
+
+/* Field labels */
+.label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+/* Input */
+.input {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  padding: 9px 12px;
+  border-radius: var(--r-1);
+  width: 100%;
+}
+.input:focus { outline: 1px solid var(--signal-amber); border-color: var(--signal-amber); }
+
+.input-low-conf {
+  background: color-mix(in oklch, var(--signal-warn) 10%, var(--bg));
+  border-color: color-mix(in oklch, var(--signal-warn) 50%, var(--line));
+  color: var(--fg);
+}
+
+/* Tabular row */
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+
+/* Misc */
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: var(--r-1);
+  color: var(--fg-2);
+}
+
+.ticker-cell { font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 60s linear infinite;
+}
+
+/* Subtle paper noise (optional, very faint) */
+.paper-noise {
+  position: relative;
+}
+.paper-noise::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+</style>
+  <style>
+    html, body { margin:0; padding:0; background: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+/* global React */
+const { useState, useEffect, useMemo, useCallback } = React;
+
+// ─── Seed data ──────────────────────────────────────────────────
+const STAGES = ["CONFIRMED","DISPATCHED","IN TRANSIT","DELIVERED","INVOICED"];
+
+const SEED_DEALS = [
+  { id: "SOY-2604", name: "Brazilian Soy 60kt → Qingdao", cmd: "Soybeans", buyer: "Cofco Resources", origin: "Santos, BR", qty: "60,000 MT", price: "432.50", stage: 0, status: "PENDING", inboxCount: 3 },
+  { id: "WHT-2599", name: "HRW Wheat 25kt → Mersin",      cmd: "Wheat HRW", buyer: "Cargill MEA",   origin: "Houston, US", qty: "25,000 MT", price: "278.00", stage: 3, status: "ON TRACK", inboxCount: 0 },
+  { id: "PLM-2598", name: "RBD Palm 5kt → Rotterdam",     cmd: "Palm Olein", buyer: "Wilmar EU",     origin: "Port Klang, MY", qty: "5,000 MT", price: "1,118",  stage: 4, status: "ON TRACK", inboxCount: 0 },
+  { id: "CRN-2595", name: "US Corn 30kt → Veracruz",      cmd: "Corn YEL #2", buyer: "Gruma S.A.B.",  origin: "New Orleans, US", qty: "30,000 MT", price: "212.40", stage: 1, status: "ON TRACK", inboxCount: 1 },
+  { id: "CFE-2592", name: "Arabica 380MT → Antwerp",      cmd: "Coffee Arabica", buyer: "Sucden",        origin: "Santos, BR", qty: "380 MT",    price: "5,140", stage: 0, status: "ON TRACK", inboxCount: 0 },
+  { id: "SUG-2588", name: "VHP Sugar 12kt → Algiers",     cmd: "Raw Sugar", buyer: "CEVITAL",       origin: "Recife, BR", qty: "12,000 MT", price: "459.20", stage: 2, status: "EXCEPTION", exc: "LC discrepancy", inboxCount: 1 },
+];
+
+const COA_PARAMS = [
+  { p: "Protein (dry basis)", e: "34.2%", c: "≥ 34.0%",   pass: true,  diff: "+0.2pp" },
+  { p: "Moisture",            e: "14.8%", c: "≤ 14.0%",   pass: false, diff: "+0.8pp" },
+  { p: "Foreign Matter",      e: "1.6%",  c: "≤ 2.0%",    pass: true,  diff: "−0.4pp" },
+  { p: "Damaged Kernels",     e: "5.4%",  c: "≤ 8.0%",    pass: true,  diff: "−2.6pp" },
+  { p: "Oil Content",         e: "19.1%", c: "≥ 18.5%",   pass: true,  diff: "+0.6pp" },
+  { p: "Splits",              e: "22.0%", c: "≤ 20.0%",   pass: false, diff: "+2.0pp" },
+  { p: "FFA",                 e: "0.62%", c: "≤ 0.75%",   pass: true,  diff: "−0.13pp" },
+  { p: "Test Weight",         e: "56.4 lb/bu", c: "≥ 56.0 lb/bu", pass: true, diff: "+0.4" },
+];
+
+const TC_FIELDS = [
+  { k: "COMMODITY",    v: "Yellow Soybeans, Brazilian origin, Crop 2025/26", conf: 0.99 },
+  { k: "GRADE",        v: "FOB Santos / GAFTA 122", conf: 0.97 },
+  { k: "QUANTITY",     v: "60,000 MT (+/− 5% buyer's option)", conf: 0.93 },
+  { k: "PRICE",        v: "USD 432.50 / MT", conf: 0.99 },
+  { k: "COUNTERPARTY", v: "Cofco Resources S.A., Switzerland", conf: 0.88, low: true },
+  { k: "DELIVERY",     v: "May 2026, Santos → Qingdao", conf: 0.96 },
+  { k: "PAYMENT",      v: "LC at sight, confirmed by Tier-1 bank", conf: 0.91 },
+  { k: "INCOTERMS",    v: "FOB Santos · Incoterms 2020", conf: 0.99 },
+];
+
+// Inbox items per deal — drive the workflow
+const INBOX = {
+  "SOY-2604": [
+    { id: "tc",   from: "ops@cofco-resources.ch",  subj: "RE: Trade Confirmation 60kt FOB Santos", doc: "trade_confirmation.pdf",  type: "TRADE CONFIRMATION", at: "12:42" },
+    { id: "coa",  from: "lab@sgs.com.br",           subj: "COA SGS-BR-44128",                       doc: "coa_sgs_br_44128.pdf",     type: "COA",                at: "11:57" },
+    { id: "ctr",  from: "legal@cofco-resources.ch", subj: "Master Contract — countersigned",        doc: "contract_soy_2604.pdf",    type: "CONTRACT",           at: "09:14" },
+  ],
+  "CRN-2595": [
+    { id: "tc",  from: "trades@gruma.mx", subj: "Confirmation 30kt Corn → Veracruz", doc: "tc_gruma.pdf", type: "TRADE CONFIRMATION", at: "09:02" },
+  ],
+  "SUG-2588": [
+    { id: "lc",  from: "trade.finance@bank.dz", subj: "LC issued — discrepancy",         doc: "lc_cevital.pdf", type: "LETTER OF CREDIT", at: "08:14" },
+  ],
+};
+
+// ─── tiny store with localStorage ──────────────────────────────
+const LS_KEY = "commodityops:proto:v1";
+function loadState() {
+  try { const s = localStorage.getItem(LS_KEY); if (s) return JSON.parse(s); } catch(e){}
+  return {
+    route: "/home",
+    currentDealId: null,
+    currentDocId: null,
+    deals: SEED_DEALS,
+    activity: {},  // dealId -> [{t, actor, act, res, kind}]
+    approvals: {}, // dealId -> { docId: "approved"|"rejected" }
+    fields: { "SOY-2604": Object.fromEntries(TC_FIELDS.map(f => [f.k, f.v])) },
+    layer: 2,
+    mode: "ink",
+    notif: null,
+  };
+}
+function saveState(s) { try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch(e){} }
+
+// ─── Header bits ───────────────────────────────────────────────
+const Logo = ({ size=14 }) => (
+  <span style={{ display:"inline-flex", alignItems:"center", gap:8, fontFamily:"var(--font-ui)", fontWeight:600, letterSpacing:"-0.02em", fontSize:size }}>
+    <span style={{ display:"inline-grid", placeItems:"center", width:size+6, height:size+6, background:"var(--fg)", color:"var(--bg)", fontFamily:"var(--font-mono)", fontWeight:600, fontSize:size-3, borderRadius:2 }}>C</span>
+    CommodityOps
+  </span>
+);
+
+const TICKER_DATA = [
+  { sym: "SOY-CBOT",  price: "1184.50", d: "+12.25", up: true },
+  { sym: "WHEAT-K",   price: "627.75",  d: "-3.50",  up: false },
+  { sym: "CORN-Z",    price: "468.25",  d: "+1.75",  up: true },
+  { sym: "PALM-FCPO", price: "4,118",   d: "+38",    up: true },
+  { sym: "COFFEE-C",  price: "228.40",  d: "-1.85",  up: false },
+  { sym: "SUGAR-11",  price: "20.84",   d: "+0.12",  up: true },
+  { sym: "BDI",       price: "1,612",   d: "+24",    up: true },
+  { sym: "BRENT",     price: "84.12",   d: "-0.43",  up: false },
+  { sym: "USD/BRL",   price: "5.0824",  d: "+0.0128",up: true },
+];
+const Ticker = () => (
+  <div style={{ borderBottom:"1px solid var(--line)", background:"var(--bg-2)", overflow:"hidden", height:30, display:"flex", alignItems:"center", fontFamily:"var(--font-mono)", fontSize:11.5 }}>
+    <div className="marquee-track">
+      {[...TICKER_DATA, ...TICKER_DATA, ...TICKER_DATA].map((t,i)=>(
+        <span key={i} style={{ display:"inline-flex", alignItems:"center", gap:8, padding:"0 18px", borderRight:"1px solid var(--line-soft)" }}>
+          <span style={{ color:"var(--fg-3)" }}>{t.sym}</span>
+          <span>{t.price}</span>
+          <span style={{ color:t.up?"var(--signal-pass)":"var(--signal-fail)" }}>{t.up?"▲":"▼"} {t.d}</span>
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
+const MarketingNav = ({ go }) => (
+  <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"14px 28px", borderBottom:"1px solid var(--line)" }}>
+    <div onClick={()=>go("/home")} style={{cursor:"pointer"}}><Logo /></div>
+    <div style={{ display:"flex", gap:24, fontSize:13, color:"var(--fg-2)" }}>
+      <a onClick={()=>go("/products")} style={{cursor:"pointer"}}>Product</a>
+      <a onClick={()=>go("/pricing")}  style={{cursor:"pointer"}}>Pricing</a>
+      <a onClick={()=>go("/demo")}     style={{cursor:"pointer"}}>Demo</a>
+    </div>
+    <div style={{ display:"flex", gap:8 }}>
+      <button className="btn btn-sm" onClick={()=>go("/deals")}>SIGN IN</button>
+      <button className="btn btn-sm btn-primary" onClick={()=>go("/deals/new")}>GET STARTED</button>
+    </div>
+  </div>
+);
+
+const AppNav = ({ active, go, layer, setLayer }) => {
+  const items = [
+    { id: "deals",    label: "DEALS",    route: "/deals" },
+    { id: "inbox",    label: "INBOX",    route: "/inbox" },
+    { id: "vessels",  label: "VESSELS",  route: "/vessels", lock: layer < 3 },
+    { id: "market",   label: "MARKET",   route: "/market",  lock: layer < 3 },
+    { id: "settings", label: "SETTINGS", route: "/settings" },
+  ];
+  return (
+    <div style={{ display:"flex", alignItems:"stretch", borderBottom:"1px solid var(--line)", background:"var(--bg)" }}>
+      <div onClick={()=>go("/home")} style={{ display:"flex", alignItems:"center", padding:"0 18px", borderRight:"1px solid var(--line)", cursor:"pointer" }}><Logo size={13}/></div>
+      {items.map(it => (
+        <div key={it.id} onClick={()=>!it.lock && go(it.route)} style={{
+          display:"flex", alignItems:"center", gap:8, padding:"0 18px", height:44, borderRight:"1px solid var(--line)",
+          color: it.lock ? "var(--fg-4)" : (active===it.id ? "var(--fg)" : "var(--fg-2)"),
+          background: active===it.id ? "var(--bg-2)" : "transparent",
+          fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:"0.1em",
+          cursor: it.lock ? "not-allowed" : "pointer", position:"relative",
+        }}>
+          {it.label}
+          {it.lock && <span style={{ fontSize:10, color:"var(--fg-4)" }}>L3</span>}
+          {active===it.id && <div style={{ position:"absolute", left:0, right:0, bottom:-1, height:1, background:"var(--signal-amber)" }} />}
+        </div>
+      ))}
+      <div style={{ marginLeft:"auto", display:"flex", alignItems:"center", gap:14, padding:"0 18px" }}>
+        <span style={{ fontFamily:"var(--font-mono)", fontSize:10.5, color:"var(--fg-3)" }}>PLAN:</span>
+        <select value={layer} onChange={e=>setLayer(+e.target.value)} style={{ background:"var(--bg-2)", color:"var(--fg)", border:"1px solid var(--line)", padding:"4px 8px", fontFamily:"var(--font-mono)", fontSize:11, borderRadius:2 }}>
+          <option value={1}>PRO · L1</option>
+          <option value={2}>DESK · L1+L2</option>
+          <option value={3}>FLOOR · L1+L2+L3</option>
+        </select>
+        <span style={{ width:26, height:26, borderRadius:"50%", background:"var(--bg-3)", border:"1px solid var(--line)", fontSize:10, fontFamily:"var(--font-mono)", display:"grid", placeItems:"center", color:"var(--fg-2)" }}>RJ</span>
+      </div>
+    </div>
+  );
+};
+
+// ─── Lifecycle bar ─────────────────────────────────────────────
+const LifecycleBar = ({ stage, compact=false }) => (
+  <div style={{ display:"grid", gridTemplateColumns:`repeat(${STAGES.length}, 1fr)`, border:"1px solid var(--line)", background:"var(--bg-2)", borderRadius:2 }}>
+    {STAGES.map((s,i)=>{
+      const done=i<stage, current=i===stage;
+      return (
+        <div key={s} style={{ padding: compact?"10px 14px":"14px 18px", borderRight: i<STAGES.length-1?"1px solid var(--line)":"none", background: current?"var(--bg-3)":"transparent", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:8, fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:"0.1em", color: done||current?"var(--fg-2)":"var(--fg-4)" }}>
+            <span style={{ color: done?"var(--signal-pass)":current?"var(--signal-amber)":"var(--fg-4)" }}>{done?"✓":`0${i+1}`}</span>
+            STAGE {i+1}
+          </div>
+          <div style={{ marginTop:4, fontSize: compact?12:14, fontWeight:500, color: done||current?"var(--fg)":"var(--fg-3)", letterSpacing:"-0.01em" }}>{s}</div>
+          {current && <div style={{ position:"absolute", left:0, right:0, bottom:-1, height:2, background:"var(--signal-amber)" }} />}
+        </div>
+      );
+    })}
+  </div>
+);
+
+// ─── Toast ─────────────────────────────────────────────────────
+const Toast = ({ notif }) => {
+  if (!notif) return null;
+  return (
+    <div style={{ position:"fixed", bottom:24, left:"50%", transform:"translateX(-50%)", background:"var(--bg-2)", border:"1px solid var(--line)", borderLeft:`3px solid ${notif.kind==="pass"?"var(--signal-pass)":notif.kind==="fail"?"var(--signal-fail)":"var(--signal-amber)"}`, padding:"12px 18px", borderRadius:2, fontSize:13, color:"var(--fg)", zIndex:1000, display:"flex", gap:12, alignItems:"center", boxShadow:"0 8px 24px oklch(0% 0 0 / 0.4)" }}>
+      <span className="mono" style={{ fontSize:11, color: notif.kind==="pass"?"var(--signal-pass)":notif.kind==="fail"?"var(--signal-fail)":"var(--signal-amber)" }}>{notif.tag}</span>
+      <span>{notif.msg}</span>
+    </div>
+  );
+};
+
+Object.assign(window, { STAGES, SEED_DEALS, COA_PARAMS, TC_FIELDS, INBOX, LS_KEY, loadState, saveState, Logo, Ticker, MarketingNav, AppNav, LifecycleBar, Toast });
+
+</script>
+  <script type="text/babel">
+/* global React */
+const { useState, useEffect, useMemo } = React;
+
+// ─── Marketing pages (interactive nav, persist scroll via state) ───
+const HomeScreen = ({ go }) => (
+  <div className="surface" style={{ minHeight:"100vh" }}>
+    <Ticker />
+    <MarketingNav go={go} />
+    <div style={{ position:"relative", padding:"80px 32px 100px", borderBottom:"1px solid var(--line)" }} className="bg-grid">
+      <svg viewBox="0 0 1440 600" style={{ position:"absolute", inset:0, width:"100%", height:"100%", opacity:0.3 }}>
+        <path d="M 60 380 Q 400 200 760 280 T 1380 220" stroke="var(--signal-amber)" strokeWidth="1" fill="none" strokeDasharray="2 6" />
+        <path d="M 100 460 Q 500 360 900 420 T 1380 380" stroke="var(--fg-3)" strokeWidth="1" fill="none" strokeDasharray="2 6" />
+        {[[60,380],[760,280],[1380,220],[100,460],[900,420]].map(([x,y],i)=>(<circle key={i} cx={x} cy={y} r="3" fill="var(--signal-amber)" />))}
+      </svg>
+      <div style={{ position:"relative", maxWidth:1100, margin:"0 auto" }}>
+        <h1 className="display" style={{ fontSize:88, margin:0 }}>Where physical<br/>trades are <span className="editorial" style={{ color:"var(--signal-amber)", fontWeight:400 }}>managed.</span></h1>
+        <div style={{ marginTop:24, fontSize:20, color:"var(--fg-2)" }}>One platform. Every deal. Every decision.</div>
+        <p style={{ marginTop:14, fontSize:15, color:"var(--fg-3)", maxWidth:620, lineHeight:1.6 }}>
+          From trade confirmation to delivery — agentic AI captures every document, runs every validation, surfaces every exception. Your ops team makes the calls.
+        </p>
+        <div style={{ marginTop:32, display:"flex", gap:12 }}>
+          <button className="btn btn-lg btn-primary" onClick={()=>go("/deals/new")}>GET STARTED FREE →</button>
+          <button className="btn btn-lg" onClick={()=>go("/demo")}>SEE THE DEMO</button>
+        </div>
+      </div>
+    </div>
+    <div style={{ padding:"48px 32px", borderBottom:"1px solid var(--line)" }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <span className="eyebrow">THE LIFECYCLE · AUTOMATED END-TO-END</span>
+        <div style={{ marginTop:18 }}><LifecycleBar stage={2} /></div>
+      </div>
+    </div>
+    <div style={{ padding:"60px 32px", borderBottom:"1px solid var(--line)" }}>
+      <div style={{ maxWidth:1280, margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1, background:"var(--line)", border:"1px solid var(--line)" }}>
+        {[
+          { n:"01", t:"Capture",      sub:"Trade conf, COA, contract.", b:"Claude reads the inbox. Every field extracted, every spec validated." },
+          { n:"02", t:"Operations",   sub:"LC, BL, invoice.",            b:"Cross-document validation runs simultaneously. LC vs BL vs contract." },
+          { n:"03", t:"Intelligence", sub:"Vessel, market, counterparty.", b:"Live position. Current price vs locked contract. Sanctions and risk signals." },
+        ].map(l=>(
+          <div key={l.n} style={{ background:"var(--bg)", padding:28 }}>
+            <span className="mono" style={{ fontSize:11, color:"var(--signal-amber)" }}>LAYER {l.n}</span>
+            <h3 className="display" style={{ fontSize:36, margin:"16px 0 4px" }}>{l.t}.</h3>
+            <div className="editorial" style={{ fontSize:17, color:"var(--fg-2)", marginBottom:14 }}>{l.sub}</div>
+            <p style={{ color:"var(--fg-3)", fontSize:13.5, lineHeight:1.6, margin:0 }}>{l.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div style={{ padding:"60px 32px", textAlign:"center" }}>
+      <h2 className="display" style={{ fontSize:48, margin:0 }}>$0 to start. No card required.</h2>
+      <button className="btn btn-lg btn-primary" style={{ marginTop:24 }} onClick={()=>go("/pricing")}>SEE PRICING →</button>
+    </div>
+    <Ticker />
+  </div>
+);
+
+const PricingScreen = ({ go }) => {
+  const plans = [
+    { name:"FREE", price:"$0", sub:"lifetime", cta:"Start free", desc:"For your first mismatch.", inc:["2 analyses","Trade conf","COA validation"] },
+    { name:"PRO", price:"$199", sub:"/month", cta:"Start Pro", desc:"For solo ops.", inc:["Layer 1 unlimited","Email ingestion","Activity feed"], primary:true },
+    { name:"DESK", price:"$499", sub:"/month", cta:"Join waitlist", desc:"Full lifecycle.", inc:["+ LC, BL, invoice","Cross-doc checks"], soon:true },
+    { name:"FLOOR", price:"$999", sub:"/month", cta:"Join waitlist", desc:"Market-aware.", inc:["+ Vessel tracking","Market intel","Counterparty"], soon:true },
+    { name:"ENTERPRISE", price:"$2,500+", sub:"/month", cta:"Talk to us", desc:"Bespoke.", inc:["+ CTRM/ERP","SSO/SAML"], soon:true },
+  ];
+  return (
+    <div className="surface" style={{ minHeight:"100vh" }}>
+      <Ticker /><MarketingNav go={go} />
+      <div style={{ padding:"60px 32px 32px", borderBottom:"1px solid var(--line)", textAlign:"center" }}>
+        <span className="eyebrow">PRICING</span>
+        <h1 className="display" style={{ fontSize:80, margin:"12px 0 0" }}>$0 to start. <span className="editorial" style={{ color:"var(--signal-amber)", fontWeight:400 }}>No card.</span></h1>
+      </div>
+      <div style={{ padding:"40px 32px" }}>
+        <div style={{ maxWidth:1380, margin:"0 auto", display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:1, background:"var(--line)", border:"1px solid var(--line)" }}>
+          {plans.map(p=>(
+            <div key={p.name} style={{ background: p.primary?"var(--bg-2)":"var(--bg)", padding:22, position:"relative" }}>
+              {p.primary && <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:"var(--signal-amber)" }} />}
+              <div style={{ display:"flex", justifyContent:"space-between" }}>
+                <span className="mono" style={{ fontSize:11, color: p.primary?"var(--signal-amber)":"var(--fg-3)" }}>{p.name}</span>
+                {p.soon && <span className="tag">SOON</span>}
+              </div>
+              <div className="editorial" style={{ fontSize:15, color:"var(--fg-2)", marginTop:14 }}>{p.desc}</div>
+              <div style={{ marginTop:10, display:"flex", alignItems:"baseline", gap:6 }}>
+                <span className="display" style={{ fontSize:42 }}>{p.price}</span>
+                <span style={{ color:"var(--fg-3)", fontSize:11, fontFamily:"var(--font-mono)" }}>{p.sub}</span>
+              </div>
+              <ul style={{ listStyle:"none", padding:0, marginTop:18, display:"grid", gap:6, minHeight:120 }}>
+                {p.inc.map(i=><li key={i} style={{ display:"flex", gap:8, fontSize:12, color:"var(--fg-2)" }}><span style={{ color:"var(--signal-pass)" }}>+</span>{i}</li>)}
+              </ul>
+              <button className={`btn btn-sm ${p.primary?"btn-primary":""}`} style={{ marginTop:16, width:"100%", justifyContent:"center" }} onClick={()=>go("/deals/new")}>{p.cta}</button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Ticker />
+    </div>
+  );
+};
+
+window.HomeScreen = HomeScreen;
+window.PricingScreen = PricingScreen;
+
+</script>
+  <script type="text/babel">
+/* global React */
+const { useState, useMemo } = React;
+
+// ─── Inbox screen ──────────────────────────────────────────────
+const InboxScreen = ({ store, dispatch, go }) => {
+  const all = [];
+  Object.entries(INBOX).forEach(([dealId, items]) => {
+    const deal = store.deals.find(d => d.id === dealId);
+    if (!deal) return;
+    items.forEach(it => {
+      const approved = (store.approvals[dealId] || {})[it.id];
+      if (approved) return;
+      all.push({ ...it, dealId, dealName: deal.name });
+    });
+  });
+  return (
+    <div className="surface" style={{ minHeight:"100vh" }}>
+      <AppNav active="inbox" go={go} layer={store.layer} setLayer={l=>dispatch({type:"setLayer",l})} />
+      <div style={{ padding:"20px 24px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+        <div>
+          <span className="eyebrow">INBOX · ROUTED BY CLAUDE</span>
+          <h1 className="display" style={{ fontSize:36, margin:"4px 0 0" }}>{all.length} document{all.length!==1?"s":""} awaiting review.</h1>
+        </div>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"100px 220px 1fr 200px 140px 100px", padding:"10px 24px", background:"var(--bg-2)", borderBottom:"1px solid var(--line)" }}>
+        {["TIME","FROM","SUBJECT","DEAL","TYPE",""].map(h=><span key={h} className="label">{h}</span>)}
+      </div>
+      {all.length === 0 ? (
+        <div style={{ padding:80, textAlign:"center", color:"var(--fg-3)" }}>
+          <div style={{ fontSize:18 }}>Inbox clear.</div>
+          <div style={{ fontSize:13, marginTop:6 }}>All routed documents have been reviewed.</div>
+        </div>
+      ) : all.map((it,i)=>(
+        <div key={i} onClick={()=>{ dispatch({type:"goDoc", dealId:it.dealId, docId:it.id}); go(`/deals/${it.dealId}`); }} style={{ display:"grid", gridTemplateColumns:"100px 220px 1fr 200px 140px 100px", padding:"14px 24px", borderBottom:"1px solid var(--line-soft)", fontSize:13, alignItems:"center", cursor:"pointer" }}
+          onMouseEnter={e=>e.currentTarget.style.background="var(--bg-2)"}
+          onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
+          <span className="mono" style={{ color:"var(--fg-3)" }}>{it.at}</span>
+          <span className="mono" style={{ color:"var(--fg-2)", fontSize:12 }}>{it.from}</span>
+          <span style={{ color:"var(--fg)" }}>{it.subj}</span>
+          <span className="mono" style={{ color:"var(--signal-amber)", fontSize:12 }}>{it.dealId}</span>
+          <span className="tag tag-amber">{it.type}</span>
+          <span style={{ color:"var(--fg-3)", fontSize:12, textAlign:"right" }}>OPEN →</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ─── Deals list ────────────────────────────────────────────────
+const DealsListScreen = ({ store, dispatch, go }) => (
+  <div className="surface" style={{ minHeight:"100vh" }}>
+    <AppNav active="deals" go={go} layer={store.layer} setLayer={l=>dispatch({type:"setLayer",l})} />
+    <div style={{ padding:"20px 24px", display:"flex", justifyContent:"space-between", alignItems:"center", borderBottom:"1px solid var(--line)" }}>
+      <div style={{ display:"flex", alignItems:"baseline", gap:16 }}>
+        <h1 className="display" style={{ fontSize:36, margin:0 }}>Deals</h1>
+        <span className="mono" style={{ color:"var(--fg-3)", fontSize:12 }}>{store.deals.length} ACTIVE</span>
+      </div>
+      <div style={{ display:"flex", gap:8 }}>
+        <input className="input" placeholder="Search deals…" style={{ width:280 }} />
+        <button className="btn btn-sm btn-primary" onClick={()=>go("/deals/new")}>+ NEW DEAL</button>
+      </div>
+    </div>
+    <div style={{ display:"grid", gridTemplateColumns:"160px 1.4fr 1fr 1fr 1.2fr 1fr 80px", padding:"10px 24px", background:"var(--bg-2)", borderBottom:"1px solid var(--line)" }}>
+      {["DEAL ID","NAME","COMMODITY","BUYER","LIFECYCLE","STATUS","INBOX"].map(h=><span key={h} className="label">{h}</span>)}
+    </div>
+    {store.deals.map(d=>{
+      const inboxCount = (INBOX[d.id]||[]).filter(it => !(store.approvals[d.id]||{})[it.id]).length;
+      return (
+        <div key={d.id} onClick={()=>{ dispatch({type:"goDeal", id:d.id}); go(`/deals/${d.id}`); }} style={{
+          display:"grid", gridTemplateColumns:"160px 1.4fr 1fr 1fr 1.2fr 1fr 80px",
+          padding:"14px 24px", borderBottom:"1px solid var(--line-soft)", fontSize:13.5, alignItems:"center", cursor:"pointer",
+          background: d.status==="EXCEPTION" ? "color-mix(in oklch, var(--signal-fail) 4%, transparent)" : "transparent",
+        }}
+        onMouseEnter={e=>e.currentTarget.style.background = d.status==="EXCEPTION" ? "color-mix(in oklch, var(--signal-fail) 8%, transparent)" : "var(--bg-2)"}
+        onMouseLeave={e=>e.currentTarget.style.background = d.status==="EXCEPTION" ? "color-mix(in oklch, var(--signal-fail) 4%, transparent)" : "transparent"}>
+          <span className="mono" style={{ color:"var(--signal-amber)" }}>{d.id}</span>
+          <span style={{ color:"var(--fg)" }}>{d.name}</span>
+          <span style={{ color:"var(--fg-2)" }}>{d.cmd}</span>
+          <span style={{ color:"var(--fg-2)" }}>{d.buyer}</span>
+          <div style={{ display:"flex", gap:3, alignItems:"center" }}>
+            {STAGES.map((s,j)=>(<div key={s} style={{ width:20, height:4, background: j<d.stage?"var(--signal-pass)":j===d.stage?"var(--signal-amber)":"var(--bg-3)" }} />))}
+            <span className="mono" style={{ marginLeft:8, fontSize:10.5, color:"var(--fg-3)" }}>{STAGES[d.stage]}</span>
+          </div>
+          <span className={d.status==="EXCEPTION"?"tag tag-fail":"tag tag-pass"}>{d.status}{d.exc?` · ${d.exc}`:""}</span>
+          <span>{inboxCount > 0 ? <span className="tag tag-amber">{inboxCount}</span> : <span style={{ color:"var(--fg-4)", fontSize:12 }}>—</span>}</span>
+        </div>
+      );
+    })}
+  </div>
+);
+
+// ─── New deal form ─────────────────────────────────────────────
+const NewDealScreen = ({ store, dispatch, go }) => {
+  const [form, setForm] = useState({ name:"", buyer:"", origin:"", cmd:"", qty:"", deliv:"" });
+  const ready = form.name && form.buyer && form.origin && form.cmd && form.qty;
+  const submit = () => {
+    if (!ready) return;
+    const id = `${form.cmd.slice(0,3).toUpperCase()}-${Math.floor(2600+Math.random()*100)}`;
+    dispatch({ type:"createDeal", deal: { id, name: form.name, buyer: form.buyer, origin: form.origin, cmd: form.cmd, qty: form.qty, price:"—", stage:0, status:"PENDING" } });
+    go(`/deals/${id}`);
+  };
+  return (
+    <div className="surface" style={{ minHeight:"100vh" }}>
+      <AppNav active="deals" go={go} layer={store.layer} setLayer={l=>dispatch({type:"setLayer",l})} />
+      <div style={{ padding:"32px 24px", display:"grid", gridTemplateColumns:"1fr 360px", gap:32, maxWidth:1280, margin:"0 auto" }}>
+        <div>
+          <span className="eyebrow">NEW DEAL · DRAFT</span>
+          <h1 className="display" style={{ fontSize:48, margin:"8px 0 28px" }}>Open a position.</h1>
+          <div className="card" style={{ padding:24 }}>
+            {[
+              { l:"DEAL NAME *", k:"name", ph:"Brazilian Soy 60kt → Qingdao" },
+              { l:"BUYER *", k:"buyer", ph:"Cofco Resources S.A." },
+              { l:"ORIGIN *", k:"origin", ph:"Santos, BR" },
+              { l:"COMMODITY *", k:"cmd", ph:"Yellow Soybeans, Crop 2025/26" },
+              { l:"QUANTITY *", k:"qty", ph:"60,000 MT  ±5%" },
+              { l:"DELIVERY MONTH", k:"deliv", ph:"May 2026", optional:true },
+            ].map(f=>(
+              <div key={f.k} style={{ marginBottom:18 }}>
+                <div style={{ display:"flex", justifyContent:"space-between" }}>
+                  <span className="label">{f.l}</span>
+                  {f.optional && <span className="mono" style={{ fontSize:10, color:"var(--fg-4)" }}>OPTIONAL</span>}
+                </div>
+                <input className="input" placeholder={f.ph} value={form[f.k]} onChange={e=>setForm({...form,[f.k]:e.target.value})} style={{ marginTop:6 }} />
+              </div>
+            ))}
+            <div style={{ marginTop:24, display:"flex", justifyContent:"flex-end", gap:8 }}>
+              <button className="btn" onClick={()=>go("/deals")}>CANCEL</button>
+              <button className="btn btn-primary" disabled={!ready} style={{ opacity: ready?1:0.4, cursor: ready?"pointer":"not-allowed" }} onClick={submit}>ANALYZE →</button>
+            </div>
+          </div>
+        </div>
+        <aside>
+          <span className="eyebrow">WHAT HAPPENS NEXT</span>
+          <div className="card" style={{ padding:18, marginTop:10 }}>
+            {["Save creates the deal record.","Forward documents to your unique deal inbox.","Claude extracts. Edit inline.","Approve to advance the lifecycle."].map((s,i)=>(
+              <div key={i} style={{ display:"grid", gridTemplateColumns:"32px 1fr", gap:12, padding:"10px 0", borderTop: i?"1px solid var(--line-soft)":"none" }}>
+                <span className="mono" style={{ color:"var(--signal-amber)" }}>0{i+1}</span>
+                <span style={{ fontSize:13, color:"var(--fg-2)", lineHeight:1.5 }}>{s}</span>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </div>
+  );
+};
+
+window.InboxScreen = InboxScreen;
+window.DealsListScreen = DealsListScreen;
+window.NewDealScreen = NewDealScreen;
+
+</script>
+  <script type="text/babel">
+/* global React */
+const { useState, useMemo } = React;
+
+// ─── Activity Feed ──────────────────────────────────────────────
+const ActivityFeed = ({ events }) => {
+  const tone = (k) => k === "ai" ? "var(--signal-amber)" : k === "rule" ? "var(--signal-info)" : k === "human" ? "var(--fg)" : "var(--fg-3)";
+  return (
+    <div className="card">
+      <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+        <span className="eyebrow">ACTIVITY · LIVE</span>
+        <span style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"var(--fg-3)" }}>UTC</span>
+      </div>
+      {events.length === 0 ? (
+        <div style={{ padding:24, color:"var(--fg-3)", fontSize:13, textAlign:"center" }}>No activity yet.</div>
+      ) : events.map((e,i)=>(
+        <div key={i} style={{ display:"grid", gridTemplateColumns:"68px 110px 1fr", padding:"11px 18px", borderBottom: i<events.length-1?"1px solid var(--line-soft)":"none", fontSize:12.5, alignItems:"baseline", gap:12 }}>
+          <span className="mono" style={{ color:"var(--fg-4)" }}>{e.t}</span>
+          <span className="mono" style={{ color:tone(e.kind), fontSize:11 }}>
+            {e.kind==="ai"&&"◆ "}{e.kind==="rule"&&"◇ "}{e.kind==="human"&&"○ "}{e.kind==="sys"&&"· "}{e.actor}
+          </span>
+          <div>
+            <div style={{ color:"var(--fg)" }}>{e.act}</div>
+            {e.res && <div style={{ color:"var(--fg-3)" }}>{e.res}</div>}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ─── Extracted card (interactive) ──────────────────────────────
+const ExtractedTC = ({ deal, store, dispatch, go }) => {
+  const fields = TC_FIELDS;
+  const vals = store.fields[deal.id] || {};
+  const approved = (store.approvals[deal.id]||{}).tc;
+  return (
+    <div className="card">
+      <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+        <div style={{ display:"flex", gap:12, alignItems:"center" }}>
+          <span className="eyebrow">EXTRACTED · TRADE CONFIRMATION</span>
+          {approved === "approved" && <span className="tag tag-pass">APPROVED</span>}
+          {approved === "rejected" && <span className="tag tag-fail">REJECTED</span>}
+        </div>
+        <span className="mono" style={{ fontSize:11, color:"var(--fg-3)" }}>trade_confirmation.pdf</span>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr" }}>
+        {fields.map((f,i)=>(
+          <div key={f.k} style={{ padding:"12px 18px", borderRight:i%2===0?"1px solid var(--line-soft)":"none", borderBottom: i<fields.length-2?"1px solid var(--line-soft)":"none" }}>
+            <div style={{ display:"flex", justifyContent:"space-between" }}>
+              <span className="label">{f.k}</span>
+              <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color: f.low?"var(--signal-warn)":"var(--fg-4)" }}>{f.low&&"⚠ "}{Math.round(f.conf*100)}%</span>
+            </div>
+            <input value={vals[f.k] ?? f.v} onChange={e=>dispatch({type:"setField", dealId:deal.id, k:f.k, v:e.target.value})}
+              className={f.low?"input input-low-conf":"input"}
+              style={{ marginTop:6, border:"none", padding:"4px 0", background:"transparent", fontFamily:"var(--font-ui)", fontSize:13.5 }} />
+          </div>
+        ))}
+      </div>
+      {!approved && (
+        <div style={{ display:"flex", justifyContent:"flex-end", gap:8, padding:"12px 18px", borderTop:"1px solid var(--line)" }}>
+          <button className="btn btn-sm btn-fail" onClick={()=>dispatch({type:"reject", dealId:deal.id, docId:"tc", docType:"Trade Confirmation"})}>REJECT</button>
+          <button className="btn btn-sm btn-pass" onClick={()=>dispatch({type:"approve", dealId:deal.id, docId:"tc", docType:"Trade Confirmation"})}>APPROVE & ADVANCE →</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const ComplianceLedger = ({ deal, store, dispatch }) => {
+  const approved = (store.approvals[deal.id]||{}).coa;
+  return (
+    <div className="card">
+      <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+        <div style={{ display:"flex", gap:12, alignItems:"center" }}>
+          <span className="eyebrow">COA vs CONTRACT</span>
+          {approved === "approved" && <span className="tag tag-pass">CARGO ACCEPTED</span>}
+          {approved === "rejected" && <span className="tag tag-fail">CARGO REJECTED</span>}
+          {!approved && <><span className="tag tag-fail">2 FAIL</span><span className="tag tag-pass">6 PASS</span></>}
+        </div>
+        <span className="mono" style={{ fontSize:11, color:"var(--fg-3)" }}>RULE ENGINE · 38ms</span>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"1.4fr 0.9fr 0.9fr 0.6fr 0.7fr", padding:"8px 18px", background:"var(--bg)", borderBottom:"1px solid var(--line)" }}>
+        {["PARAMETER","EXTRACTED","CONTRACT","DELTA","VERDICT"].map(h=><span key={h} className="label">{h}</span>)}
+      </div>
+      {COA_PARAMS.map((r,i)=>(
+        <div key={i} style={{ display:"grid", gridTemplateColumns:"1.4fr 0.9fr 0.9fr 0.6fr 0.7fr", padding:"10px 18px", borderBottom: i<COA_PARAMS.length-1?"1px solid var(--line-soft)":"none", background: !r.pass?"color-mix(in oklch, var(--signal-fail) 6%, transparent)":"transparent", alignItems:"center", fontSize:13 }}>
+          <span style={{ color:"var(--fg)" }}>{r.p}</span>
+          <span className="mono">{r.e}</span>
+          <span className="mono" style={{ color:"var(--fg-2)" }}>{r.c}</span>
+          <span className="mono" style={{ color: r.pass?"var(--signal-pass)":"var(--signal-fail)" }}>{r.diff}</span>
+          <span className={r.pass?"tag tag-pass":"tag tag-fail"}>{r.pass?"PASS":"FAIL"}</span>
+        </div>
+      ))}
+      {!approved && (
+        <div style={{ display:"flex", justifyContent:"flex-end", gap:8, padding:"12px 18px", borderTop:"1px solid var(--line)" }}>
+          <button className="btn btn-sm btn-fail" onClick={()=>dispatch({type:"reject", dealId:deal.id, docId:"coa", docType:"COA"})}>REJECT CARGO</button>
+          <button className="btn btn-sm btn-pass" onClick={()=>dispatch({type:"approve", dealId:deal.id, docId:"coa", docType:"COA"})}>ACCEPT CARGO →</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─── Position card (L3) ────────────────────────────────────────
+const PositionCard = () => (
+  <div className="card" style={{ padding:18 }}>
+    <div style={{ display:"flex", justifyContent:"space-between" }}>
+      <span className="eyebrow">MARKET INTELLIGENCE</span>
+    </div>
+    <div style={{ marginTop:14, display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"var(--line)", border:"1px solid var(--line)" }}>
+      {[{l:"CONTRACT",v:"432.50",u:"$/MT"},{l:"MARKET",v:"472.10",u:"$/MT",d:"+39.60",up:true},{l:"FREIGHT LOCKED",v:"26.40",u:"$/MT"},{l:"FREIGHT MARKET",v:"28.90",u:"$/MT",d:"+2.50",up:false}].map((m,i)=>(
+        <div key={i} style={{ background:"var(--bg-2)", padding:"10px 12px" }}>
+          <div className="label">{m.l}</div>
+          <div style={{ marginTop:4, display:"flex", alignItems:"baseline", gap:6, fontFamily:"var(--font-mono)" }}>
+            <span style={{ fontSize:18 }}>{m.v}</span><span style={{ fontSize:10, color:"var(--fg-3)" }}>{m.u}</span>
+          </div>
+          {m.d && <div style={{ fontFamily:"var(--font-mono)", fontSize:11, color: m.up?"var(--signal-pass)":"var(--signal-fail)" }}>{m.up?"▲":"▼"} {m.d}</div>}
+        </div>
+      ))}
+    </div>
+    <div style={{ marginTop:14, padding:14, border:"1px dashed var(--line)" }}>
+      <div className="eyebrow" style={{ marginBottom:6 }}>CLAUDE · POSITION SUMMARY</div>
+      <p className="editorial" style={{ fontSize:17, lineHeight:1.4, margin:0 }}>
+        Market moved <span className="mono" style={{ color:"var(--signal-pass)", fontStyle:"normal" }}>+$39.60/MT</span> above contract on a 60,000 MT cargo. Position: <span className="mono" style={{ color:"var(--signal-pass)", fontStyle:"normal" }}>+$2.376M</span>. Freight eats <span className="mono" style={{ color:"var(--signal-fail)", fontStyle:"normal" }}>−$150K</span>. Net <span className="mono" style={{ color:"var(--signal-pass)", fontStyle:"normal" }}>+$2.226M</span>.
+      </p>
+    </div>
+  </div>
+);
+
+const VesselTracker = () => (
+  <div className="card">
+    <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+      <div style={{ display:"flex", gap:10, alignItems:"center" }}>
+        <span className="eyebrow">VESSEL · M/V FRONTIER ASTRA</span>
+      </div>
+    </div>
+    <div style={{ position:"relative", height:180, background:"var(--bg)" }} className="bg-grid">
+      <svg viewBox="0 0 800 180" style={{ width:"100%", height:"100%", position:"absolute", inset:0 }}>
+        <path d="M 80 130 Q 400 30 720 80" stroke="var(--signal-amber)" strokeWidth="1.2" fill="none" strokeDasharray="3 5" />
+        <circle cx="80" cy="130" r="4" fill="var(--signal-pass)" />
+        <text x="92" y="134" fill="var(--fg-2)" fontSize="10" fontFamily="var(--font-mono)">SANTOS</text>
+        <circle cx="720" cy="80" r="4" fill="var(--signal-amber)" />
+        <text x="652" y="74" fill="var(--fg-2)" fontSize="10" fontFamily="var(--font-mono)">QINGDAO</text>
+        <g transform="translate(420 68)">
+          <circle r="6" fill="var(--signal-amber)" />
+          <circle r="14" fill="none" stroke="var(--signal-amber)" strokeOpacity="0.4" />
+        </g>
+      </svg>
+    </div>
+    <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)" }}>
+      {[{l:"SPEED",v:"13.4 kn"},{l:"HEADING",v:"048°"},{l:"ETA",v:"MAY 24"},{l:"VOYAGE",v:"47%"}].map((m,i)=>(
+        <div key={i} style={{ padding:"10px 14px", borderRight:i<3?"1px solid var(--line)":"none", borderTop:"1px solid var(--line)" }}>
+          <div className="label">{m.l}</div>
+          <div className="mono" style={{ marginTop:4, fontSize:13 }}>{m.v}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ─── Deal Detail (route by layer) ──────────────────────────────
+const DealDetailScreen = ({ store, dispatch, go }) => {
+  const deal = store.deals.find(d => d.id === store.currentDealId);
+  if (!deal) { go("/deals"); return null; }
+  const events = store.activity[deal.id] || [];
+  const tabs = store.layer >= 2 ? ["Trade Conf","COA","Contract","LC","BL","Invoice"] : ["Trade Conf","COA","Contract"];
+  const [tab, setTab] = useState("COA");
+  return (
+    <div className="surface" style={{ minHeight:"100vh" }}>
+      <AppNav active="deals" go={go} layer={store.layer} setLayer={l=>dispatch({type:"setLayer",l})} />
+      <div style={{ padding:"18px 24px", borderBottom:"1px solid var(--line)" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:24, marginBottom:14 }}>
+          <div style={{ minWidth:0, flex:1 }}>
+            <div style={{ display:"flex", alignItems:"center", gap:8, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>
+              <span onClick={()=>go("/deals")} className="mono" style={{ color:"var(--fg-3)", fontSize:11, cursor:"pointer" }}>← DEALS</span>
+              <span className="mono" style={{ color:"var(--signal-amber)", fontSize:11 }}>· {deal.id} · LAYER {store.layer}</span>
+            </div>
+            <h1 className="display" style={{ fontSize:28, margin:"6px 0 0", lineHeight:1.05 }}>{deal.name}</h1>
+            <div style={{ marginTop:8, fontSize:13, color:"var(--fg-3)" }}>{deal.buyer} · {deal.cmd} · {deal.qty}</div>
+          </div>
+          <div style={{ display:"flex", gap:8, flexShrink:0 }}>
+            {store.layer >= 3 && <><span className="tag tag-pass">SANCTIONS CLEAR</span><span className="tag tag-amber">2 RISK SIGNALS</span></>}
+            <button className="btn btn-sm">UPLOAD DOC</button>
+          </div>
+        </div>
+        <LifecycleBar stage={deal.stage} compact />
+      </div>
+
+      <div style={{ padding:"16px 24px 0", display:"flex", borderBottom:"1px solid var(--line)" }}>
+        {tabs.map(t=>(
+          <div key={t} onClick={()=>setTab(t)} style={{ padding:"10px 18px", fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:"0.1em", cursor:"pointer", color: tab===t?"var(--fg)":"var(--fg-3)", borderBottom: tab===t?"2px solid var(--signal-amber)":"2px solid transparent" }}>
+            {t.toUpperCase()}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ padding:24, display:"grid", gridTemplateColumns:"1.6fr 1fr", gap:24 }}>
+        <div style={{ display:"grid", gap:24 }}>
+          {tab === "Trade Conf" && <ExtractedTC deal={deal} store={store} dispatch={dispatch} go={go} />}
+          {tab === "COA" && <ComplianceLedger deal={deal} store={store} dispatch={dispatch} />}
+          {tab === "Contract" && <div className="card" style={{ padding:32, textAlign:"center", color:"var(--fg-3)" }}>Contract terms parsed · GAFTA 122 + 4 deal-specific exceptions applied to all subsequent documents.</div>}
+          {tab === "LC" && <div className="card" style={{ padding:32, textAlign:"center", color:"var(--fg-3)" }}>Awaiting LC from issuing bank.</div>}
+          {tab === "BL" && <div className="card" style={{ padding:32, textAlign:"center", color:"var(--fg-3)" }}>BL not yet received.</div>}
+          {tab === "Invoice" && <div className="card" style={{ padding:32, textAlign:"center", color:"var(--fg-3)" }}>Invoice issues post-delivery.</div>}
+          {store.layer >= 3 && <PositionCard />}
+          {store.layer >= 3 && <VesselTracker />}
+        </div>
+        <ActivityFeed events={events} />
+      </div>
+    </div>
+  );
+};
+
+// ─── Demo (public) ─────────────────────────────────────────────
+const DemoScreen = ({ go }) => (
+  <div className="surface" style={{ minHeight:"100vh" }}>
+    <Ticker /><MarketingNav go={go} />
+    <div style={{ padding:"32px 32px 12px", borderBottom:"1px solid var(--line)" }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+        <div>
+          <span className="eyebrow">PUBLIC DEMO · NON-COMPLIANT BRAZILIAN SOY</span>
+          <h1 className="display" style={{ fontSize:42, margin:"6px 0 0" }}>Watch a real failure get caught.</h1>
+        </div>
+        <button className="btn btn-sm btn-primary" onClick={()=>go("/deals/new")}>SIGN UP →</button>
+      </div>
+    </div>
+    <div style={{ padding:24, display:"grid", gridTemplateColumns:"1.5fr 1fr", gap:24 }}>
+      <div style={{ display:"grid", gap:24 }}>
+        <LifecycleBar stage={2} />
+        <ComplianceLedger deal={{id:"DEMO"}} store={{approvals:{}}} dispatch={()=>{}} />
+      </div>
+      <ActivityFeed events={[
+        {t:"12:42", actor:"CLAUDE", act:"Extracted COA SGS-BR-44128", res:"avg confidence 0.96", kind:"ai"},
+        {t:"12:42", actor:"RULE ENGINE", act:"Validation completed", res:"FAIL · moisture, splits", kind:"rule"},
+        {t:"09:14", actor:"M. Park", act:"Created demo deal", kind:"human"},
+      ]} />
+    </div>
+  </div>
+);
+
+window.DealDetailScreen = DealDetailScreen;
+window.DemoScreen = DemoScreen;
+
+</script>
+  <script type="text/babel">
+/* global React */
+const { useState } = React;
+
+// ─── Products page ─────────────────────────────────────────────
+const ProductsScreen = ({ go }) => {
+  const [activeFeature, setActiveFeature] = useState("tc");
+  return (
+    <div className="surface" style={{ minHeight:"100vh" }}>
+      <Ticker /><MarketingNav go={go} />
+
+      {/* Hero */}
+      <div style={{ padding:"60px 32px 48px", borderBottom:"1px solid var(--line)", position:"relative" }} className="bg-grid">
+        <div style={{ maxWidth:1280, margin:"0 auto", position:"relative" }}>
+          <span className="eyebrow">PRODUCT · ALL LAYERS</span>
+          <h1 className="display" style={{ fontSize:84, margin:"12px 0 0", maxWidth:1100 }}>
+            From trade confirmation to delivery. <span className="editorial" style={{ color:"var(--signal-amber)", fontWeight:400 }}>Automated.</span>
+          </h1>
+          <div style={{ marginTop:20, fontSize:17, color:"var(--fg-2)", maxWidth:760, lineHeight:1.5 }}>
+            Every document. Every validation. Every exception. One agentic stack that reads your inbox, validates against your contracts, and surfaces only the decisions a human needs to make.
+          </div>
+        </div>
+      </div>
+
+      {/* Three layers, dense */}
+      <div style={{ padding:"48px 32px", borderBottom:"1px solid var(--line)" }}>
+        <div style={{ maxWidth:1280, margin:"0 auto" }}>
+          <span className="eyebrow">THE STACK</span>
+          <div style={{ marginTop:18, display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1, background:"var(--line)", border:"1px solid var(--line)" }}>
+            {[
+              { tag:"LIVE",     l:"01", t:"Trade Capture",        sub:"Trade conf · COA · Contract", b:"Email arrives or PDF is dropped. Claude reads it. Every field surfaces in an editable card. Low-confidence values flagged. You hit Approve — the deal record is created and the lifecycle starts." },
+              { tag:"LIVE",     l:"02", t:"Shipment Operations",  sub:"LC · BL · Invoice",            b:"Same extraction pattern, different prompts. The deterministic rule engine cross-checks LC port vs contract port, BL date vs LC deadline, invoice quantity vs delivered quantity — simultaneously, before a human sees it." },
+              { tag:"LIVE",     l:"03", t:"Connected Intelligence", sub:"Vessel · Market · Counterparty", b:"Live vessel position via MarineTraffic. Current price vs locked contract. OpenSanctions screening on every counterparty. Claude generates a one-sentence position summary in plain English." },
+            ].map(c=>(
+              <div key={c.l} style={{ background:"var(--bg)", padding:24 }}>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                  <span className="mono" style={{ fontSize:11, color:"var(--signal-amber)" }}>LAYER {c.l}</span>
+                </div>
+                <h3 className="display" style={{ fontSize:32, margin:"14px 0 4px" }}>{c.t}.</h3>
+                <div className="editorial" style={{ fontSize:16, color:"var(--fg-2)", marginBottom:12 }}>{c.sub}</div>
+                <p style={{ color:"var(--fg-3)", fontSize:13.5, lineHeight:1.6, margin:0 }}>{c.b}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Live mini-demo (Layer 1) — clickable feature switcher */}
+      <div style={{ padding:"60px 32px", borderBottom:"1px solid var(--line)" }}>
+        <div style={{ maxWidth:1280, margin:"0 auto" }}>
+          <span className="eyebrow">LIVE · LAYER 1 IN ACTION</span>
+          <h2 className="display" style={{ fontSize:48, margin:"10px 0 24px", maxWidth:900 }}>
+            Pick a document. <span className="editorial" style={{ color:"var(--signal-amber)", fontWeight:400 }}>Watch it parse.</span>
+          </h2>
+          <div style={{ display:"grid", gridTemplateColumns:"260px 1fr", gap:24 }}>
+            <div style={{ display:"flex", flexDirection:"column", gap:1, background:"var(--line)", border:"1px solid var(--line)" }}>
+              {[
+                { id:"tc",  l:"TRADE CONFIRMATION", b:"Counterparty terms" },
+                { id:"coa", l:"CERTIFICATE OF ANALYSIS", b:"Quality vs spec" },
+                { id:"ctr", l:"CONTRACT", b:"GAFTA · FOSFA · custom" },
+              ].map(it=>(
+                <div key={it.id} onClick={()=>setActiveFeature(it.id)}
+                  style={{ background: activeFeature===it.id?"var(--bg-3)":"var(--bg)", padding:"14px 16px", cursor:"pointer", borderLeft: activeFeature===it.id?"2px solid var(--signal-amber)":"2px solid transparent" }}>
+                  <div className="mono" style={{ fontSize:11, color: activeFeature===it.id?"var(--signal-amber)":"var(--fg-3)" }}>{it.l}</div>
+                  <div style={{ fontSize:13, color:"var(--fg-2)", marginTop:3 }}>{it.b}</div>
+                </div>
+              ))}
+            </div>
+            <div className="card" style={{ minHeight:340 }}>
+              {activeFeature==="tc" && (
+                <>
+                  <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+                    <span className="eyebrow">TRADE CONFIRMATION · trade_conf.pdf</span>
+                  </div>
+                  <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr" }}>
+                    {TC_FIELDS.slice(0,6).map((f,i)=>(
+                      <div key={f.k} style={{ padding:"12px 18px", borderRight:i%2===0?"1px solid var(--line-soft)":"none", borderBottom:i<4?"1px solid var(--line-soft)":"none" }}>
+                        <div style={{ display:"flex", justifyContent:"space-between" }}>
+                          <span className="label">{f.k}</span>
+                          <span className="mono" style={{ fontSize:10, color: f.low?"var(--signal-warn)":"var(--fg-4)" }}>{f.low&&"⚠ "}{Math.round(f.conf*100)}%</span>
+                        </div>
+                        <div style={{ marginTop:6, fontFamily:"var(--font-mono)", fontSize:13, color:"var(--fg)" }}>{f.v}</div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+              {activeFeature==="coa" && (
+                <>
+                  <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+                    <span className="eyebrow">COA · DETERMINISTIC RULE ENGINE</span>
+                    <div style={{ display:"flex", gap:6 }}><span className="tag tag-fail">2 FAIL</span><span className="tag tag-pass">6 PASS</span></div>
+                  </div>
+                  <div style={{ display:"grid", gridTemplateColumns:"1.3fr 0.9fr 0.9fr 0.7fr", padding:"8px 18px", background:"var(--bg)", borderBottom:"1px solid var(--line)" }}>
+                    {["PARAMETER","EXTRACTED","SPEC","VERDICT"].map(h=><span key={h} className="label">{h}</span>)}
+                  </div>
+                  {COA_PARAMS.slice(0,5).map((r,i)=>(
+                    <div key={i} style={{ display:"grid", gridTemplateColumns:"1.3fr 0.9fr 0.9fr 0.7fr", padding:"10px 18px", borderBottom:i<4?"1px solid var(--line-soft)":"none", background: !r.pass?"color-mix(in oklch, var(--signal-fail) 6%, transparent)":"transparent", alignItems:"center", fontSize:13 }}>
+                      <span>{r.p}</span>
+                      <span className="mono">{r.e}</span>
+                      <span className="mono" style={{ color:"var(--fg-2)" }}>{r.c}</span>
+                      <span className={r.pass?"tag tag-pass":"tag tag-fail"}>{r.pass?"PASS":"FAIL"}</span>
+                    </div>
+                  ))}
+                </>
+              )}
+              {activeFeature==="ctr" && (
+                <>
+                  <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+                    <span className="eyebrow">CONTRACT · STANDARD + EXCEPTIONS</span>
+                    <span className="tag tag-amber">GAFTA 122 · 4 OVERRIDES</span>
+                  </div>
+                  <div style={{ padding:"18px 18px 8px" }}>
+                    <div className="label">REFERENCE LIBRARY</div>
+                    <div style={{ display:"flex", gap:6, marginTop:8, flexWrap:"wrap" }}>
+                      {["GAFTA","FOSFA","ICE","CME"].map(s=><span key={s} className="tag">{s}</span>)}
+                    </div>
+                  </div>
+                  <div style={{ padding:"8px 18px 18px" }}>
+                    <div className="label" style={{ marginTop:14 }}>DEAL-SPECIFIC OVERRIDES</div>
+                    <ul style={{ margin:"8px 0 0", padding:0, listStyle:"none", display:"grid", gap:6 }}>
+                      {["Moisture max raised to 14.5%","Discharge port: Qingdao only","Payment: LC at sight, confirmed","Demurrage: USD 18,000/day"].map(s=>
+                        <li key={s} style={{ display:"flex", gap:10, fontSize:13, color:"var(--fg-2)" }}><span className="mono" style={{ color:"var(--signal-amber)" }}>◆</span>{s}</li>
+                      )}
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Layer 2 cross-doc */}
+      <div style={{ padding:"60px 32px", borderBottom:"1px solid var(--line)" }}>
+        <div style={{ maxWidth:1280, margin:"0 auto" }}>
+          <span className="eyebrow">LAYER 2 · CROSS-DOCUMENT VALIDATION</span>
+          <h2 className="display" style={{ fontSize:48, margin:"10px 0 24px", maxWidth:900 }}>
+            One mismatch. <span className="editorial" style={{ color:"var(--signal-amber)", fontWeight:400 }}>Caught before the bank sees it.</span>
+          </h2>
+          <div className="card">
+            <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+              <span className="eyebrow">CROSS-DOC CHECK · LC ↔ BL ↔ CONTRACT</span>
+              <span className="tag tag-fail">1 EXCEPTION</span>
+            </div>
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", padding:"8px 18px", background:"var(--bg)", borderBottom:"1px solid var(--line)" }}>
+              {["FIELD","CONTRACT","LETTER OF CREDIT","BILL OF LADING"].map(h=><span key={h} className="label">{h}</span>)}
+            </div>
+            {[
+              { f:"Discharge port", a:"Qingdao",        b:"Qingdao",        c:"Qingdao", ok:true },
+              { f:"Quantity (MT)",  a:"60,000 ±5%",     b:"60,000 ±5%",     c:"59,840",  ok:true },
+              { f:"Shipment by",    a:"15 May 2026",    b:"15 May 2026",    c:"12 May 2026", ok:true },
+              { f:"LC expiry",      a:"30 May 2026",    b:"28 May 2026",    c:"—",        ok:false, note:"LC expires 2 days before contract window — discrepancy" },
+              { f:"Description",    a:"Yellow Soybeans, FOB Santos", b:"Yellow Soybeans, FOB Santos", c:"Yellow Soybeans, FOB Santos", ok:true },
+            ].map((r,i)=>(
+              <div key={i} style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", padding:"10px 18px", borderBottom: i<4?"1px solid var(--line-soft)":"none", background: !r.ok?"color-mix(in oklch, var(--signal-fail) 6%, transparent)":"transparent", alignItems:"center", fontSize:13 }}>
+                <span style={{ color:"var(--fg-2)", display:"flex", alignItems:"center", gap:6 }}>
+                  <span style={{ color: r.ok?"var(--signal-pass)":"var(--signal-fail)" }}>{r.ok?"✓":"✗"}</span>{r.f}
+                </span>
+                <span className="mono">{r.a}</span>
+                <span className="mono">{r.b}</span>
+                <span className="mono">{r.c}</span>
+                {!r.ok && <div style={{ gridColumn:"1 / -1", padding:"6px 0 0", color:"var(--signal-fail)", fontSize:12 }}>↳ {r.note}</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Layer 3 strip */}
+      <div style={{ padding:"60px 32px", borderBottom:"1px solid var(--line)" }}>
+        <div style={{ maxWidth:1280, margin:"0 auto" }}>
+          <span className="eyebrow">LAYER 3 · MARKET-AWARE</span>
+          <h2 className="display" style={{ fontSize:48, margin:"10px 0 24px" }}>
+            Position. Vessel. Counterparty.
+          </h2>
+          <div style={{ display:"grid", gridTemplateColumns:"1.2fr 1fr", gap:20 }}>
+            <PositionCard />
+            <div className="card">
+              <div style={{ padding:"12px 18px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between" }}>
+                <span className="eyebrow">COUNTERPARTY · COFCO RESOURCES S.A.</span>
+                <span className="tag tag-pass">SANCTIONS CLEAR</span>
+              </div>
+              <div style={{ padding:"14px 18px" }}>
+                <div className="label">RISK SIGNALS · CLAUDE WEB</div>
+                <ul style={{ margin:"10px 0 0", padding:0, listStyle:"none", display:"grid", gap:8 }}>
+                  {[
+                    { t:"OpenSanctions", v:"No matches across OFAC, EU, UK, UN", k:"pass" },
+                    { t:"News (30 days)", v:"Q1 earnings beat · soybean exports up 12% YoY", k:"info" },
+                    { t:"Litigation", v:"No active disputes flagged", k:"pass" },
+                    { t:"Credit", v:"Standard terms · LC at sight, confirmed Tier-1 bank", k:"info" },
+                  ].map((s,i)=>(
+                    <li key={i} style={{ display:"grid", gridTemplateColumns:"160px 1fr", gap:14, padding:"6px 0", borderTop: i?"1px solid var(--line-soft)":"none" }}>
+                      <span className="mono" style={{ fontSize:11, color: s.k==="pass"?"var(--signal-pass)":"var(--fg-3)" }}>{s.t.toUpperCase()}</span>
+                      <span style={{ fontSize:13, color:"var(--fg-2)" }}>{s.v}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div style={{ padding:"80px 32px", textAlign:"center" }}>
+        <span className="eyebrow">START NOW</span>
+        <h2 className="display" style={{ fontSize:64, margin:"12px 0 8px" }}>2 free analyses.</h2>
+        <div className="editorial" style={{ fontSize:24, color:"var(--fg-2)" }}>No card. No setup.</div>
+        <div style={{ marginTop:28, display:"flex", justifyContent:"center", gap:12 }}>
+          <button className="btn btn-lg btn-primary" onClick={()=>go("/deals/new")}>GET STARTED →</button>
+          <button className="btn btn-lg" onClick={()=>go("/pricing")}>SEE PRICING</button>
+        </div>
+      </div>
+      <Ticker />
+    </div>
+  );
+};
+
+// ─── Settings · Integrations ───────────────────────────────────
+const SettingsScreen = ({ store, dispatch, go }) => {
+  const [emailIngest, setEmailIngest] = useState(true);
+  return (
+    <div className="surface" style={{ minHeight:"100vh" }}>
+      <AppNav active="settings" go={go} layer={store.layer} setLayer={l=>dispatch({type:"setLayer",l})} />
+      <div style={{ display:"grid", gridTemplateColumns:"220px 1fr", minHeight:"calc(100vh - 75px)" }}>
+        <aside style={{ borderRight:"1px solid var(--line)", padding:"20px 0" }}>
+          {[
+            { l:"INTEGRATIONS", active:true },
+            { l:"USERS & ROLES" },
+            { l:"BILLING" },
+            { l:"AUDIT LOG" },
+            { l:"DATA RESIDENCY" },
+          ].map((it,i)=>(
+            <div key={i} style={{ padding:"10px 24px", fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:"0.1em", color: it.active?"var(--fg)":"var(--fg-3)", borderLeft: it.active?"2px solid var(--signal-amber)":"2px solid transparent", cursor:"pointer" }}>
+              {it.l}
+            </div>
+          ))}
+        </aside>
+        <main style={{ padding:"28px 32px", maxWidth:920 }}>
+          <span className="eyebrow">SETTINGS · INTEGRATIONS</span>
+          <h1 className="display" style={{ fontSize:42, margin:"8px 0 24px" }}>How CommodityOps gets your work.</h1>
+
+          {/* Email ingestion */}
+          <div className="card" style={{ marginBottom:20 }}>
+            <div style={{ padding:"16px 20px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <div>
+                <div style={{ fontSize:15, color:"var(--fg)" }}>Email ingestion</div>
+                <div style={{ fontSize:13, color:"var(--fg-3)", marginTop:2 }}>Forward to your inbox. Claude classifies and routes to the right deal.</div>
+              </div>
+              <div onClick={()=>setEmailIngest(!emailIngest)} style={{ width:42, height:22, borderRadius:11, background: emailIngest?"var(--signal-amber)":"var(--bg-3)", position:"relative", cursor:"pointer", transition:"background 120ms" }}>
+                <div style={{ position:"absolute", top:2, left: emailIngest?22:2, width:18, height:18, borderRadius:"50%", background:"var(--bg)", transition:"left 120ms" }} />
+              </div>
+            </div>
+            <div style={{ padding:"14px 20px", display:"grid", gridTemplateColumns:"160px 1fr", gap:14, alignItems:"center" }}>
+              <span className="label">YOUR INBOX</span>
+              <div style={{ display:"flex", gap:8 }}>
+                <input className="input" readOnly value="ops-r9k2@commodityops.email" style={{ flex:1 }} />
+                <button className="btn btn-sm">COPY</button>
+              </div>
+              <span className="label">FALLBACK</span>
+              <span style={{ fontSize:13, color:"var(--fg-2)" }}>Manual upload available on every deal page.</span>
+            </div>
+          </div>
+
+          {/* CTRM/ERP */}
+          <div className="card" style={{ marginBottom:20 }}>
+            <div style={{ padding:"16px 20px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <div>
+                <div style={{ fontSize:15, color:"var(--fg)" }}>CTRM / ERP webhook</div>
+                <div style={{ fontSize:13, color:"var(--fg-3)", marginTop:2 }}>Push approved records to your downstream system.</div>
+              </div>
+              <span className="tag">ENTERPRISE</span>
+            </div>
+            <div style={{ padding:"14px 20px", display:"grid", gridTemplateColumns:"160px 1fr", gap:14, alignItems:"center" }}>
+              <span className="label">ENDPOINT</span>
+              <input className="input" placeholder="https://your-ctrm.example.com/webhook" disabled style={{ opacity:0.5 }} />
+              <span className="label">SECRET</span>
+              <input className="input" placeholder="whsec_…" disabled style={{ opacity:0.5 }} />
+            </div>
+          </div>
+
+          {/* API keys */}
+          <div className="card" style={{ marginBottom:20 }}>
+            <div style={{ padding:"16px 20px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <div>
+                <div style={{ fontSize:15, color:"var(--fg)" }}>API keys</div>
+                <div style={{ fontSize:13, color:"var(--fg-3)", marginTop:2 }}>Programmatic access to deals, documents, activity.</div>
+              </div>
+              <span className="tag">ENTERPRISE</span>
+            </div>
+            <div style={{ padding:"14px 20px", color:"var(--fg-3)", fontSize:13 }}>
+              Upgrade to Enterprise to manage API keys.
+            </div>
+          </div>
+
+          {/* SSO */}
+          <div className="card">
+            <div style={{ padding:"16px 20px", borderBottom:"1px solid var(--line)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <div>
+                <div style={{ fontSize:15, color:"var(--fg)" }}>SSO / SAML</div>
+                <div style={{ fontSize:13, color:"var(--fg-3)", marginTop:2 }}>Single sign-on via your identity provider.</div>
+              </div>
+              <span className="tag">ENTERPRISE</span>
+            </div>
+            <div style={{ padding:"14px 20px", display:"grid", gridTemplateColumns:"160px 1fr", gap:14, alignItems:"center" }}>
+              <span className="label">PROVIDER</span>
+              <select className="input" disabled style={{ opacity:0.5 }}>
+                <option>Okta · Azure AD · Google · Custom SAML</option>
+              </select>
+            </div>
+          </div>
+
+          <div style={{ marginTop:18, fontSize:12, color:"var(--fg-3)", display:"flex", gap:14, fontFamily:"var(--font-mono)" }}>
+            <span>HTTPS/TLS</span><span>·</span>
+            <span>ENCRYPTION AT REST</span><span>·</span>
+            <span>EU/US RESIDENCY</span><span>·</span>
+            <span style={{ color:"var(--fg-4)" }}>SOC 2 TYPE II — ROADMAP</span>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+window.ProductsScreen = ProductsScreen;
+window.SettingsScreen = SettingsScreen;
+
+</script>
+  <script type="text/babel">
+/* global React, ReactDOM */
+const { useReducer, useEffect, useCallback } = React;
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "go":          return { ...state, route: action.route };
+    case "goDeal":      return { ...state, route:`/deals/${action.id}`, currentDealId: action.id };
+    case "goDoc":       return { ...state, route:`/deals/${action.dealId}`, currentDealId: action.dealId, currentDocId: action.docId };
+    case "setLayer":    return { ...state, layer: action.l };
+    case "setMode":     return { ...state, mode: action.m };
+    case "setField": {
+      const f = { ...(state.fields[action.dealId]||{}), [action.k]: action.v };
+      return { ...state, fields: { ...state.fields, [action.dealId]: f } };
+    }
+    case "approve": {
+      const ap = { ...(state.approvals[action.dealId]||{}), [action.docId]: "approved" };
+      const deals = state.deals.map(d => d.id === action.dealId ? { ...d, stage: Math.min(4, d.stage + 1), status: d.status === "PENDING" ? "ON TRACK" : d.status } : d);
+      const ev = { t: new Date().toTimeString().slice(0,5), actor: "R. Jain", act: `Approved ${action.docType}`, res: "Lifecycle advanced", kind: "human" };
+      const ai = { t: new Date(Date.now()-2000).toTimeString().slice(0,5), actor: "RULE ENGINE", act: `${action.docType} validation completed`, res: "PASS", kind: "rule" };
+      const events = [ev, ai, ...(state.activity[action.dealId]||[])];
+      return {
+        ...state,
+        approvals: { ...state.approvals, [action.dealId]: ap },
+        deals,
+        activity: { ...state.activity, [action.dealId]: events },
+        notif: { tag:"APPROVED", msg:`${action.docType} approved · lifecycle advanced`, kind:"pass" }
+      };
+    }
+    case "reject": {
+      const ap = { ...(state.approvals[action.dealId]||{}), [action.docId]: "rejected" };
+      const ev = { t: new Date().toTimeString().slice(0,5), actor: "R. Jain", act: `Rejected ${action.docType}`, res: "Counterparty notified", kind: "human" };
+      return {
+        ...state,
+        approvals: { ...state.approvals, [action.dealId]: ap },
+        activity: { ...state.activity, [action.dealId]: [ev, ...(state.activity[action.dealId]||[])] },
+        notif: { tag:"REJECTED", msg:`${action.docType} rejected`, kind:"fail" }
+      };
+    }
+    case "createDeal": {
+      const ev = { t: new Date().toTimeString().slice(0,5), actor: "R. Jain", act: "Created deal record", kind: "human" };
+      return {
+        ...state,
+        deals: [action.deal, ...state.deals],
+        currentDealId: action.deal.id,
+        activity: { ...state.activity, [action.deal.id]: [ev] },
+        notif: { tag:"CREATED", msg:`Deal ${action.deal.id} opened`, kind:"amber" }
+      };
+    }
+    case "clearNotif":  return { ...state, notif: null };
+    default: return state;
+  }
+}
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, null, loadState);
+  useEffect(() => saveState(state), [state]);
+  useEffect(() => { document.documentElement.dataset.mode = state.mode; }, [state.mode]);
+  useEffect(() => {
+    if (state.notif) { const t = setTimeout(() => dispatch({ type:"clearNotif" }), 2800); return () => clearTimeout(t); }
+  }, [state.notif]);
+
+  const go = useCallback((route) => {
+    if (route === "/home")          dispatch({ type:"go", route });
+    else if (route === "/pricing")  dispatch({ type:"go", route });
+    else if (route === "/products") dispatch({ type:"go", route });
+    else if (route === "/settings") dispatch({ type:"go", route });
+    else if (route === "/demo")     dispatch({ type:"go", route });
+    else if (route === "/deals")    dispatch({ type:"go", route });
+    else if (route === "/inbox")    dispatch({ type:"go", route });
+    else if (route === "/deals/new")dispatch({ type:"go", route });
+    else if (route.startsWith("/deals/")) {
+      const id = route.split("/")[2];
+      dispatch({ type:"goDeal", id });
+    } else dispatch({ type:"go", route });
+  }, []);
+
+  // Tweaks panel
+  useEffect(() => {
+    const onMsg = (e) => {
+      if (e.data?.type === "__activate_edit_mode") setShowTweaks(true);
+      if (e.data?.type === "__deactivate_edit_mode") setShowTweaks();
+    };
+    window.addEventListener("message", onMsg);
+    window.parent.postMessage({ type:"__edit_mode_available" }, "*");
+    return () => window.removeEventListener("message", onMsg);
+  }, []);
+  const [showTweaks, setShowTweaks] = React.useState(true);
+
+  let screen;
+  if (state.route === "/home")          screen = <HomeScreen go={go} />;
+  else if (state.route === "/pricing")  screen = <PricingScreen go={go} />;
+  else if (state.route === "/products") screen = <ProductsScreen go={go} />;
+  else if (state.route === "/demo")     screen = <DemoScreen go={go} />;
+  else if (state.route === "/deals")    screen = <DealsListScreen store={state} dispatch={dispatch} go={go} />;
+  else if (state.route === "/inbox")    screen = <InboxScreen store={state} dispatch={dispatch} go={go} />;
+  else if (state.route === "/settings") screen = <SettingsScreen store={state} dispatch={dispatch} go={go} />;
+  else if (state.route === "/deals/new")screen = <NewDealScreen store={state} dispatch={dispatch} go={go} />;
+  else if (state.route?.startsWith("/deals/")) screen = <DealDetailScreen store={state} dispatch={dispatch} go={go} />;
+  else screen = <HomeScreen go={go} />;
+
+  return (
+    <>
+      {screen}
+      <Toast notif={state.notif} />
+      {showTweaks && (
+        <div style={{ position:"fixed", right:24, bottom:24, width:300, background:"var(--bg-2)", border:"1px solid var(--line)", padding:16, borderRadius:2, zIndex:1100, fontFamily:"var(--font-ui)" }}>
+          <div style={{ display:"flex", justifyContent:"space-between", marginBottom:14 }}>
+            <span className="eyebrow">TWEAKS</span>
+            <span onClick={()=>{ setShowTweaks(false); window.parent.postMessage({type:"__edit_mode_dismissed"},"*"); }} style={{ cursor:"pointer", color:"var(--fg-3)" }}>×</span>
+          </div>
+          <div style={{ marginBottom:14 }}>
+            <div className="label">PLAN</div>
+            <div style={{ display:"flex", gap:6, marginTop:6 }}>
+              {[1,2,3].map(l => (
+                <button key={l} className={`btn btn-sm ${state.layer===l?"btn-primary":""}`} onClick={()=>dispatch({type:"setLayer",l})}>L{l}</button>
+              ))}
+            </div>
+          </div>
+          <div style={{ marginBottom:14 }}>
+            <div className="label">THEME</div>
+            <div style={{ display:"flex", gap:6, marginTop:6 }}>
+              {["ink","paper"].map(m => (
+                <button key={m} className={`btn btn-sm ${state.mode===m?"btn-primary":""}`} onClick={()=>dispatch({type:"setMode",m})}>{m.toUpperCase()}</button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="label">RESET</div>
+            <button className="btn btn-sm" style={{ marginTop:6 }} onClick={()=>{ localStorage.removeItem(LS_KEY); location.reload(); }}>RESET PROTOTYPE</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+</body>
+</html>
